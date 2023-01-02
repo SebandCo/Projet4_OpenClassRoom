@@ -16,8 +16,8 @@ def menu_accueil():
     print("Que souhaitez vous faire?")
     print(
         "1 --> Gestion des joueurs\n"
-        "2 --> Création d'un nouveau tournoi\n"
-        "3 --> Revoir un tournoi\n"
+        "2 --> Création d'un nouveau tournoi (NOK)\n"
+        "3 --> Revoir un tournoi (NOK)\n"
         "4 --> Sortir du programme")
 
     # Récupération du choix de l'utilisateur
@@ -33,7 +33,6 @@ def menu_accueil():
             # VÃ©rifie que reponse_menu est compris entre 1 et 4
             if 1 <= reponse_menu <= 4:
                 reponse_correct = 1  # Valide le controle pour sortir de la boucle
-                reponse_menu = int(reponse_menu)  # Met le string en integer
             else:
                 # Si reponse_menu n'est pas compris entre 1 et 4
                 reponse_menu = input("Merci de choisir un menu existant : ")
