@@ -54,7 +54,10 @@ def menu_joueur():
         nouveau_joueur=joueur()
         
         #Si le classement est égale à -1 c'est que l'utilisateur à stopper la création du joueur
-        if nouveau_joueur.classement == -1:
+        if nouveau_joueur.doublon == True:
+            nouveau_joueur.mise_a_jour_joueur_bdd() 
+            print ("Le joueur",nouveau_joueur.nom,nouveau_joueur.prenom,"a bien été rajouté à la base de donnée à la place de l'ancien")
+        elif nouveau_joueur.doublon == False:
             print ("Le joueur",nouveau_joueur.nom,nouveau_joueur.prenom,"n'a pas été rajouté à la base de donnée")
         else:
             #Appel de l'objet joueur pour le rajout dans la base de donnée

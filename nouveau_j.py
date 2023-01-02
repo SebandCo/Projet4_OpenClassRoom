@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Module pour l'importation de la base de donnée
-from tinydb import TinyDB, Query
+from tinydb import TinyDB, where
 from pprint import pprint
 from recherche_j import *
 
@@ -53,15 +53,12 @@ class joueur:
             while test_classement2 == False:
                 if reponse_classement == "O":
                     #Si l'utilisateur valide, le programme continue et remplace le joueur existant
-                                
-                    #Mettre ici la suppression d'un joueur
-
-                    test_classement=1
+                    self.doublon = True
+                    test_classement2 = True
                 elif reponse_classement == "N":
-                    #Si l'utilisateur valide l'abandon le classement est négatif pour pouvoir le requeter
-                    self.classement = -1
-                    #La création de l'objet s'arrete
-                    return
+                    #Si l'utilisateur valide le programme continue mais ne rajoute pas le joueur
+                    self.doublon = False
+                    test_classement2 = True
                 else:
                     reponse_classement=input("Merci de saisir ""O"" pour remplacer ou ""N"" pour recommencer : ")
   
@@ -74,4 +71,13 @@ class joueur:
                        "naissance" : self.naissance,
                        "sexe" : self.sexe,
                        "classement" : self.classement})
+    
+    def mise_a_jour_joueur_bdd (self):
+        joueurs_bdd = TinyDB("joueurs_bdd.json")
+        joueur_aj = joueurs_bdd.table("joueur_aj")
+        joueur_aj.update({"nom" : self.nom, 
+                       "prenom" : self.prenom,
+                       "naissance" : self.naissance,
+                       "sexe" : self.sexe},
+                       where("classement") == self.classement)
 
