@@ -52,9 +52,14 @@ def menu_joueur():
         print ()
         #Appel de l'objet joueur pour la création
         nouveau_joueur=joueur()
-        #Appel de l'objet joueur pour le rajout dans la base de donnée
-        nouveau_joueur.rajout_joueur_bdd()
-        print ("Le joueur",nouveau_joueur.nom,nouveau_joueur.prenom,"a bien été rajouté à la base de donnée")
+        
+        #Si le classement est égale à -1 c'est que l'utilisateur à stopper la création du joueur
+        if nouveau_joueur.classement == -1:
+            print ("Le joueur",nouveau_joueur.nom,nouveau_joueur.prenom,"n'a pas été rajouté à la base de donnée")
+        else:
+            #Appel de l'objet joueur pour le rajout dans la base de donnée
+            nouveau_joueur.rajout_joueur_bdd()
+            print ("Le joueur",nouveau_joueur.nom,nouveau_joueur.prenom,"a bien été rajouté à la base de donnée")
         input("Appuyer sur ""Entrée"" pour continuer")
         menu_joueur()
     elif reponse_menu==3:

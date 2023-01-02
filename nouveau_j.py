@@ -2,6 +2,7 @@
 #Module pour l'importation de la base de donnée
 from tinydb import TinyDB, Query
 from pprint import pprint
+from recherche_j import *
 
 class joueur:
     def __init__ (self):
@@ -21,23 +22,49 @@ class joueur:
                 self.sexe = input("Merci de saisir H, F ou I : ")
         self.classement = input("Merci de saisir le classement de " + self.prenom + " " + self.nom + " : ")
         # Vérification pour savoir si le nombre rentré est un entier positif
-        test_classement = 0
-        while test_classement == 0:
+        test_classement1 = False
+        while test_classement1 == False:
             try:
                 # Vérifie si le classement est un entier
                 int(self.classement) 
                 self.classement=int(self.classement)# Met le string en integer
                 # Vérifie que self.classement est positif
-                if 0 <= self.classement:
-                    test_classement=1 # Valide le controle pour sortir de la boucle
-                else:
-                    # Si reponse_menu n'est pas compris entre 1 et 4
+                if 0 > self.classement:
                     self.classement=input("Merci de rentrer un nombre entier positif : ")
+                else:
+                    test_classement1 = True
+                    # Si self.classement n'est pas positif
             except:
-                # Si reponse_menu n'est pas un entier
+                # Si self.classement n'est pas un entier
                 self.classement=input("Merci de rentrer un nombre entier positif : """)
         
+        # Vérification pour savoir si un joueur avec le même classement existe
+        joueur_existant = recherche_joueur(self.classement)
         
+        #Si joueur_existant est vide alors il n'y a pas de doublon
+        if len(joueur_existant) == 0:
+            return
+        #Sinon joueur_existant n'est pas vide, il y a donc un doublon
+        else:             
+            print("Un joueur existe déjà avec le classement", self.classement,". Voulez vous le remplacer ?")
+            #On demande à l'utilisateur quoi faire
+            reponse_classement=input("Si oui, saisir ""O"". Sinon saisir ""N"" et recommencer : ")
+            test_classement2 = False
+            while test_classement2 == False:
+                if reponse_classement == "O":
+                    #Si l'utilisateur valide, le programme continue et remplace le joueur existant
+                                
+                    #Mettre ici la suppression d'un joueur
+
+                    test_classement=1
+                elif reponse_classement == "N":
+                    #Si l'utilisateur valide l'abandon le classement est négatif pour pouvoir le requeter
+                    self.classement = -1
+                    #La création de l'objet s'arrete
+                    return
+                else:
+                    reponse_classement=input("Merci de saisir ""O"" pour remplacer ou ""N"" pour recommencer : ")
+  
     def rajout_joueur_bdd (self):
         #Implémentation de la base de donnée suivant les valeurs de l'initialisation
         joueurs_bdd = TinyDB("joueurs_bdd.json")
