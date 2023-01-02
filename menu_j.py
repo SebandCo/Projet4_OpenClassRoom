@@ -18,7 +18,7 @@ def menu_joueur():
     print("\
     1 --> Recherche d'un joueur (NOK)\n\
     2 --> Création d'un nouveau joueur\n\
-    3 --> Retour au menu principal (NOK)")
+    3 --> Retour au menu principal")
 
     # Récupération du choix de l'utilisateur
     reponse_menu=input("Merci de saisir le numéro de menu : ")
@@ -51,8 +51,8 @@ def menu_joueur():
         nouveau_joueur=joueur()
         #Appel de l'objet joueur pour le rajout dans la base de donnée
         nouveau_joueur.rajout_joueur_bdd()
-        print ("Le joueur ", nouveau_joueur.nom, " ", nouveau_joueur.prenom, " a bien été rajouté à la base de donnée")
+        print ("Le joueur",nouveau_joueur.nom,nouveau_joueur.prenom,"a bien été rajouté à la base de donnée")
         input("Appuyer sur ""Entrée"" pour continuer")
         menu_joueur()
     elif reponse_menu==3:
-        menu_accueil()
+        return

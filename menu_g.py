@@ -42,10 +42,13 @@ def menu_accueil():
 
     # Redirection en fonction du choix de l'utilisateur
     if reponse_menu == 1:
+        # Lance le menu gestion de joueur
         menu_joueur()
+        # Reviens au menu acceuil à la fin du menu joueur
+        menu_accueil()
     elif reponse_menu == 2:
         print("Vous avez choisi le menu 2")
     elif reponse_menu == 3:
         print("Vous avez choisi le menu 3")
     elif reponse_menu == 4:
-        print("/n A une prochaine fois")
+        print("\n A une prochaine fois")
