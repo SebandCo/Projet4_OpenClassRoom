@@ -27,10 +27,10 @@ def menu_accueil():
 
     while reponse_correct == 0:  # Tant que le controle n'est pas valide
         try:
-            # VÃ©rifie si reponse_menu est un entier
+            # Vérifie si reponse_menu est un entier
             int(reponse_menu)
             reponse_menu = int(reponse_menu)  # Met le string en integer
-            # VÃ©rifie que reponse_menu est compris entre 1 et 4
+            # Vérifie que reponse_menu est compris entre 1 et 4
             if 1 <= reponse_menu <= 4:
                 reponse_correct = 1  # Valide le controle pour sortir de la boucle
             else:

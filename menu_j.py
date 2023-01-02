@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from menu_g import *
 from nouveau_j import *
+from recherche_j import *
 from tinydb import TinyDB, Query
 import os
 
@@ -43,7 +44,9 @@ def menu_joueur():
     # Redirection en fonction du choix de l'utilisateur
     
     if reponse_menu==1:
-        print ("Vous avez choisi le menu 1")
+        #Affiche la fonction de recherche de joueur
+        recherche_joueur()
+        menu_joueur()
     elif reponse_menu==2:
         #Creation d'un retour à la ligne pour aérer la présentation
         print ()
