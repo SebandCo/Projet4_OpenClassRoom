@@ -1,23 +1,21 @@
 # -*- coding: utf-8 -*-
-from tinydb import TinyDB, Query
+from tinydb import TinyDB, Query, where
 from pprint import pprint
 
-def recherche_joueur(controle_classement=-1):
+def recherche_joueur(reponse_recherche, mot_recherche):
     joueurs_bdd = TinyDB("joueurs_bdd.json")
     joueur_aj = joueurs_bdd.table("joueur_aj")
     resultat_joueur = Query()
-    #Si le classement est défini lors de l'appel de la fonction
-    if controle_classement >= 0:
-        #Regarde si le joueur avec le classement en argument existe
-        joueur_trouve=joueur_aj.search(resultat_joueur.classement == controle_classement)
-        #Si la réponse est vide, ne retourne rien
-        if len(joueur_trouve) == 0:
-            return ()
-        #Sinon renvoi la position
-        else:
-            return (joueur_trouve)
+    #Regarde si le joueur avec le classement en argument existe
+    joueur_trouve=joueur_aj.search(where(reponse_recherche) == mot_recherche)
+    #Si la réponse est vide, ne retourne rien
+    if len(joueur_trouve) == 0:
+        return ()
+    #Sinon renvoi la position
+    else:
+        return (joueur_trouve)
     #Sinon c'est que le classement n'est pas défini
-    else: 
+
         #Demande à l'utilisateur le nom recherché
         mot_recherche=input("Quel joueur recherché vous? : ")
         #Recherche toutes les occurences du mot recherché

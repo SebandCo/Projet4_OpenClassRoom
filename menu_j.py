@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from menu_g import *
 from nouveau_j import *
+from menu_recherche_j import *
 from recherche_j import *
 from tinydb import TinyDB, Query
 import os
@@ -31,11 +32,11 @@ def menu_joueur():
             # Vérifie si reponse_menu est un entier
             int(reponse_menu) 
             reponse_menu=int(reponse_menu)# Met le string en integer
-            # Vérifie que reponse_menu est compris entre 1 et 4
+            # Vérifie que reponse_menu est compris entre 1 et 3
             if 1<=reponse_menu<=3:
                 reponse_correct=1 # Valide le controle pour sortir de la boucle
             else:
-                # Si reponse_menu n'est pas compris entre 1 et 4
+                # Si reponse_menu n'est pas compris entre 1 et 3
                 reponse_menu=input("Merci de choisir un menu existant : ")
         except:
             # Si reponse_menu n'est pas un entier
@@ -45,7 +46,7 @@ def menu_joueur():
     
     if reponse_menu==1:
         #Affiche la fonction de recherche de joueur
-        recherche_joueur()
+        menu_recherche_joueur()
         menu_joueur()
     elif reponse_menu==2:
         #Creation d'un retour à la ligne pour aérer la présentation
@@ -53,14 +54,16 @@ def menu_joueur():
         #Appel de l'objet joueur pour la création
         nouveau_joueur=joueur()
         
-        #Si le classement est égale à -1 c'est que l'utilisateur à stopper la création du joueur
-        if nouveau_joueur.doublon == True:
-            nouveau_joueur.mise_a_jour_joueur_bdd() 
-            print ("Le joueur",nouveau_joueur.nom,nouveau_joueur.prenom,"a bien été rajouté à la base de donnée à la place de l'ancien")
-        elif nouveau_joueur.doublon == False:
-            print ("Le joueur",nouveau_joueur.nom,nouveau_joueur.prenom,"n'a pas été rajouté à la base de donnée")
-        else:
-            #Appel de l'objet joueur pour le rajout dans la base de donnée
+        try:
+            #Si le joueur est en doublon et que l'utilisateur valide la mise à jour
+            if nouveau_joueur.doublon == True:
+                nouveau_joueur.mise_a_jour_joueur_bdd() 
+                print ("Le joueur",nouveau_joueur.nom,nouveau_joueur.prenom,"a bien été rajouté à la base de donnée à la place de l'ancien")
+            #Si le joueur est en doublon mais que l'utilisateur ne souhaite pas le changer
+            elif nouveau_joueur.doublon == False:
+                print ("Le joueur",nouveau_joueur.nom,nouveau_joueur.prenom,"n'a pas été rajouté à la base de donnée")
+        #Sinon le joueur n'est pas en doublon donc on le rajoute dans la base de donnée
+        except:
             nouveau_joueur.rajout_joueur_bdd()
             print ("Le joueur",nouveau_joueur.nom,nouveau_joueur.prenom,"a bien été rajouté à la base de donnée")
         input("Appuyer sur ""Entrée"" pour continuer")

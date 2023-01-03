@@ -39,7 +39,7 @@ class joueur:
                 self.classement=input("Merci de rentrer un nombre entier positif : """)
         
         # Vérification pour savoir si un joueur avec le même classement existe
-        joueur_existant = recherche_joueur(self.classement)
+        joueur_existant = recherche_joueur("classement",self.classement)
         
         #Si joueur_existant est vide alors il n'y a pas de doublon
         if len(joueur_existant) == 0:
@@ -63,7 +63,7 @@ class joueur:
                     reponse_classement=input("Merci de saisir ""O"" pour remplacer ou ""N"" pour recommencer : ")
   
     def rajout_joueur_bdd (self):
-        #Implémentation de la base de donnée suivant les valeurs de l'initialisation
+        #Implémentation de la base de donnée suivant les valeurs de joueur donnée lors de l'initialisation
         joueurs_bdd = TinyDB("joueurs_bdd.json")
         joueur_aj = joueurs_bdd.table("joueur_aj")
         joueur_aj.insert({"nom" : self.nom, 
