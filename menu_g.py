@@ -32,13 +32,14 @@ def menu_accueil():
             reponse_menu = int(reponse_menu)  # Met le string en integer
             # Vérifie que reponse_menu est compris entre 1 et 4
             if 1 <= reponse_menu <= 4:
-                reponse_correct = 1  # Valide le controle pour sortir de la boucle
+                # Valide le controle pour sortir de la boucle
+                reponse_correct = 1
             else:
                 # Si reponse_menu n'est pas compris entre 1 et 4
                 reponse_menu = input("Merci de choisir un menu existant : ")
         except ValueError:
             # Si reponse_menu n'est pas un entier
-            reponse_menu=input("Merci de choisir un menu existant : ")
+            reponse_menu = input("Merci de choisir un menu existant : ")
 
     # Redirection en fonction du choix de l'utilisateur
     if reponse_menu == 1:
