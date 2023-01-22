@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
-from menu_g import *
+from Controleur_menu_principal import *
 
-menu_accueil()
+ctrl_menu_principal()

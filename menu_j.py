@@ -57,19 +57,8 @@ def menu_joueur():
         print()
         # Appel de l'objet joueur pour la création
         nouveau_joueur = Joueur()
-
-        try:
-            # Si le joueur est en doublon et que l'utilisateur valide la mise à jour
-            if nouveau_joueur.doublon == True:
-                nouveau_joueur.mise_a_jour_joueur_bdd()
-                print("Le joueur", nouveau_joueur.nom, nouveau_joueur.prenom, "a bien été rajouté à la base de donnée à la place de l'ancien")
-            # Si le joueur est en doublon mais que l'utilisateur ne souhaite pas le changer
-            elif nouveau_joueur.doublon == False:
-                print("Le joueur", nouveau_joueur.nom, nouveau_joueur.prenom, "n'a pas été rajouté à la base de donnée")
-        # Sinon le joueur n'est pas en doublon donc on le rajoute dans la base de donnée
-        except:
-            nouveau_joueur.rajout_joueur_bdd()
-            print("Le joueur", nouveau_joueur.nom, nouveau_joueur.prenom, "a bien été rajouté à la base de donnée")
+        
+        print("Le joueur", nouveau_joueur.nom, nouveau_joueur.prenom, "a bien été rajouté à la base de donnée")
         input("Appuyer sur ""Entrée"" pour continuer")
         menu_joueur()
     elif reponse_menu == 3:

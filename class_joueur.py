@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 # Module pour l'importation de la base de donnée
 from tinydb import TinyDB, where
-from pprint import pprint
-from recherche_j import *
 
 class Joueur:
     def __init__(self):
@@ -115,6 +113,6 @@ class Joueur:
                 return controle_reponse
         # Si la réponse utilisateur n'est pas un nombre
         except:
-            self.classement = input("Merci de rentrer un nombre entier positif : """)
+            self.classement = input("Merci de rentrer un nombre entier positif : ")
             controle_reponse = False
             return controle_reponse
