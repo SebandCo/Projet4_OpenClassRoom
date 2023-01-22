@@ -3,14 +3,23 @@
 from tinydb import TinyDB, where
 
 class Joueur:
-    def __init__(self):
+    def __init__(self, nom="", prenom="", naissance="", sexe="", classement=0, position=0):
+        self.nom = nom
+        self.prenom = prenom
+        self.naissance = naissance
+        self.sexe = sexe
+        self.classement = classement
+        self.position = position
+
+    # Méthode pour compiler l'ensemble des étapes de création d'un joueur
+    # Renvoi un objet joueur crée
+    def creation_joueur(self):
         self.nom = self.generate_nom()
         self.prenom = self.generate_prenom()
         self.naissance = self.generate_naissance(self.nom, self.prenom)
         self.sexe = self.generate_sexe(self.nom, self.prenom)
         self.classement = self.generate_classement(self.nom, self.prenom)
         self.position = self.generate_position()
-        self.ajout_joueur_bdd(self.nom, self.prenom, self.naissance, self.sexe, self.classement, self.position)
 
     # Méthode pour demander à l'utilisateur le nom du joueur
     # Renvoie le nom saisie par l'utilisateur
