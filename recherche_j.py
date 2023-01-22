@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-from tinydb import TinyDB, Query, where
+from tinydb import TinyDB, where
 from pprint import pprint
 
 def recherche_joueur(reponse_recherche, mot_recherche):
     joueurs_bdd = TinyDB("joueurs_bdd.json")
     joueur_aj = joueurs_bdd.table("joueur_aj")
-    resultat_joueur = Query()
     #Regarde si le joueur avec le classement en argument existe
     joueur_trouve=joueur_aj.search(where(reponse_recherche) == mot_recherche)
     #Si la réponse est vide, ne retourne rien

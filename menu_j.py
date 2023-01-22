@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from menu_g import *
-from nouveau_j import *
+from class_joueur import *
 from menu_recherche_j import *
 from recherche_j import *
-from tinydb import TinyDB, Query
 import os
 
 
@@ -13,7 +12,8 @@ def menu_joueur():
     # Logo de démarrage
     print(
         "==================================================\n"
-        "    Logiciel de tournois d'Echec - Menu Joueur\n"
+        "           Logiciel de tournois d'Echec\n"
+        "                  Menu Joueur\n"
         "==================================================\n\n")
 
     # Menu de selection pour l'utilisateur
@@ -56,7 +56,7 @@ def menu_joueur():
         # Creation d'un retour à la ligne pour aérer la présentation
         print()
         # Appel de l'objet joueur pour la création
-        nouveau_joueur = joueur()
+        nouveau_joueur = Joueur()
 
         try:
             # Si le joueur est en doublon et que l'utilisateur valide la mise à jour

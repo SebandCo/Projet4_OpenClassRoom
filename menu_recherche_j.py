@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from recherche_j import *
-from tinydb import TinyDB, Query
 import os
 
 
@@ -9,9 +8,10 @@ def menu_recherche_joueur():
     os.system("cls")
     # Logo de démarrage
     print(
-        "==================================================================\n"
-        "    Logiciel de tournois d'Echec - Menu Recherche de Joueur\n"
-        "==================================================================\n\n")
+        "==================================================\n"
+        "           Logiciel de tournois d'Echec\n"
+        "             Menu Recherche de Joueur\n"
+        "==================================================\n\n")
 
     # Menu de selection pour l'utilisateur
     print("Comment souhaitez vous rechercher votre joueur?")

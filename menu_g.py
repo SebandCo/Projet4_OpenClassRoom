@@ -8,9 +8,9 @@ def menu_accueil():
     os.system("cls")
     # Logo de démarrage
     print(
-        "===========================================\n"
-        "        Logiciel de tournois d'Echec\n"
-        "===========================================\n\n")
+        "==================================================\n"
+        "           Logiciel de tournois d'Echec\n"
+        "==================================================\n\n")
 
     # Menu de selection pour l'utilisateur
     print("Que souhaitez vous faire?")
@@ -52,4 +52,4 @@ def menu_accueil():
     elif reponse_menu == 3:
         print("Vous avez choisi le menu 3")
     elif reponse_menu == 4:
-        print("\n A une prochaine fois")
+        print("\n A une prochaine fois\n")
