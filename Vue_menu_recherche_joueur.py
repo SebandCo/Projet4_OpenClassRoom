@@ -23,10 +23,12 @@ def vue_menu_recherche_joueur():
 
     # Récupération du choix de l'utilisateur
     reponse_menu = input("Merci de saisir le numéro choisi : ")
+
     return reponse_menu
 
-def vue_menu_mot_recherche_joueur():
-    mot_recherche = input("Merci de saisir votre recherche : ")
+def vue_menu_mot_recherche_joueur(mot_recherche):
+    print("\nVous avez choisi la recherche par ", mot_recherche.capitalize())
+    mot_recherche = input("Merci de saisir le critère de recherche : ")
     return  mot_recherche
 
 def vue_menu_resultat_recherche_joueur(resultat_recherche):
@@ -34,12 +36,31 @@ def vue_menu_resultat_recherche_joueur(resultat_recherche):
         print("Aucun joueur n'a été trouvé")
         # Pause pour permettre à l'utilisateur de lire le resultat
         input("\n Appuyer sur ""Entrée"" pour continuer")
-    elif len(resultat_recherche) == 1:
-        joueur_test=resultat_recherche[0]
-        print(" 1: \t",joueur_test["nom"],joueur_test["prenom"],"\n",
-            "\t", joueur_test["classement"], "eme au classement")
-        input("\n Appuyer sur ""Entrée"" pour continuer")
     else:
-        print("Des joueurs ont été trouvé :", resultat_recherche)
-        # Pause pour permettre à l'utilisateur de lire le resultat
-        input("\n Appuyer sur ""Entrée"" pour continuer")
+        print("Voici le resultat :\n")
+        compteur = 0
+        for joueur in resultat_recherche:
+            compteur += 1
+            print (compteur, ":\t",
+                    joueur["nom"], joueur["prenom"],
+                    "(",joueur["sexe"],")",
+                    "\n",
+                    "\t Né(e) le : ", joueur["naissance"],
+                    "\n"
+                    "\t",joueur["classement"],"eme au classement"
+                    "\n")
+        
+def vue_menu_choix_resultat_recherche_joueur():
+    # Menu de selection pour l'utilisateur
+    print("Que souhaitez vous faire :")
+    print(
+        "1 --> Modifier un joueur\n"
+        "2 --> Rajouter un joueur à un tournoi existant (NOK)\n"
+        "3 --> Rajouter un joueur à un nouveau tournoi (NOK)\n"
+        "4 --> Faire une nouvelle recherche\n"
+        "5 --> Revenir au menu précedent\n")
+
+    # Récupération du choix de l'utilisateur
+    reponse_menu = input("Merci de saisir le numéro choisi : ")
+    
+    return reponse_menu

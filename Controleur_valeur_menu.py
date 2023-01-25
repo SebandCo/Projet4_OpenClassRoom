@@ -19,4 +19,5 @@ def ctrl_valeur_menu(menu_max, reponse_menu):
         except:
             # Si reponse_menu n'est pas un entier
             reponse_menu = input("Merci de choisir un menu existant : ")
+    reponse_menu = int(reponse_menu)
     return reponse_menu
