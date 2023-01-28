@@ -35,13 +35,13 @@ class Joueur:
 
     # Méthode pour demander à l'utilisateur la date de naissance du joueur (pas de controle)
     # Renvoie la date de naissance saisie par l'utilisateur
-    def generate_naissance(self, nom, prenom):
+    def generate_naissance(self):
         self.naissance = input("Merci de saisir la date de naissance de " + self.prenom + " " + self.nom + " : ")
         return self.naissance
 
     # Méthode pour demander à l'utilisateur le genre du joueur (controle avec une autre méthode)
     # Renvoie le genre saisie par l'utilisateur
-    def generate_sexe(self, nom, prenom):
+    def generate_sexe(self):
         self.sexe = input(self.prenom + " " + self.nom + " est-ce un Homme, une Femme ou Indeterminée ? (Saisir H, F ou I) : ")
         controle_reponse = False
         while controle_reponse == False:

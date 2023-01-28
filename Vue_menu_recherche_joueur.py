@@ -27,7 +27,7 @@ def vue_menu_recherche_joueur():
     return reponse_menu
 
 def vue_menu_mot_recherche_joueur(mot_recherche):
-    print("\nVous avez choisi la recherche par ", mot_recherche.capitalize())
+    print("\nVous avez choisi la recherche par :", mot_recherche.capitalize())
     mot_recherche = input("Merci de saisir le critère de recherche : ")
     return  mot_recherche
 
