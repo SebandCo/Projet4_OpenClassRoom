@@ -1,9 +1,9 @@
-import os
+from Vue_nettoyage_ecran import *
 
 
 def vue_menu_principal():
     # Permet de nettoyer l'écran
-    os.system("cls")
+    nettoyage_ecran()
     # Logo de démarrage
     print(
         "==================================================\n"

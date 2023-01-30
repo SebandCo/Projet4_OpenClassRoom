@@ -24,12 +24,7 @@ def ctrl_menu_joueur():
             # Appel de l'objet joueur pour la création
             nouveau_joueur = Joueur()
             nouveau_joueur.creation_joueur()
-            nouveau_joueur.ajout_joueur_bdd(nouveau_joueur.nom,
-                                            nouveau_joueur.prenom,
-                                            nouveau_joueur.naissance,
-                                            nouveau_joueur.sexe,
-                                            nouveau_joueur.classement,
-                                            nouveau_joueur.position)
+            nouveau_joueur.ajout_joueur_bdd()
         
             print("Le joueur", nouveau_joueur.nom, nouveau_joueur.prenom, "a bien été rajouté à la base de donnée")
             input("Appuyer sur ""Entrée"" pour continuer")

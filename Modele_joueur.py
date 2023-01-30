@@ -3,7 +3,13 @@
 from tinydb import TinyDB, where
 
 class Joueur:
-    def __init__(self, nom="", prenom="", naissance="", sexe="", classement=0, position=0):
+    def __init__(self,
+                nom = "",
+                prenom = "",
+                naissance = "",
+                sexe = "",
+                classement = 0,
+                position = 0):
         self.nom = nom
         self.prenom = prenom
         self.naissance = naissance
@@ -16,9 +22,9 @@ class Joueur:
     def creation_joueur(self):
         self.nom = self.generate_nom()
         self.prenom = self.generate_prenom()
-        self.naissance = self.generate_naissance(self.nom, self.prenom)
-        self.sexe = self.generate_sexe(self.nom, self.prenom)
-        self.classement = self.generate_classement(self.nom, self.prenom)
+        self.naissance = self.generate_naissance()
+        self.sexe = self.generate_sexe()
+        self.classement = self.generate_classement()
         self.position = self.generate_position()
 
     # Méthode pour demander à l'utilisateur le nom du joueur
@@ -45,16 +51,16 @@ class Joueur:
         self.sexe = input(self.prenom + " " + self.nom + " est-ce un Homme, une Femme ou Indeterminée ? (Saisir H, F ou I) : ")
         controle_reponse = False
         while controle_reponse == False:
-            controle_reponse = self.controle_reponse_sexe(self.sexe)
+            controle_reponse = self.controle_reponse_sexe()
         return self.sexe
     
     # Méthode pour demander à l'utilisateur le classement du joueur (controle avec une autre méthode)
     # Renvoie le classement saisie par l'utilisateur
-    def generate_classement(self, nom, prenom):
+    def generate_classement(self):
         self.classement = input("Merci de saisir le classement de " + self.prenom + " " + self.nom + " : ")
         controle_reponse = False
         while controle_reponse == False:
-            controle_reponse = self.controle_reponse_classement(self.classement)
+            controle_reponse = self.controle_reponse_classement()
         return self.classement
     
     # Méthode qui donne un numéro unique au joueur (controle avec une autre méthode)
@@ -65,23 +71,22 @@ class Joueur:
 
     # Méthode pour trouver un numéro de position non utilisé dans la base de donnée json
     # Renvoie le premier numéro de position non utilisé
-    def recherche_position_joueur_bdd(self, position=0):
+    def recherche_position_joueur_bdd(self):
         joueurs_bdd = TinyDB("joueurs_bdd.json")
         joueur_aj = joueurs_bdd.table("joueur_aj")
         joueur_existant = True
         # Tant qu'il y a un joueur à la position sélectionnée, on itére la boucle
         while joueur_existant == True:
-            position += 1
-            joueur_trouve=joueur_aj.search(where("position") == position)
+            self.position += 1
+            joueur_trouve=joueur_aj.search(where("position") == self.position)
             # Si la chaine de caractère trouvé est vide, c'est que la place est libre
             if len(joueur_trouve) == 0:
                 joueur_existant = False
-                position
-                return position
+                return self.position
 
     # Méthode pour ajouter un joueur dans la base de donnée json
     # Ne renvoi rien, mais rajoute l'utilisateur à la base de donnée json
-    def ajout_joueur_bdd(self, nom, prenom, naissance, sexe, classement, position):
+    def ajout_joueur_bdd(self):
         joueurs_bdd = TinyDB("joueurs_bdd.json")
         joueur_aj = joueurs_bdd.table("joueur_aj")
         joueur_aj.insert({"nom": self.nom,
@@ -93,7 +98,7 @@ class Joueur:
 
     # Méthode pour controler que la réponse de l'utilisateur est bien conforme (H, F ou I)
     # Renvoi True ou False après le controle
-    def controle_reponse_sexe(self, sexe):
+    def controle_reponse_sexe(self):
         # Si la réponse utilisateur est H, F ou I
         if self.sexe in {"H", "F", "I"}:
             controle_reponse = True
@@ -106,7 +111,7 @@ class Joueur:
 
     # Méthode pour controler que la réponse de l'utilisateur est bien conforme (entier positif)
     # Renvoi True ou False après le controle
-    def controle_reponse_classement(self, classement):
+    def controle_reponse_classement(self):
         # Si la réponse utilisateur est un nombre
         try:
             # Met le string en integer

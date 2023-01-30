@@ -6,14 +6,14 @@ from Controleur_valeur_menu import *
 
 class Tournoi:
     def __init__(self,
-                nom,
-                lieu,
-                date,
-                nbr_tour,
-                tournee,
-                joueurs,
-                ctrl_temps,
-                description):
+                nom = "",
+                lieu = "",
+                date = "",
+                nbr_tour = 4,
+                tournee = "",
+                joueurs = "",
+                ctrl_temps = "",
+                description = ""):
         self.nom = nom
         self.lieu = lieu
         self.date = date
@@ -39,7 +39,7 @@ class Tournoi:
     # Renvoie par défaut la date du jour
     def generate_date(self):
         self.date = (datetime.today().strftime("%d-%m-%Y"))
-        print("\nLe tournoi a t'il lieu aujourd'hui le ", self.date,"?") 
+        print("\nLe tournoi a t'il lieu aujourd'hui le ",self.date,"?") 
         date_tournoi = input("Si oui, merci de valider. Sinon mettre la nouvelle date :")
         if len(date_tournoi) != 0 :
             self.date = date_tournoi
@@ -48,8 +48,8 @@ class Tournoi:
     # Méthode pour demander le nom du tournoi
     # Renvoie le nom saisie par l'utilisateur ou le nom prédifini
     def generate_nom(self):
-        self.nom = "Tournoi du",self.date
-        print("\nUn nom possible du tournoi est : Tournoi du ",self.date)
+        self.nom = (f"Tournoi du {self.date}")
+        print(f"\nUn nom possible du tournoi est : {self.nom}")
         nom_tournoi = input("Si le nom vous satisfait, merci de valider. Sinon mettre le nouveau nom :")
         if len(nom_tournoi) != 0:
             self.nom = nom_tournoi
@@ -62,10 +62,8 @@ class Tournoi:
         return self.lieu
         
     def generate_nbr_tour(self):
-        self.nbr_tour = 4
-        print ("\nEst ce que le tournoi va se dérouler en ", self.nbr_tour,"tour ?")
-        print ("Si le tournoi se déroule en",self.nbr_tour,"tours, merci de valider. Sinon mettre le nombre de tour :")
-        nbr_tour_tournoi = input()
+        print (f"\nEst ce que le tournoi va se dérouler en {self.nbr_tour} tour ?")
+        nbr_tour_tournoi = input(f"Si il se déroule en {self.nbr_tour} tours, merci de valider. Sinon mettre le nombre de tour :")
         if len(nbr_tour_tournoi) != 0:
             ctrl_valeur_utilisateur(nbr_tour_tournoi)
             self.nbr_tour = nbr_tour_tournoi
@@ -78,7 +76,20 @@ class Tournoi:
         pass
 
     def generate_ctrl_temps(self):
-        pass
+        menu_max=3
+        print( "Quel type de tournoi allez vous faire? :"
+        "1 - Un Blitz"
+        "2 - Un Bullet"
+        "3 - Un coup rapide")
+        reponse_temps = input ("Quel est votre choix? 1, 2 ou 3 :")
+        self.ctrl_temps = ctrl_valeur_menu(menu_max, reponse_temps)
+        if self.ctrl_temps == 1:
+            self.ctrl_temps = "Blitz"
+        elif self.ctrl_temps == 2:
+            self.ctrl_temps = "Bullet"
+        else:
+            self.ctrl_temps = "coup rapide"
+        return self.ctrl_temps
 
     def generate_description(self):
         self.description = input("\nSouhaitez vous rajouter une description : ")

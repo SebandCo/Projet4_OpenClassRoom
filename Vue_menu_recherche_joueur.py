@@ -1,9 +1,9 @@
-import os
+from Vue_nettoyage_ecran import *
 from pprint import pprint
 from numpy import *
 
 def vue_menu_recherche_joueur():
-    os.system("cls")
+    nettoyage_ecran()
     # Logo de démarrage
     print(
         "==================================================\n"
