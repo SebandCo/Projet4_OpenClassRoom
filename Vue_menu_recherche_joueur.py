@@ -54,11 +54,9 @@ def vue_menu_choix_resultat_recherche_joueur():
     # Menu de selection pour l'utilisateur
     print("Que souhaitez vous faire :")
     print(
-        "1 --> Modifier un joueur\n"
-        "2 --> Rajouter un joueur à un tournoi existant (NOK)\n"
-        "3 --> Rajouter un joueur à un nouveau tournoi (NOK)\n"
-        "4 --> Faire une nouvelle recherche\n"
-        "5 --> Revenir au menu précedent\n")
+        "1 --> Modifier un joueur(NOK)\n"
+        "2 --> Faire une nouvelle recherche\n"
+        "3 --> Revenir au menu précedent\n")
 
     # Récupération du choix de l'utilisateur
     reponse_menu = input("Merci de saisir le numéro choisi : ")

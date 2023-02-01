@@ -13,7 +13,7 @@ def vue_menu_nouveau_tournoi():
     # Menu d'initialisation pour l'utilisateur
     print("Commençons par initialiser le tournoi\n")
 
-def recap_menu_nouveau_tournoi(tournoi):
+def vue_recap_menu_nouveau_tournoi(tournoi):
     nettoyage_ecran()
     # Logo de démarrage
     print(
@@ -23,6 +23,19 @@ def recap_menu_nouveau_tournoi(tournoi):
         "==================================================\n\n")
     print(f"Le tournoi suivant a été crée : \n"
         f"{tournoi.nom}\n"
-        f"\tIl a lieu a {tournoi.lieu} le {tournoi.date}\n"
-        f"\tCa sera un {tournoi.ctrl_temps}"
-        f"\tIl se déroule en {tournoi.nbr_tour} tours")
+        f"\tIl a lieu à {tournoi.lieu} le {tournoi.date}\n"
+        f"\tCa sera un {tournoi.ctrl_temps}\n"
+        f"\tIl se déroulera en {tournoi.nbr_tour} tours\n"
+        f"\tIl y aura {tournoi.nbr_joueur} joueurs dans ce tournoi\n")
+    if len(tournoi.description) != 0:
+        print(f"\tVoici la description donnée par le créateur\n{tournoi.description}\n")
+
+def vue_choix_type_partie():
+    print("\nQuel type de tournoi allez vous faire?"
+        "\n1 - Un Blitz"
+        "\n2 - Un Bullet"
+        "\n3 - Un Coup rapide")
+    
+    # Récupération du choix de l'utilisateur
+    reponse_temps = input ("Quel est votre choix? 1, 2 ou 3 :")
+    return reponse_temps
