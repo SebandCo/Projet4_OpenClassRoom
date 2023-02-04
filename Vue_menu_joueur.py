@@ -3,12 +3,8 @@ from Vue_nettoyage_ecran import *
 
 def vue_menu_joueur():
     # Permet de nettoyer l'écran
-<<<<<<< Updated upstream
-    os.system("cls")
-=======
     nettoyage_ecran()
     menu_max = 3
->>>>>>> Stashed changes
     # Logo de démarrage
     print(
         "==================================================\n"

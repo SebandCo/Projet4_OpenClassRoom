@@ -40,19 +40,11 @@ def ctrl_menu_recherche_joueur():
                 if retour_tampon == "retour_generale":
                     return
                 elif retour_tampon == "retour_menu":
-                    pass
+                    reponse_utilisateur_menu_joueur = 6
     return
 
 def ctrl_menu_recherche_choix_joueur(resultat_recherche):
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    menu_max = 5
-=======
->>>>>>> Stashed changes
-=======
-    menu_max = 3
->>>>>>> Création-des-tournois
     reponse_utilisateur_orientation_joueur=0
 
     reponse_utilisateur = vue_menu_choix_resultat_recherche_joueur()
@@ -64,7 +56,6 @@ def ctrl_menu_recherche_choix_joueur(resultat_recherche):
         retour_tampon = "retour_menu"
         reponse_utilisateur_orientation_joueur = ctrl_valeur_menu(menu_max, reponse_menu)
     
-<<<<<<< Updated upstream
         if reponse_utilisateur_orientation_joueur != menu_max:
             retour_tampon = "retour_menu"
             if reponse_utilisateur_orientation_joueur == 1:
@@ -83,7 +74,9 @@ def ctrl_menu_recherche_choix_joueur(resultat_recherche):
                 return retour_tampon
             elif reponse_utilisateur_orientation_joueur == 3:
                 retour_tampon = "retour_generale"
-=======
+    
+    return retour_tampon
+'''
         if reponse_utilisateur_orientation_joueur == 1:
             reponse_choix_joueur = input("Quel numéro de joueur voulez vous modifier ? :")
             nbr_max_joueur = len(resultat_recherche)
@@ -102,7 +95,6 @@ def ctrl_menu_recherche_choix_joueur(resultat_recherche):
         elif reponse_utilisateur_orientation_joueur == 3:
             #Initialise la sortie du menu recherche
             retour_tampon = "retour_generale"
->>>>>>> Stashed changes
+'''
     
-    return retour_tampon
         
