@@ -19,5 +19,27 @@ def ctrl_valeur_menu(menu_max, reponse_menu):
         except:
             # Si reponse_menu n'est pas un entier
             reponse_menu = input("Merci de choisir un menu existant : ")
-    reponse_menu = int(reponse_menu)
-    return reponse_menu
+    return int(reponse_menu)
+
+def ctrl_valeur_utilisateur(reponse_utilisateur):
+    reponse_correct = False
+
+    # Tant que le controle n'est pas valide
+    while reponse_correct is False:
+        try:
+            # Vérifie si reponse_utilisateur est un entier
+            int(reponse_utilisateur)
+            # Met le string en integer
+            reponse_utilisateur = int(reponse_utilisateur)
+            # Vérifie que reponse_menu est positif
+            if 1 <= reponse_utilisateur:
+                # Valide le controle pour sortir de la boucle
+                reponse_correct = True
+            else:
+                # Si reponse_menu n'est pas compris entre 1 et 3
+                reponse_utilisateur = input("Merci de choisir un nombre positif non nul : ")
+        except:
+            # Si reponse_menu n'est pas un entier
+            reponse_utilisateur = input("Merci de choisir un nombre positif non nul : ")
+
+    return int(reponse_utilisateur)

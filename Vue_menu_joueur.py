@@ -1,4 +1,4 @@
-import os
+from Vue_nettoyage_ecran import *
 
 
 def vue_menu_joueur():

@@ -1,6 +1,7 @@
 from Vue_menu_principal import *
 from Controleur_valeur_menu import *
 from Controleur_menu_joueur import *
+from Controleur_menu_tournoi import *
 
 def ctrl_menu_principal():
     #Initialisation de la réponse utilisateur
@@ -23,7 +24,7 @@ def ctrl_menu_principal():
             reponse_utilisateur = vue_menu_principal()
             reponse_menu_principal = reponse_utilisateur[0]
         elif reponse_utilisateur_menu_principal == 2:
-            print("Vous avez choisi le menu 2")
+            ctrl_menu_tournoi()
         elif reponse_utilisateur_menu_principal == 3:
             print("Vous avez choisi le menu 3")
 
