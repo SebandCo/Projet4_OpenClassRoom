@@ -3,7 +3,12 @@ from pprint import pprint
 from numpy import *
 
 def vue_menu_recherche_joueur():
+<<<<<<< Updated upstream
     os.system("cls")
+=======
+    nettoyage_ecran()
+    menu_max = 6
+>>>>>>> Stashed changes
     # Logo de démarrage
     print(
         "==================================================\n"
@@ -24,7 +29,7 @@ def vue_menu_recherche_joueur():
     # Récupération du choix de l'utilisateur
     reponse_menu = input("Merci de saisir le numéro choisi : ")
 
-    return reponse_menu
+    return (reponse_menu,menu_max)
 
 def vue_menu_mot_recherche_joueur(mot_recherche):
     print("\nVous avez choisi la recherche par ", mot_recherche.capitalize())
@@ -52,6 +57,7 @@ def vue_menu_resultat_recherche_joueur(resultat_recherche):
         
 def vue_menu_choix_resultat_recherche_joueur():
     # Menu de selection pour l'utilisateur
+    menu_max = 3    
     print("Que souhaitez vous faire :")
     print(
         "1 --> Modifier un joueur\n"
@@ -63,4 +69,4 @@ def vue_menu_choix_resultat_recherche_joueur():
     # Récupération du choix de l'utilisateur
     reponse_menu = input("Merci de saisir le numéro choisi : ")
     
-    return reponse_menu
+    return (reponse_menu, menu_max)

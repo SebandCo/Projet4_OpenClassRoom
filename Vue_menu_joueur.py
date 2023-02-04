@@ -3,7 +3,12 @@ import os
 
 def vue_menu_joueur():
     # Permet de nettoyer l'écran
+<<<<<<< Updated upstream
     os.system("cls")
+=======
+    nettoyage_ecran()
+    menu_max = 3
+>>>>>>> Stashed changes
     # Logo de démarrage
     print(
         "==================================================\n"
@@ -20,4 +25,4 @@ def vue_menu_joueur():
 
     # Récupération du choix de l'utilisateur
     reponse_menu = input("Merci de saisir le numéro de menu : ")
-    return reponse_menu
+    return (reponse_menu,menu_max)

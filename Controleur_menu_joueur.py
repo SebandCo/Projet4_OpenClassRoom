@@ -7,17 +7,23 @@ from Modele_joueur import *
 def ctrl_menu_joueur():
     #Initialisation de la réponse utilisateur
     reponse_utilisateur_menu_joueur = 0
-    # Nombre de menu possible
-    menu_max_joueur = 3
-    
+    # Affichage de la vue menu joueur
+    reponse_utilisateur = vue_menu_joueur()
+
+    menu_max_joueur = reponse_utilisateur[1]
+    reponse_menu = reponse_utilisateur[0]
+
     while reponse_utilisateur_menu_joueur != menu_max_joueur:
-        reponse_menu = vue_menu_joueur()
+        
 
         reponse_utilisateur_menu_joueur = ctrl_valeur_menu(menu_max_joueur, reponse_menu)
 
         if reponse_utilisateur_menu_joueur == 1:
             # Affiche la fonction de recherche de joueur
             ctrl_menu_recherche_joueur()
+            # Relance le menu principale
+            reponse_utilisateur = vue_menu_joueur()
+            reponse_menu = reponse_utilisateur[0]
         elif reponse_utilisateur_menu_joueur == 2:
             # Creation d'un retour à la ligne pour aérer la présentation
             print()
@@ -33,3 +39,4 @@ def ctrl_menu_joueur():
         
             print("Le joueur", nouveau_joueur.nom, nouveau_joueur.prenom, "a bien été rajouté à la base de donnée")
             input("Appuyer sur ""Entrée"" pour continuer")
+    return
