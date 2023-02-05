@@ -2,7 +2,7 @@ from Vue_menu_recherche_joueur import *
 from Controleur_valeur_menu import *
 from Modele_recherche_joueur import *
 
-def ctrl_menu_recherche_joueur():
+def ctrl_menu_recherche_joueur(menu_tournoi):
     
     reponse_utilisateur_menu_joueur = False
 
@@ -36,28 +36,26 @@ def ctrl_menu_recherche_joueur():
             vue_menu_resultat_recherche_joueur(resultat_recherche)
 
             if len(resultat_recherche) != 0:
-                retour_tampon=ctrl_menu_recherche_choix_joueur(resultat_recherche)
+                retour_tampon = ctrl_menu_recherche_choix_joueur(resultat_recherche,menu_tournoi)
                 if retour_tampon == "retour_generale":
                     return
                 elif retour_tampon == "retour_menu":
-                    reponse_utilisateur_menu_joueur = 6
+                    pass
     return
 
-def ctrl_menu_recherche_choix_joueur(resultat_recherche):
+def ctrl_menu_recherche_choix_joueur(resultat_recherche,menu_tournoi):
 
-    reponse_utilisateur_orientation_joueur=0
+    reponse_utilisateur_orientation_joueur = 0
 
-    reponse_utilisateur = vue_menu_choix_resultat_recherche_joueur()
+    reponse_utilisateur = vue_menu_choix_resultat_recherche_joueur(menu_tournoi)
     
     menu_max = reponse_utilisateur[1]
     reponse_menu = reponse_utilisateur[0]    
 
     while reponse_utilisateur_orientation_joueur != menu_max:
-        retour_tampon = "retour_menu"
         reponse_utilisateur_orientation_joueur = ctrl_valeur_menu(menu_max, reponse_menu)
     
         if reponse_utilisateur_orientation_joueur != menu_max:
-            retour_tampon = "retour_menu"
             if reponse_utilisateur_orientation_joueur == 1:
                 reponse_choix_joueur = input("Quel numéro de joueur voulez vous modifier ? :")
                 nbr_max_joueur = len(resultat_recherche)
@@ -67,34 +65,11 @@ def ctrl_menu_recherche_choix_joueur(resultat_recherche):
                     compteur += 1
                     if compteur == reponse_choix_joueur:
                         joueur_selectionne = joueur
-                print (f"Vous avez choisi le joueur : {joueur_selectionne}")
-                input("tt")
-                return retour_tampon
+                input (f"Vous avez choisi le joueur : {joueur_selectionne}")
+                return ("retour_menu")
             elif reponse_utilisateur_orientation_joueur == 2:
-                return retour_tampon
+                return ("retour_menu")
             elif reponse_utilisateur_orientation_joueur == 3:
-                retour_tampon = "retour_generale"
+                return ("retour_generale")
     
-    return retour_tampon
-'''
-        if reponse_utilisateur_orientation_joueur == 1:
-            reponse_choix_joueur = input("Quel numéro de joueur voulez vous modifier ? :")
-            nbr_max_joueur = len(resultat_recherche)
-            reponse_choix_joueur = ctrl_valeur_menu(nbr_max_joueur,reponse_choix_joueur)
-            compteur = 0
-            for joueur in resultat_recherche:
-                compteur += 1
-                if compteur == reponse_choix_joueur:
-                    joueur_selectionne = joueur
-            input (f"Vous avez choisi le joueur : {joueur_selectionne}")
-            # Permet de sortir de la boucle While
-            return retour_tampon
-        elif reponse_utilisateur_orientation_joueur == 2:
-            # Permet de sortir de la boucle While
-            return retour_tampon
-        elif reponse_utilisateur_orientation_joueur == 3:
-            #Initialise la sortie du menu recherche
-            retour_tampon = "retour_generale"
-'''
-    
-        
+    return ("retour_generale")

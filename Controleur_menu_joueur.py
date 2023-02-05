@@ -5,6 +5,8 @@ from Modele_joueur import *
 
 
 def ctrl_menu_joueur():
+    # Indique que nous accedons au menu joueur via le menu général et non le menu Tournoi
+    menu_tournoi = False
     #Initialisation de la réponse utilisateur
     reponse_utilisateur_menu_joueur = 0
     # Affichage de la vue menu joueur
@@ -20,7 +22,7 @@ def ctrl_menu_joueur():
 
         if reponse_utilisateur_menu_joueur == 1:
             # Affiche la fonction de recherche de joueur
-            ctrl_menu_recherche_joueur()
+            ctrl_menu_recherche_joueur(menu_tournoi)
             # Relance le menu principale
             reponse_utilisateur = vue_menu_joueur()
             reponse_menu = reponse_utilisateur[0]

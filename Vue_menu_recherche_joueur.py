@@ -53,16 +53,19 @@ def vue_menu_resultat_recherche_joueur(resultat_recherche):
                     "\t",joueur["classement"],"eme au classement"
                     "\n")
         
-def vue_menu_choix_resultat_recherche_joueur():
-    # Menu de selection pour l'utilisateur
-    menu_max = 3    
-    print("Que souhaitez vous faire :")
-    print(
-        "1 --> Modifier un joueur(NOK)\n"
-        "2 --> Faire une nouvelle recherche\n"
-        "3 --> Revenir au menu précedent\n")
+def vue_menu_choix_resultat_recherche_joueur(menu_tournoi):
+    if menu_tournoi is False:
+        # Menu de selection pour l'utilisateur
+        menu_max = 3    
+        print("Que souhaitez vous faire :")
+        print(
+            "1 --> Modifier un joueur(NOK)\n"
+            "2 --> Faire une nouvelle recherche\n"
+            "3 --> Revenir au menu précedent\n")
 
-    # Récupération du choix de l'utilisateur
-    reponse_menu = input("Merci de saisir le numéro choisi : ")
+        # Récupération du choix de l'utilisateur
+        reponse_menu = input("Merci de saisir le numéro choisi : ")
     
-    return (reponse_menu, menu_max)
+        return (reponse_menu, menu_max)
+    else:
+        pass
