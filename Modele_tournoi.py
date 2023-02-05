@@ -106,7 +106,8 @@ class Tournoi:
 
     # Méthode pour demander les joueurs participants au tournoi
     def generate_joueurs(self):
-        pass
+        self.joueurs = {}
+        return self.joueurs
 
     # Méthode pour demander le type de jeu
     # Renvoie le type saisie par l'utilisateur

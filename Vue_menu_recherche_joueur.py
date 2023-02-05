@@ -44,28 +44,38 @@ def vue_menu_resultat_recherche_joueur(resultat_recherche):
         compteur = 0
         for joueur in resultat_recherche:
             compteur += 1
-            print (compteur, ":\t",
-                    joueur["nom"], joueur["prenom"],
-                    "(",joueur["sexe"],")",
-                    "\n",
-                    "\t Né(e) le : ", joueur["naissance"],
-                    "\n"
-                    "\t",joueur["classement"],"eme au classement"
-                    "\n")
-        
-def vue_menu_choix_resultat_recherche_joueur(menu_tournoi):
-    if menu_tournoi is False:
-        # Menu de selection pour l'utilisateur
-        menu_max = 3    
-        print("Que souhaitez vous faire :")
-        print(
-            "1 --> Modifier un joueur(NOK)\n"
-            "2 --> Faire une nouvelle recherche\n"
-            "3 --> Revenir au menu précedent\n")
+            vue_menu_affichage_joueur_recherche_joueur(joueur,compteur)
 
-        # Récupération du choix de l'utilisateur
-        reponse_menu = input("Merci de saisir le numéro choisi : ")
+def vue_menu_affichage_joueur_recherche_joueur(joueur,compteur):
+    print (compteur, ":\t",
+            joueur["nom"], joueur["prenom"],"(",joueur["sexe"],")\n",
+            "\t Né(e) le : ", joueur["naissance"],"\n"
+            "\t",joueur["classement"],"eme au classement\n")
+        
+def vue_menu_choix_resultat_recherche_joueur_simple():
+    # Menu de selection pour l'utilisateur
+    menu_max = 3    
+    print("Que souhaitez vous faire :")
+    print(
+        "1 --> Modifier un joueur(NOK)\n"
+        "2 --> Faire une nouvelle recherche\n"
+        "3 --> Revenir au menu précedent\n")
+
+    # Récupération du choix de l'utilisateur
+    reponse_menu = input("Merci de saisir le numéro choisi : ")
     
-        return (reponse_menu, menu_max)
-    else:
-        pass
+    return (reponse_menu, menu_max)
+
+def vue_menu_choix_resultat_recherche_joueur_tournoi():
+    # Menu de selection pour l'utilisateur
+    menu_max = 4    
+    print("Que souhaitez vous faire :")
+    print(
+        "1 --> Selectionner un joueur(NOK)\n"
+        "2 --> Modifier un joueur(NOK)\n"
+        "3 --> Faire une nouvelle recherche\n")
+
+    # Récupération du choix de l'utilisateur
+    reponse_menu = input("Merci de saisir le numéro choisi : ")
+
+    return (reponse_menu, menu_max)

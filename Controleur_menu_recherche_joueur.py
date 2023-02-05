@@ -36,18 +36,53 @@ def ctrl_menu_recherche_joueur(menu_tournoi):
             vue_menu_resultat_recherche_joueur(resultat_recherche)
 
             if len(resultat_recherche) != 0:
-                retour_tampon = ctrl_menu_recherche_choix_joueur(resultat_recherche,menu_tournoi)
-                if retour_tampon == "retour_generale":
-                    return
-                elif retour_tampon == "retour_menu":
-                    pass
+                if menu_tournoi == False :
+                    retour_tampon = ctrl_menu_recherche_choix_joueur_simple(resultat_recherche)
+                    if retour_tampon == "retour_generale":
+                        return
+                    elif retour_tampon == "retour_menu":
+                        pass
+                else:
+                    joueur_selectionne = ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche)
+                    return joueur_selectionne
     return
+def ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche):
+    reponse_utilisateur_orientation_joueur = 0
 
-def ctrl_menu_recherche_choix_joueur(resultat_recherche,menu_tournoi):
+    reponse_utilisateur = vue_menu_choix_resultat_recherche_joueur_tournoi()
+    
+    menu_max = reponse_utilisateur[1]
+    reponse_menu = reponse_utilisateur[0]    
+
+    while reponse_utilisateur_orientation_joueur != menu_max:
+        reponse_utilisateur_orientation_joueur = ctrl_valeur_menu(menu_max, reponse_menu)
+    
+        if reponse_utilisateur_orientation_joueur != menu_max:
+            if reponse_utilisateur_orientation_joueur == 1 or reponse_utilisateur_orientation_joueur == 2:
+                reponse_choix_joueur = input("Quel numéro de joueur voulez vous selectionner ? :")
+                nbr_max_joueur = len(resultat_recherche)
+                reponse_choix_joueur = ctrl_valeur_menu(nbr_max_joueur,reponse_choix_joueur)
+                compteur = 0
+                for joueur in resultat_recherche:
+                    compteur += 1
+                    if compteur == reponse_choix_joueur:
+                        joueur_selectionne = joueur
+                print ("Vous avez choisi le joueur : ")
+                vue_menu_affichage_joueur_recherche_joueur(joueur_selectionne, compteur)
+                input()
+                if reponse_utilisateur_orientation_joueur == 1:
+                    return joueur_selectionne
+                elif reponse_utilisateur_orientation_joueur == 2:
+                    input("Joueur à modifier")
+                    return joueur_selectionne
+            elif reponse_utilisateur_orientation_joueur == 3:
+                return 
+
+def ctrl_menu_recherche_choix_joueur_simple(resultat_recherche):
 
     reponse_utilisateur_orientation_joueur = 0
 
-    reponse_utilisateur = vue_menu_choix_resultat_recherche_joueur(menu_tournoi)
+    reponse_utilisateur = vue_menu_choix_resultat_recherche_joueur_simple()
     
     menu_max = reponse_utilisateur[1]
     reponse_menu = reponse_utilisateur[0]    
@@ -73,3 +108,4 @@ def ctrl_menu_recherche_choix_joueur(resultat_recherche,menu_tournoi):
                 return ("retour_generale")
     
     return ("retour_generale")
+

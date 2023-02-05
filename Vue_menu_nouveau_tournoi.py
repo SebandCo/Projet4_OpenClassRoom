@@ -49,14 +49,14 @@ def vue_menu_nouveau_tournoi_creation_joueur(tournoi,compteur):
     print(
         "==================================================\n"
         "           Logiciel de tournois d'Echec\n"
-        f"                   {tournoi.nom}\n"
+        f"               {tournoi.nom}\n"
         f"           Rajout des {tournoi.nbr_joueur} joueurs\n"
-        f"           Joueur {compteur}/{tournoi.nbr_joueur}\n"
+        f"                 Joueur {compteur}/{tournoi.nbr_joueur}\n"
         "==================================================\n\n")
     print("Que souhaitez vous faire?")
     print(
-        "1 --> Recherche d'un joueur existant\n"
-        "2 --> Création d'un nouveau joueur\n")
+        "1 --> Création d'un nouveau joueur\n"
+        "2 --> Recherche d'un joueur existant\n")
     reponse_menu = input("Merci de saisir le numéro de menu : ")
     
     return (reponse_menu, menu_max)
