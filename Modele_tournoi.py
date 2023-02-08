@@ -130,3 +130,12 @@ class Tournoi:
     def generate_description(self):
         self.description = input("\nSouhaitez vous rajouter une description : ")
         return self.description
+    
+    # Méthode pour créer le premier tour du tournoi
+    # Renvoie l'ordre des duels
+    def creation_premier_tour(self):
+        liste_croissant=[]
+        for participant in self.joueurs:
+            print(participant)
+            liste_croissant.append(participant[classement])
+            liste_croissant.sort()

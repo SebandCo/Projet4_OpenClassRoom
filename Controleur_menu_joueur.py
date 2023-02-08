@@ -36,4 +36,5 @@ def ctrl_menu_joueur():
         
             print("Le joueur", nouveau_joueur.nom, nouveau_joueur.prenom, "a bien été rajouté à la base de donnée")
             input("Appuyer sur ""Entrée"" pour continuer")
+            return
     return

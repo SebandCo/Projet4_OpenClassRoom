@@ -59,7 +59,7 @@ def ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche):
     
         if reponse_utilisateur_orientation_joueur != menu_max:
             if reponse_utilisateur_orientation_joueur == 1 or reponse_utilisateur_orientation_joueur == 2:
-                reponse_choix_joueur = input("Quel numéro de joueur voulez vous selectionner ? :")
+                reponse_choix_joueur = input("Quel numéro de joueur voulez vous selectionner ? : ")
                 nbr_max_joueur = len(resultat_recherche)
                 reponse_choix_joueur = ctrl_valeur_menu(nbr_max_joueur,reponse_choix_joueur)
                 compteur = 0
@@ -67,8 +67,9 @@ def ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche):
                     compteur += 1
                     if compteur == reponse_choix_joueur:
                         joueur_selectionne = joueur
+                        nombre_trouve = compteur
                 print ("Vous avez choisi le joueur : ")
-                vue_menu_affichage_joueur_recherche_joueur(joueur_selectionne, compteur)
+                vue_menu_affichage_joueur_recherche_joueur(joueur_selectionne, nombre_trouve)
                 input()
                 if reponse_utilisateur_orientation_joueur == 1:
                     return joueur_selectionne
