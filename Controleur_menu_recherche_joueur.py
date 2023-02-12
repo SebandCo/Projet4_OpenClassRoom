@@ -1,6 +1,7 @@
 from Vue_menu_recherche_joueur import *
 from Controleur_valeur_menu import *
-from Modele_recherche_joueur import *
+from Controleur_bdd_joueur import *
+from Modele_joueur import *
 
 def ctrl_menu_recherche_joueur(menu_tournoi):
     
@@ -20,14 +21,19 @@ def ctrl_menu_recherche_joueur(menu_tournoi):
         reponse_utilisateur_menu_joueur = ctrl_valeur_menu(menu_max, reponse_menu)
         
         if reponse_utilisateur_menu_joueur != menu_max:
+            # Choix 1 : Recherche par nom
             if reponse_utilisateur_menu_joueur == 1:
                 reponse_utilisateur_menu_joueur = "nom"
+            # Choix 2 : Recherche par prénom
             elif reponse_utilisateur_menu_joueur == 2:
                 reponse_utilisateur_menu_joueur = "prenom"
+            # Choix 3 : Recherche par date de naissance
             elif reponse_utilisateur_menu_joueur == 3:
                 reponse_utilisateur_menu_joueur = "naissance"
+            # Choix 4 : Recherche par sexe
             elif reponse_utilisateur_menu_joueur == 4:
                 reponse_utilisateur_menu_joueur = "sexe"
+            # Choix 5 : Recherche par numéro de classement
             elif reponse_utilisateur_menu_joueur == 5:
                 reponse_utilisateur_menu_joueur = "classement"
             mot_recherche = vue_menu_mot_recherche_joueur(reponse_utilisateur_menu_joueur)
@@ -45,7 +51,9 @@ def ctrl_menu_recherche_joueur(menu_tournoi):
                 else:
                     joueur_selectionne = ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche)
                     return joueur_selectionne
+    # Choix 6 : Annulation de la recherche
     return
+
 def ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche):
     reponse_utilisateur_orientation_joueur = 0
 
@@ -93,7 +101,7 @@ def ctrl_menu_recherche_choix_joueur_simple(resultat_recherche):
     
         if reponse_utilisateur_orientation_joueur != menu_max:
             if reponse_utilisateur_orientation_joueur == 1:
-                reponse_choix_joueur = input("Quel numéro de joueur voulez vous modifier ? :")
+                reponse_choix_joueur = input("Quel numéro de joueur voulez vous modifier ? : ")
                 nbr_max_joueur = len(resultat_recherche)
                 reponse_choix_joueur = ctrl_valeur_menu(nbr_max_joueur,reponse_choix_joueur)
                 compteur = 0
@@ -101,7 +109,16 @@ def ctrl_menu_recherche_choix_joueur_simple(resultat_recherche):
                     compteur += 1
                     if compteur == reponse_choix_joueur:
                         joueur_selectionne = joueur
-                input (f"Vous avez choisi le joueur : {joueur_selectionne}")
+                # Transforme la réponse Json(dictionnaire) en objet
+                joueur_selectionne_objet = Joueur (
+                                            joueur_selectionne["nom"],
+                                            joueur_selectionne["prenom"],
+                                            joueur_selectionne["naissance"],
+                                            joueur_selectionne["sexe"],
+                                            joueur_selectionne["classement"],
+                                            joueur_selectionne["position"])
+
+                vue_menu_modif_joueur(joueur_selectionne_objet)
                 return ("retour_menu")
             elif reponse_utilisateur_orientation_joueur == 2:
                 return ("retour_menu")

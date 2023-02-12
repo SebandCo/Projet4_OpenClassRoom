@@ -1,4 +1,5 @@
 from Vue_nettoyage_ecran import *
+from Controleur_bdd_joueur import *
 from pprint import pprint
 from numpy import *
 
@@ -71,7 +72,7 @@ def vue_menu_choix_resultat_recherche_joueur_tournoi():
     menu_max = 4    
     print("Que souhaitez vous faire :")
     print(
-        "1 --> Selectionner un joueur(NOK)\n"
+        "1 --> Selectionner un joueur\n"
         "2 --> Modifier un joueur(NOK)\n"
         "3 --> Faire une nouvelle recherche\n")
 
@@ -79,3 +80,43 @@ def vue_menu_choix_resultat_recherche_joueur_tournoi():
     reponse_menu = input("Merci de saisir le numéro choisi : ")
 
     return (reponse_menu, menu_max)
+
+def vue_menu_modif_joueur(joueur):
+    print(f"\nVous avez choisi le joueur :\n"
+            f"\t{joueur.nom} {joueur.prenom}({joueur.sexe})\n"
+            f"\tNé(e) le : {joueur.naissance}\n"
+            f"\t{joueur.classement}eme au classement\n")
+    
+    print(f"Le nom du joueur est {joueur.nom}")
+    reponse = modif_joueur_bdd(joueur.position,"nom")
+    if reponse:
+        joueur.nom=reponse
+
+    print(f"Le prénom du joueur est {joueur.prenom}")
+    reponse = modif_joueur_bdd(joueur.position,"prenom")
+    if reponse:
+        joueur.prenom=reponse
+
+    print(f"La date de naissance du joueur est {joueur.naissance}")
+    reponse = modif_joueur_bdd(joueur.position,"naissance")
+    if reponse:
+        joueur.naissance=reponse
+
+    print(f"Le sexe du joueur est {joueur.sexe}")
+    reponse = modif_joueur_bdd(joueur.position,"sexe")
+    if reponse:
+        joueur.sexe=reponse
+
+    print(f"Le classement du joueur est {joueur.classement}")
+    reponse = modif_joueur_bdd(joueur.position,"classement")
+    if reponse:
+        joueur.classement=reponse
+
+    print(f"\nVoici les nouvelles informations du joueur :\n",
+            f"\t{joueur.nom} {joueur.prenom}({joueur.sexe})\n"
+            f"\tNé(e) le : {joueur.naissance}\n"
+            f"\t{joueur.classement}eme au classement\n")
+    input("Appuyer sur ""Entrée"" pour continuer")
+    
+    return joueur
+   

@@ -42,18 +42,31 @@ def ctrl_rajout_des_joueurs(nouveau_tournoi):
 
         reponse_utilisateur_creation_joueur = ctrl_valeur_menu(menu_max, reponse_menu)
 
+        # Choix 1 : Création d'un nouveau joueur
         if reponse_utilisateur_creation_joueur == 1 :
             nouveau_joueur = JoueurTournoi()
             nouveau_joueur.creation_joueur()
             nouveau_joueur.ajout_joueur_bdd()
-            nouveau_tournoi.joueurs[compteur] = nouveau_joueur    
+            nouveau_tournoi.joueurs[compteur] = nouveau_joueur
+            #Permet de passer au joueur suivant
+            compteur += 1   
+        # Choix 2 : Recherche d'un joueur
         elif reponse_utilisateur_creation_joueur == 2 :
             # Indique que nous accedons au menu joueur via le menu tournoi
             menu_tournoi = True
             nouveau_joueur = JoueurTournoi()
             nouveau_joueur = ctrl_menu_recherche_joueur(menu_tournoi)
-            nouveau_tournoi.joueurs[compteur] = nouveau_joueur
-
-        # Si le joueur a été crée, passe au suivant
-        if compteur in nouveau_tournoi.joueurs:
-            compteur += 1
+            # Si le joueur a bien été selectionné
+            if nouveau_joueur:
+                # Passe au joueur suivant
+                compteur += 1
+                
+                # Transforme la réponse Json(dictionnaire) en objet
+                nouveau_joueur = Joueur (
+                                        nouveau_joueur["nom"],
+                                        nouveau_joueur["prenom"],
+                                        nouveau_joueur["naissance"],
+                                        nouveau_joueur["sexe"],
+                                        nouveau_joueur["classement"],
+                                        nouveau_joueur["position"])
+                nouveau_tournoi.joueurs[compteur] = nouveau_joueur

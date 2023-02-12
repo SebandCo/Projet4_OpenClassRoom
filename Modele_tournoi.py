@@ -134,8 +134,8 @@ class Tournoi:
     # Méthode pour créer le premier tour du tournoi
     # Renvoie l'ordre des duels
     def creation_premier_tour(self):
-        liste_croissant=[]
+        liste_croissant = []
         for participant in self.joueurs:
             print(participant)
-            liste_croissant.append(participant[classement])
+            liste_croissant.append(participant[self.classement])
             liste_croissant.sort()

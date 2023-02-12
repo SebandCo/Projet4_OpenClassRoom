@@ -20,12 +20,14 @@ def ctrl_menu_joueur():
 
         reponse_utilisateur_menu_joueur = ctrl_valeur_menu(menu_max_joueur, reponse_menu)
 
+        # Choix 1 : Recherche d'un joueur
         if reponse_utilisateur_menu_joueur == 1:
             # Affiche la fonction de recherche de joueur
             ctrl_menu_recherche_joueur(menu_tournoi)
             # Relance le menu principale
             reponse_utilisateur = vue_menu_joueur()
             reponse_menu = reponse_utilisateur[0]
+        # Choix 2 : Création d'un joueur    
         elif reponse_utilisateur_menu_joueur == 2:
             # Creation d'un retour à la ligne pour aérer la présentation
             print()
@@ -37,4 +39,6 @@ def ctrl_menu_joueur():
             print("Le joueur", nouveau_joueur.nom, nouveau_joueur.prenom, "a bien été rajouté à la base de donnée")
             input("Appuyer sur ""Entrée"" pour continuer")
             return
+    
+    # Choix 3 : Retour au menu principal
     return

@@ -21,14 +21,15 @@ def vue_recap_menu_nouveau_tournoi(tournoi):
         "           Logiciel de tournois d'Echec\n"
         "             Menu Nouveau Tournoi\n"
         "==================================================\n\n")
-    print(f"Le tournoi suivant a été crée : \n"
+    print(f"Le tournoi suivant a été crée :\n"
         f"{tournoi.nom}\n"
         f"\tIl a lieu à {tournoi.lieu} le {tournoi.date}\n"
         f"\tCa sera un {tournoi.ctrl_temps}\n"
         f"\tIl se déroulera en {tournoi.nbr_tour} tours\n"
         f"\tIl y aura {tournoi.nbr_joueur} joueurs dans ce tournoi\n")
     if len(tournoi.description) != 0:
-        print(f"\tVoici la description donnée par le créateur :\n{tournoi.description}\n")
+        print(f"\tVoici la description donnée par le créateur :\n"
+        f"{tournoi.description}\n")
     input("Passons maintenant à la création des joueurs")
 
 def vue_choix_type_partie():
