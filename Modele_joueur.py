@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Module pour l'importation de la base de donnée
-from tinydb import TinyDB, where
+from tinydb import where
+from Controleur_bdd_json import *
 
 class Joueur:
     def __init__(self,
@@ -72,13 +73,12 @@ class Joueur:
     # Méthode pour trouver un numéro de position non utilisé dans la base de donnée json
     # Renvoie le premier numéro de position non utilisé
     def recherche_position_joueur_bdd(self):
-        joueurs_bdd = TinyDB("joueurs_bdd.json")
-        joueur_aj = joueurs_bdd.table("joueur_aj")
+        bdd_joueur = initialisation_bdd_joueur()
         joueur_existant = True
         # Tant qu'il y a un joueur à la position sélectionnée, on itére la boucle
         while joueur_existant == True:
             self.position += 1
-            joueur_trouve=joueur_aj.search(where("position") == self.position)
+            joueur_trouve=bdd_joueur.search(where("position") == self.position)
             # Si la chaine de caractère trouvé est vide, c'est que la place est libre
             if len(joueur_trouve) == 0:
                 joueur_existant = False
@@ -87,9 +87,8 @@ class Joueur:
     # Méthode pour ajouter un joueur dans la base de donnée json
     # Ne renvoi rien, mais rajoute l'utilisateur à la base de donnée json
     def ajout_joueur_bdd(self):
-        joueurs_bdd = TinyDB("joueurs_bdd.json")
-        joueur_aj = joueurs_bdd.table("joueur_aj")
-        joueur_aj.insert({"nom": self.nom,
+        bdd_joueur = initialisation_bdd_joueur()
+        bdd_joueur.insert({"nom": self.nom,
                           "prenom": self.prenom,
                           "naissance": self.naissance,
                           "sexe": self.sexe,

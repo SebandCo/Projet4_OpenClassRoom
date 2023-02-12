@@ -68,15 +68,15 @@ def vue_tournoi_liste_duel(tournoi):
         "==================================================\n"
         "           Logiciel de tournois d'Echec\n"
         f"               {tournoi.nom}\n"
-        f"                 Manche {tournoi.tour_actif}/{tournoi.nbr_tour}\n"
+        f"                 Round {tournoi.tour_actif}/{tournoi.nbr_tour}\n"
         "==================================================\n\n")
     numero_paire = 1
     while numero_paire <= tournoi.nbr_joueur/2:
         adversaires = tournoi.affichage_adversaire(numero_paire)
         if tournoi.tour_actif == 1:
             print(f"Le duel {numero_paire} opposera :\n"
-                f"\t{adversaires[0].nom} {adversaires[0].prenom} {adversaires[0].classement}eme au classement"
-                f"avec"
-                f"\t{adversaires[1].nom} {adversaires[1].prenom} {adversaires[1].classement}eme au classement")
+                f"\t{adversaires[0].nom} {adversaires[0].prenom} {adversaires[0].classement}eme au classement\n"
+                f"avec\n"
+                f"\t{adversaires[1].nom} {adversaires[1].prenom} {adversaires[1].classement}eme au classement\n\n")
         
         numero_paire += 1

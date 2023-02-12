@@ -1,6 +1,6 @@
 from Vue_menu_recherche_joueur import *
 from Controleur_valeur_menu import *
-from Controleur_bdd_joueur import *
+from Controleur_bdd_json import *
 from Modele_joueur import *
 
 def ctrl_menu_recherche_joueur(menu_tournoi):

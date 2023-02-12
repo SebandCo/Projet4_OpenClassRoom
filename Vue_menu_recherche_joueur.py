@@ -1,5 +1,5 @@
 from Vue_nettoyage_ecran import *
-from Controleur_bdd_joueur import *
+from Controleur_bdd_json import *
 from pprint import pprint
 from numpy import *
 

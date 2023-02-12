@@ -4,6 +4,7 @@ from datetime import datetime
 # Module pour naviguer dans les fichiers
 from Controleur_valeur_menu import *
 from Vue_menu_nouveau_tournoi import *
+from Controleur_bdd_json import *
 
 class Tournoi:
     def __init__(self,
@@ -131,6 +132,37 @@ class Tournoi:
         self.description = input("\nSouhaitez vous rajouter une description : ")
         return self.description
     
+    # Méthode pour ajouter un tournoi dans la base de donnée json
+    # Ne renvoi rien, mais rajoute le tournoi à la base de donnée json
+    def ajout_tournoi_bdd(self):
+        bdd_tournoi = initialisation_bdd_tournoi()
+        #Transforme les objets JoueurTournoi en dictionnaire pour  mettre en json
+        dico_global_joueurs={}
+        dico_joueur={}
+        for joueur in self.joueurs:
+            dico_joueur["nom"] = self.joueurs[joueur].nom
+            dico_joueur["prenom"] = self.joueurs[joueur].prenom
+            dico_joueur["sexe"] = self.joueurs[joueur].sexe
+            dico_joueur["naissance"] = self.joueurs[joueur].naissance
+            dico_joueur["classement"] = self.joueurs[joueur].classement
+            dico_joueur["position"] = self.joueurs[joueur].position
+            dico_joueur["couleur"] = self.joueurs[joueur].couleur
+            dico_joueur["ordre"] = self.joueurs[joueur].ordre
+            dico_joueur["paires"] = self.joueurs[joueur].paires
+            dico_joueur["points"] = self.joueurs[joueur].points
+            dico_global_joueurs[joueur]=dico_joueur
+
+        bdd_tournoi.insert({"nom" : self.nom,
+                          "lieu" : self.lieu,
+                          "date" : self.date,
+                          "nb_tour" : self.nbr_tour,
+                          "tour_actif" : self.tour_actif,
+                          "tournee" : self.tournee,
+                          "nbr_joueur" :self.nbr_joueur,
+                          "joueurs" : dico_global_joueurs,
+                          "ctrl_temps" : self.ctrl_temps,
+                          "description" : self.description})
+
     # Méthode pour créer l'ordre des duels du premier tour
     # Affilie à la classe joueur l'ordre des duels
     def ordre_premier_tour(self):
@@ -165,6 +197,7 @@ class Tournoi:
             #Vérifie que nous sommes bien dans la première moitié
             if participant <= (self.nbr_joueur)/2:
                 self.joueurs[participant].paires = numero_de_paires
+                #Permet de prendre l'adversaire opposé
                 adversaire = int((self.nbr_joueur)/2 + participant)
                 self.joueurs[adversaire].paires = numero_de_paires
             numero_de_paires += 1
