@@ -78,7 +78,6 @@ def ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche):
                         nombre_trouve = compteur
                 print ("Vous avez choisi le joueur : ")
                 vue_menu_affichage_joueur_recherche_joueur(joueur_selectionne, nombre_trouve)
-                input()
                 if reponse_utilisateur_orientation_joueur == 1:
                     return joueur_selectionne
                 elif reponse_utilisateur_orientation_joueur == 2:

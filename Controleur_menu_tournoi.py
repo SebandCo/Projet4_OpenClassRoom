@@ -10,7 +10,7 @@ def ctrl_menu_tournoi():
     
     ctrl_rajout_des_joueurs(nouveau_tournoi)  
 
-    input("Tournoi crée")
+    input("Tournoi crée\nAppuyer sur Entrée pour continuer")
 
     nouveau_tournoi.creation_premier_tour()
 
@@ -44,23 +44,19 @@ def ctrl_rajout_des_joueurs(nouveau_tournoi):
 
         # Choix 1 : Création d'un nouveau joueur
         if reponse_utilisateur_creation_joueur == 1 :
-            nouveau_joueur = JoueurTournoi()
             nouveau_joueur.creation_joueur()
             nouveau_joueur.ajout_joueur_bdd()
-            nouveau_tournoi.joueurs[compteur] = nouveau_joueur
+            nouveau_joueur_tournoi = JoueurTournoi(nouveau_joueur)
+            nouveau_tournoi.joueurs[compteur] = nouveau_joueur_tournoi
             #Permet de passer au joueur suivant
             compteur += 1   
         # Choix 2 : Recherche d'un joueur
         elif reponse_utilisateur_creation_joueur == 2 :
             # Indique que nous accedons au menu joueur via le menu tournoi
             menu_tournoi = True
-            nouveau_joueur = JoueurTournoi()
             nouveau_joueur = ctrl_menu_recherche_joueur(menu_tournoi)
             # Si le joueur a bien été selectionné
-            if nouveau_joueur:
-                # Passe au joueur suivant
-                compteur += 1
-                
+            if nouveau_joueur:               
                 # Transforme la réponse Json(dictionnaire) en objet
                 nouveau_joueur = Joueur (
                                         nouveau_joueur["nom"],
@@ -69,4 +65,8 @@ def ctrl_rajout_des_joueurs(nouveau_tournoi):
                                         nouveau_joueur["sexe"],
                                         nouveau_joueur["classement"],
                                         nouveau_joueur["position"])
-                nouveau_tournoi.joueurs[compteur] = nouveau_joueur
+                nouveau_joueur_tournoi = JoueurTournoi(nouveau_joueur)
+                nouveau_tournoi.joueurs[compteur] = nouveau_joueur_tournoi
+                input("Appuyer sur Entrée pour continuer")
+                # Passe au joueur suivant
+                compteur += 1

@@ -136,6 +136,6 @@ class Tournoi:
     def creation_premier_tour(self):
         liste_croissant = []
         for participant in self.joueurs:
-            print(participant)
-            liste_croissant.append(participant[self.classement])
+            liste_croissant.append(self.joueurs[participant].classement)
             liste_croissant.sort()
+        
