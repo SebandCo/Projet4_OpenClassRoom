@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# Module pour l'importation de la base de donnée
-from tinydb import TinyDB, where
 # Module pour la récuperation de la date du jour
 from datetime import datetime
 # Module pour naviguer dans les fichiers
@@ -13,6 +11,7 @@ class Tournoi:
                 lieu = "",
                 date = "",
                 nbr_tour = 4,
+                tour_actif = 1,
                 tournee = "",
                 nbr_joueur = 8,
                 joueurs = "",
@@ -22,6 +21,7 @@ class Tournoi:
         self.lieu = lieu
         self.date = date
         self.nbr_tour = nbr_tour
+        self.tour_actif = tour_actif
         self.tournee = tournee
         self.nbr_joueur = nbr_joueur
         self.joueurs = joueurs
@@ -131,11 +131,51 @@ class Tournoi:
         self.description = input("\nSouhaitez vous rajouter une description : ")
         return self.description
     
-    # Méthode pour créer le premier tour du tournoi
-    # Renvoie l'ordre des duels
-    def creation_premier_tour(self):
+    # Méthode pour créer l'ordre des duels du premier tour
+    # Affilie à la classe joueur l'ordre des duels
+    def ordre_premier_tour(self):
         liste_croissant = []
+        #Classe la liste des valeurs de classement par ordre croissant
         for participant in self.joueurs:
             liste_croissant.append(self.joueurs[participant].classement)
             liste_croissant.sort()
         
+        #Donne l'ordre au participant
+        #Balaie la liste des joueurs
+        for participant in self.joueurs:
+            ordre = 1
+            #Balaie la liste des nombres
+            for nombre in liste_croissant:
+                #Si un nombre est identique au classement. C'est le bon joueur
+                if nombre == self.joueurs[participant].classement:
+                    #En cas de classement identique, affilie au premier joueur sans ordre
+                    if self.joueurs[participant].ordre == "":
+                        self.joueurs[participant].ordre = ordre
+                        ordre += 1
+        return
+    
+    # Méthode pour lancer le premier tour
+    def creation_premier_tour(self):
+        self.ordre_premier_tour()
+        self.creation_paire()
+    
+    def creation_paire(self):
+        numero_de_paires = 1
+        for participant in self.joueurs:
+            #Vérifie que nous sommes bien dans la première moitié
+            if participant <= (self.nbr_joueur)/2:
+                self.joueurs[participant].paires = numero_de_paires
+                adversaire = int((self.nbr_joueur)/2 + participant)
+                self.joueurs[adversaire].paires = numero_de_paires
+            numero_de_paires += 1
+    
+    def affichage_adversaire(self,numero_paire):
+        joueur1 = ""
+        joueur2 = ""
+        for participant in self.joueurs:
+            if self.joueurs[participant].paires == numero_paire:
+                if joueur1 == "":
+                    joueur1 = self.joueurs[participant] 
+                else:
+                    joueur2 = self.joueurs[participant]
+        return (joueur1, joueur2)

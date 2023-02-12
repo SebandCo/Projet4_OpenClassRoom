@@ -61,3 +61,22 @@ def vue_menu_nouveau_tournoi_creation_joueur(tournoi,compteur):
     reponse_menu = input("Merci de saisir le numéro de menu : ")
     
     return (reponse_menu, menu_max)
+
+def vue_tournoi_liste_duel(tournoi):
+    nettoyage_ecran()
+    print(
+        "==================================================\n"
+        "           Logiciel de tournois d'Echec\n"
+        f"               {tournoi.nom}\n"
+        f"                 Manche {tournoi.tour_actif}/{tournoi.nbr_tour}\n"
+        "==================================================\n\n")
+    numero_paire = 1
+    while numero_paire <= tournoi.nbr_joueur/2:
+        adversaires = tournoi.affichage_adversaire(numero_paire)
+        if tournoi.tour_actif == 1:
+            print(f"Le duel {numero_paire} opposera :\n"
+                f"\t{adversaires[0].nom} {adversaires[0].prenom} {adversaires[0].classement}eme au classement"
+                f"avec"
+                f"\t{adversaires[1].nom} {adversaires[1].prenom} {adversaires[1].classement}eme au classement")
+        
+        numero_paire += 1

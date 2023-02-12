@@ -5,18 +5,21 @@ from Controleur_menu_recherche_joueur import *
 
 
 def ctrl_menu_tournoi():
-    
+    #Création du tournoi
     nouveau_tournoi = ctrl_creation_du_tournoi()
-    
+    #Rajout des joueurs au tournoi
     ctrl_rajout_des_joueurs(nouveau_tournoi)  
 
+    if nouveau_tournoi.tour_actif == 1:
+        #Début du tournoi
+        nouveau_tournoi.creation_premier_tour()
+        vue_tournoi_liste_duel(nouveau_tournoi)
+    else:
+        #Boucle sur les tours suivant
+        while nouveau_tournoi.tour_actif <= nouveau_tournoi.nbr_tour:
+            nouveau_tournoi.tour_actif += 1
+
     input("Tournoi crée\nAppuyer sur Entrée pour continuer")
-
-    nouveau_tournoi.creation_premier_tour()
-
-    # Début du tournoi
-
-
 
 
 
