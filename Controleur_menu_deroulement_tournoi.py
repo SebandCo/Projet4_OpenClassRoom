@@ -10,3 +10,6 @@ def deroulement_tournoi(tournoi):
         vue_tournoi_liste_duel(tournoi)
         tournoi.recuperation_resultat()
         tournoi.tour_actif += 1
+    
+    tournoi.ordre_tour()
+    vue_tournoi_resultat(tournoi)

@@ -23,8 +23,6 @@ def ctrl_menu_principal():
         # Choix 1 : Menu Joueur
         if reponse_utilisateur_menu_principal == 1:
             ctrl_menu_joueur()
-            # Relance le menu principale
-
         
         # Choix 2 : Création d'un nouveau tournoi
         elif reponse_utilisateur_menu_principal == 2:

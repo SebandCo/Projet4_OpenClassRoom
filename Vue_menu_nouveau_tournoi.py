@@ -110,3 +110,29 @@ def vue_tournoi_recuperation_score(numero_de_paires,joueur1,joueur2,tournoi):
     
     return (reponse_menu, menu_max)
 
+def vue_tournoi_resultat(tournoi):
+    nettoyage_ecran()
+    print(
+        "==================================================\n"
+        "           Logiciel de tournois d'Echec\n"
+        f"               {tournoi.nom}\n"
+        f"                 Resultat finaux\n"
+        "==================================================\n\n")
+    classement = 1
+    print ("Le tournoi est à présent terminé\n"
+            "Voici le classement final\n\n")
+    while classement <= tournoi.nbr_joueur:
+        for participant in tournoi.joueurs:
+            if tournoi.joueurs[participant].ordre == classement:
+                if classement == 1:
+                    print(f"Le vainqueur du tournoi est :\n"
+                        f"{tournoi.joueurs[participant].prenom} {tournoi.joueurs[participant].nom}"
+                        f"avec {format(tournoi.joueurs[participant].points,'.1f')} points\n\n"
+                        f"voici la suite du classement\n")
+                else:
+                    print(f"{classement}eme\t{tournoi.joueurs[participant].prenom} {tournoi.joueurs[participant].nom}"
+                        f"avec {format(tournoi.joueurs[participant].points,'.1f')} points\n")
+                    
+                classement += 1
+
+    input("Appuyer sur Entrée pour continuer")
