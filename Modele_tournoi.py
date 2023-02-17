@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Module pour la récuperation de la date du jour
 from datetime import datetime
+from random import *
 # Module pour naviguer dans les fichiers
 from Controleur_valeur_menu import *
 from Vue_menu_nouveau_tournoi import *
@@ -169,21 +170,25 @@ class Tournoi:
 
     # Méthode pour créer l'ordre des duels du premier tour
     # Affilie à la classe joueur l'ordre des duels
-    def ordre_premier_tour(self):
+    def ordre_tour(self):
         liste_croissant = []
         #Classe la liste des valeurs de classement par ordre croissant
         for participant in self.joueurs:
-            liste_croissant.append(self.joueurs[participant].classement)
-            liste_croissant.sort()
+            liste_croissant.append(self.joueurs[participant].points)
+            liste_croissant.sort(reverse = True)
+            # Remet à 0 l'ordre des joueurs
+            self.joueurs[participant].ordre = ""
+
+        #Donne l'ordre aux objet participant
+        #Initialise le premier
+        ordre = 1
+        # Balaie la liste des nombres
+        for nombre in liste_croissant:
         
-        #Donne l'ordre au participant
-        #Balaie la liste des joueurs
-        for participant in self.joueurs:
-            ordre = 1
-            #Balaie la liste des nombres
-            for nombre in liste_croissant:
+            #Balaie la liste des joueurs
+            for participant in self.joueurs:
                 #Si un nombre est identique au classement. C'est le bon joueur
-                if nombre == self.joueurs[participant].classement:
+                if nombre == self.joueurs[participant].points:
                     #En cas de classement identique, affilie au premier joueur sans ordre
                     if self.joueurs[participant].ordre == "":
                         self.joueurs[participant].ordre = ordre
@@ -191,19 +196,66 @@ class Tournoi:
         return
     
     # Méthode pour lancer le premier tour
-    def creation_premier_tour(self):
-        self.ordre_premier_tour()
+    def creation_tour(self):
+        self.ordre_tour()
         self.creation_paire()
     
+    def recuperation_resultat(self):
+        numero_de_paires = 1
+        joueur1 = ""
+        joueur2 = ""
+        while numero_de_paires <= (self.nbr_joueur)/2:
+            for participant in self.joueurs:
+                if self.joueurs[participant].paires == numero_de_paires :
+                    if joueur1 == "":
+                        joueur1 = participant
+                    else:
+                        joueur2 = participant
+
+            reponse_utilisateur = vue_tournoi_recuperation_score(numero_de_paires,joueur1,joueur2,self)
+    
+            # Nombre de menu possible
+            menu_max_vainqueur = reponse_utilisateur[1]
+            reponse_menu_vainqueur = reponse_utilisateur[0]
+        
+            reponse_utilisateur_vainqueur = ctrl_valeur_menu(menu_max_vainqueur, reponse_menu_vainqueur)
+            if reponse_utilisateur_vainqueur == 1:
+                self.joueurs[joueur1].points += 1
+            elif reponse_utilisateur_vainqueur == 2:
+                self.joueurs[joueur2].points += 1
+            else:
+                self.joueurs[joueur1].points += 0.5
+                self.joueurs[joueur2].points += 0.5
+            
+            numero_de_paires +=1
+            joueur1 = ""
+            joueur2 = ""
+
+
     def creation_paire(self):
         numero_de_paires = 1
-        for participant in self.joueurs:
-            #Vérifie que nous sommes bien dans la première moitié
-            if participant <= (self.nbr_joueur)/2:
-                self.joueurs[participant].paires = numero_de_paires
-                #Permet de prendre l'adversaire opposé
-                adversaire = ((self.nbr_joueur)/2) + participant
-                self.joueurs[adversaire].paires = numero_de_paires
+        #Vérifie que nous sommes bien dans la première moitié
+        while numero_de_paires <= (self.nbr_joueur)/2:
+            nbr_aleatoire = randint(1,2)
+            concurrent = numero_de_paires
+            adversaire = ((self.nbr_joueur)/2) + numero_de_paires
+            
+            for participant in self.joueurs:
+                
+                if self.joueurs[participant].ordre == concurrent:
+                    self.joueurs[participant].paires = numero_de_paires
+                    if nbr_aleatoire == 1:
+                        self.joueurs[participant].couleur = "blancs"
+                    else:
+                        self.joueurs[participant].couleur = "noirs"
+
+                elif self.joueurs[participant].ordre == adversaire:
+                    self.joueurs[participant].paires = numero_de_paires
+                    if nbr_aleatoire == 1:
+                        self.joueurs[participant].couleur = "noirs"
+                    else:
+                        self.joueurs[participant].couleur = "blancs"
+
             numero_de_paires += 1
     
     def affichage_adversaire(self,numero_paire):

@@ -76,7 +76,37 @@ def vue_tournoi_liste_duel(tournoi):
         if tournoi.tour_actif == 1:
             print(f"Le duel {numero_paire} opposera :\n"
                 f"\t{adversaires[0].nom} {adversaires[0].prenom} {adversaires[0].classement}eme au classement\n"
+                f"\t{adversaires[0].nom} {adversaires[0].prenom} prendra les {adversaires[0].couleur}\n"
                 f"avec\n"
-                f"\t{adversaires[1].nom} {adversaires[1].prenom} {adversaires[1].classement}eme au classement\n\n")
-        
+                f"\t{adversaires[1].nom} {adversaires[1].prenom} {adversaires[1].classement}eme au classement\n"
+                f"\t{adversaires[1].nom} {adversaires[1].prenom} prendra les {adversaires[1].couleur}\n\n")
+        else:
+            print(f"Le duel {numero_paire} opposera :\n"
+                f"\t{adversaires[0].nom} {adversaires[0].prenom} avec {format(adversaires[0].points,'.1f')}points ({adversaires[0].classement}eme)\n"
+                f"\t{adversaires[0].nom} {adversaires[0].prenom} prendra les {adversaires[0].couleur}\n"
+                f"avec\n"
+                f"\t{adversaires[1].nom} {adversaires[1].prenom} avec {format(adversaires[1].points,'.1f')}points ({adversaires[1].classement}eme)\n"
+                f"\t{adversaires[1].nom} {adversaires[1].prenom} prendra les {adversaires[1].couleur}\n\n")
         numero_paire += 1
+
+    input("Appuyer sur Entrée pour continuer")
+
+def vue_tournoi_recuperation_score(numero_de_paires,joueur1,joueur2,tournoi):
+    nettoyage_ecran()
+    menu_max = 3
+    print(
+        "==================================================\n"
+        "           Logiciel de tournois d'Echec\n"
+        f"               {tournoi.nom}\n"
+        f"                 Round {tournoi.tour_actif}/{tournoi.nbr_tour}\n"
+        "==================================================\n\n")
+    
+    print(f"Merci d'indiquer le vainqueur du duel {numero_de_paires}:\n"
+        f"1 :\t {tournoi.joueurs[joueur1].nom} {tournoi.joueurs[joueur1].prenom}\n"
+        f"2 :\t {tournoi.joueurs[joueur2].nom} {tournoi.joueurs[joueur2].prenom}\n"
+        f"3 :\t match nul")
+
+    reponse_menu = input("Merci de saisir votre choix : ")
+    
+    return (reponse_menu, menu_max)
+

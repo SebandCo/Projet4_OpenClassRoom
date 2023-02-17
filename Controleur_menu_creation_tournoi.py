@@ -13,7 +13,7 @@ def ctrl_menu_tournoi():
     nouveau_tournoi.ajout_tournoi_bdd()
 
     input("Tournoi crée\nAppuyer sur Entrée pour continuer")
-    
+
     deroulement_tournoi(nouveau_tournoi)
 
 
@@ -28,6 +28,7 @@ def ctrl_creation_du_tournoi():
 def ctrl_rajout_des_joueurs(nouveau_tournoi):
     # Boucle pour le rajout des joueurs au tournoi
     compteur = 1
+    taille_score = 0
     while compteur != nouveau_tournoi.nbr_joueur+1:
         # Tant qu'un nouveau joueur n'a pas été crée la boucle continu
         # while nouveau_tournoi.joueurs[compteur] != "":
@@ -67,4 +68,5 @@ def ctrl_rajout_des_joueurs(nouveau_tournoi):
                 input("Appuyer sur Entrée pour continuer")
                 # Passe au joueur suivant
                 compteur += 1
+
     return

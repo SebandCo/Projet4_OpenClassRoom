@@ -48,3 +48,4 @@ def vue_menu_revoir_reprendre_affichage_tournoi(compteur,tournoi):
             f"\t {tournoi['description']}\n")
     
     return
+
