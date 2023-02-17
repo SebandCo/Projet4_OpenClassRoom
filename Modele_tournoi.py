@@ -17,7 +17,8 @@ class Tournoi:
                 nbr_joueur = 8,
                 joueurs = "",
                 ctrl_temps = "",
-                description = ""):
+                description = "",
+                status = "En cours"):
         self.nom = nom
         self.lieu = lieu
         self.date = date
@@ -28,6 +29,7 @@ class Tournoi:
         self.joueurs = joueurs
         self.ctrl_temps = ctrl_temps
         self.description = description
+        self.status = status
     
     # Méthode pour compiler l'ensemble des étapes de création d'un tournoi
     # Renvoi un objet tournoi crée
@@ -140,6 +142,7 @@ class Tournoi:
         dico_global_joueurs={}
         dico_joueur={}
         for joueur in self.joueurs:
+            dico_joueur={}
             dico_joueur["nom"] = self.joueurs[joueur].nom
             dico_joueur["prenom"] = self.joueurs[joueur].prenom
             dico_joueur["sexe"] = self.joueurs[joueur].sexe
@@ -155,13 +158,14 @@ class Tournoi:
         bdd_tournoi.insert({"nom" : self.nom,
                           "lieu" : self.lieu,
                           "date" : self.date,
-                          "nb_tour" : self.nbr_tour,
+                          "nbr_tour" : self.nbr_tour,
                           "tour_actif" : self.tour_actif,
                           "tournee" : self.tournee,
                           "nbr_joueur" :self.nbr_joueur,
                           "joueurs" : dico_global_joueurs,
                           "ctrl_temps" : self.ctrl_temps,
-                          "description" : self.description})
+                          "description" : self.description,
+                          "status" : self.status})
 
     # Méthode pour créer l'ordre des duels du premier tour
     # Affilie à la classe joueur l'ordre des duels
@@ -198,7 +202,7 @@ class Tournoi:
             if participant <= (self.nbr_joueur)/2:
                 self.joueurs[participant].paires = numero_de_paires
                 #Permet de prendre l'adversaire opposé
-                adversaire = int((self.nbr_joueur)/2 + participant)
+                adversaire = ((self.nbr_joueur)/2) + participant
                 self.joueurs[adversaire].paires = numero_de_paires
             numero_de_paires += 1
     

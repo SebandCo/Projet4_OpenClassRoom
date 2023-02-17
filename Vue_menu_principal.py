@@ -16,7 +16,7 @@ def vue_menu_principal():
     print(
         "1 --> Gestion des joueurs\n"
         "2 --> Création d'un nouveau tournoi (NOK)\n"
-        "3 --> Revoir un tournoi (NOK)\n"
+        "3 --> Revoir/Reprendre un tournoi (NOK)\n"
         "4 --> Sortir du programme")
 
     # Récupération du choix de l'utilisateur

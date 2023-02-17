@@ -1,7 +1,9 @@
 from Vue_menu_principal import *
 from Controleur_valeur_menu import *
 from Controleur_menu_joueur import *
-from Controleur_menu_tournoi import *
+from Controleur_menu_creation_tournoi import *
+from Controleur_menu_tournoi_existant import *
+
 
 def ctrl_menu_principal():
     #Initialisation de la réponse utilisateur
@@ -18,14 +20,21 @@ def ctrl_menu_principal():
         # Controle la réponse de l'utilisateur
         reponse_utilisateur_menu_principal = ctrl_valeur_menu(menu_max_principal, reponse_menu_principal)
 
+        # Choix 1 : Menu Joueur
         if reponse_utilisateur_menu_principal == 1:
             ctrl_menu_joueur()
             # Relance le menu principale
-            reponse_utilisateur = vue_menu_principal()
-            reponse_menu_principal = reponse_utilisateur[0]
+
+        
+        # Choix 2 : Création d'un nouveau tournoi
         elif reponse_utilisateur_menu_principal == 2:
             ctrl_menu_tournoi()
+        
+        # Choix 3 : Visualisation ou reprise d'un tournoi existant
         elif reponse_utilisateur_menu_principal == 3:
-            print("Vous avez choisi le menu 3")
-
+            ctrl_menu_recherche_tournoi()
+        
+        # Relance le menu principale
+        reponse_utilisateur = vue_menu_principal()
+        reponse_menu_principal = reponse_utilisateur[0]
     print("\n A une prochaine fois\n")

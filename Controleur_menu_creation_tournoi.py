@@ -2,6 +2,7 @@ from Vue_menu_nouveau_tournoi import *
 from Modele_tournoi import *
 from Modele_joueur_tournoi import *
 from Controleur_menu_recherche_joueur import *
+from Controleur_menu_deroulement_tournoi import *
 
 
 def ctrl_menu_tournoi():
@@ -10,20 +11,10 @@ def ctrl_menu_tournoi():
     #Rajout des joueurs au tournoi
     ctrl_rajout_des_joueurs(nouveau_tournoi)
     nouveau_tournoi.ajout_tournoi_bdd()
-    deroulement_tournoi(nouveau_tournoi)
-
-def deroulement_tournoi(tournoi):
-    if tournoi.tour_actif == 1:
-        #Début du tournoi
-        tournoi.creation_premier_tour()
-        vue_tournoi_liste_duel(tournoi)
-    else:
-        #Boucle sur les tours suivant
-        while tournoi.tour_actif <= tournoi.nbr_tour:
-            tournoi.tour_actif += 1
 
     input("Tournoi crée\nAppuyer sur Entrée pour continuer")
-
+    
+    deroulement_tournoi(nouveau_tournoi)
 
 
 def ctrl_creation_du_tournoi():
@@ -76,3 +67,4 @@ def ctrl_rajout_des_joueurs(nouveau_tournoi):
                 input("Appuyer sur Entrée pour continuer")
                 # Passe au joueur suivant
                 compteur += 1
+    return
