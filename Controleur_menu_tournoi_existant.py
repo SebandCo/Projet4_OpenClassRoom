@@ -46,7 +46,8 @@ def ctrl_menu_passage_tournoi_json_objet(tournoi):
                         {},
                         tournoi["ctrl_temps"],
                         tournoi["description"],
-                        tournoi["status"])
+                        tournoi["status"],
+                        tournoi["position"])
     for joueur in tournoi["joueurs"]:
         nouveau_joueur = Joueur (
                         tournoi["joueurs"][joueur]["nom"],
@@ -55,6 +56,11 @@ def ctrl_menu_passage_tournoi_json_objet(tournoi):
                         tournoi["joueurs"][joueur]["sexe"],
                         tournoi["joueurs"][joueur]["classement"],
                         tournoi["joueurs"][joueur]["position"])
+
+        # Vérifie que le classement n'a pas changé depuis le dernier accès au tournoi
+        joueur_temporel = recherche_joueur_bdd("position", nouveau_joueur.position)
+        if joueur_temporel[0]["classement"] != nouveau_joueur.classement:
+            nouveau_joueur.classement = joueur_temporel[0]["classement"]
 
         nouveau_joueur = JoueurTournoi(
                         nouveau_joueur,

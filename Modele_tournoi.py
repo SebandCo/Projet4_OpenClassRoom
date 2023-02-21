@@ -19,7 +19,8 @@ class Tournoi:
                 joueurs = "",
                 ctrl_temps = "",
                 description = "",
-                status = "En cours"):
+                status = "En cours",
+                position = 0):
         self.nom = nom
         self.lieu = lieu
         self.date = date
@@ -31,6 +32,7 @@ class Tournoi:
         self.ctrl_temps = ctrl_temps
         self.description = description
         self.status = status
+        self.position = position
     
     # Méthode pour compiler l'ensemble des étapes de création d'un tournoi
     # Renvoi un objet tournoi crée
@@ -44,6 +46,7 @@ class Tournoi:
         self.joueurs = self.generate_joueurs()
         self.ctrl_temps = self.generate_ctrl_temps()
         self.description = self.generate_description()
+        self.position = self.generate_position()
     
     # Méthode pour demander la date du tournoi
     # Renvoie le texte saisie par l'utilisateur ou par défaut la date du jour
@@ -74,6 +77,13 @@ class Tournoi:
     def generate_lieu(self):
         self.lieu = input("\nMerci de saisir le lieu du tournoi : ")
         return self.lieu
+
+    # Méthode pour trouver un numéro de position non utilisé dans la base de donnée json
+    # Renvoie le premier numéro de position non utilisé
+    def generate_position(self):
+        bdd_tournoi = initialisation_bdd_tournoi()
+        self.position = recherche_bdd_position(bdd_tournoi)
+        return self.position
 
     # Méthode pour demander le nombre de tour du tournoi
     # Renvoie le nombre saisie par l'utilisateur ou la valeur de l'__init__ par défaut

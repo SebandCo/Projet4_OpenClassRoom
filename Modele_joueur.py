@@ -64,25 +64,12 @@ class Joueur:
             controle_reponse = self.controle_reponse_classement()
         return self.classement
     
-    # Méthode qui donne un numéro unique au joueur (controle avec une autre méthode)
-    # Renvoi un numéro unique suivant la base json (invisible pour l'utilisateur)
-    def generate_position(self):
-        self.position = self.recherche_position_joueur_bdd()
-        return self.position  
-
     # Méthode pour trouver un numéro de position non utilisé dans la base de donnée json
     # Renvoie le premier numéro de position non utilisé
-    def recherche_position_joueur_bdd(self):
+    def generate_position(self):
         bdd_joueur = initialisation_bdd_joueur()
-        joueur_existant = True
-        # Tant qu'il y a un joueur à la position sélectionnée, on itére la boucle
-        while joueur_existant == True:
-            self.position += 1
-            joueur_trouve=bdd_joueur.search(where("position") == self.position)
-            # Si la chaine de caractère trouvé est vide, c'est que la place est libre
-            if len(joueur_trouve) == 0:
-                joueur_existant = False
-                return self.position
+        self.position = recherche_bdd_position(bdd_joueur)
+        return self.position
 
     # Méthode pour ajouter un joueur dans la base de donnée json
     # Ne renvoi rien, mais rajoute l'utilisateur à la base de donnée json
@@ -129,3 +116,8 @@ class Joueur:
             self.classement = input("Merci de rentrer un nombre entier positif : ")
             controle_reponse = False
             return controle_reponse
+    
+    # Méthode pour mettre à jour le classement en cas de modification de la base json
+    # Renvoi le nouveau classement
+    def mise_a_jour_classement(self,classement_en_memoire):
+        recherche_joueur_bdd("classement", mot_recherche)

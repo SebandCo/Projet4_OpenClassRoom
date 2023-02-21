@@ -28,3 +28,15 @@ def initialisation_bdd_tournoi():
     tournoi_bdd = TinyDB("tournoi_bdd.json")
     tournoi = tournoi_bdd.table("tournoi_bdd")
     return tournoi
+
+def recherche_bdd_position(bdd_active):
+    existant = True
+    position_active = 0
+    # Tant qu'il y a un joueur à la position sélectionnée, on itére la boucle
+    while existant == True:
+        position_active += 1
+        position_actuel=bdd_active.search(where("position") == position_active)
+        # Si la chaine de caractère trouvé est vide, c'est que la place est libre
+        if len(position_actuel) == 0:
+            existant = False
+    return position_active

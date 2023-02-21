@@ -146,7 +146,7 @@ def vue_tournoi_resultat_intermediaire(tournoi):
         f"         Résultat : Round {(tournoi.tour_actif)-1}/{tournoi.nbr_tour}\n"
         "==================================================\n\n")
     classement = 1
-    print (f"Voici le resultat du Round {tournoi.tour_actif}/{tournoi.nbr_tour}\n")
+    print (f"Voici le resultat du Round {(tournoi.tour_actif)-1}/{tournoi.nbr_tour}\n")
     while classement <= tournoi.nbr_joueur:
         for participant in tournoi.joueurs:
             if tournoi.joueurs[participant].ordre == classement:
