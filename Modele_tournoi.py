@@ -196,10 +196,54 @@ class Tournoi:
         return
     
     # Méthode pour lancer le premier tour
+    def creation_premier_tour(self):
+        self.ordre_tour()
+        self.creation_premiere_paire()
+    
+    # Méthode pour lancer les tours suivant
     def creation_tour(self):
+        self.remise_a_zero()
         self.ordre_tour()
         self.creation_paire()
     
+    def remise_a_zero(self):
+        for participant in self.joueurs:
+            self.joueurs[participant].paires = ""
+            self.joueurs[participant].couleur = ""
+
+    def creation_paire(self):
+        numero_de_paires = 1
+        
+        #Vérifie que nous sommes bien dans la première moitié
+        while numero_de_paires <= (self.nbr_joueur)/2:
+            nbr_aleatoire = randint(1,2)
+            concurrent = False
+            adversaire = False
+            ordre_croissant = 1
+            while concurrent is False or adversaire is False:
+                for participant in self.joueurs:
+                    if self.joueurs[participant].ordre == ordre_croissant:
+                        if self.joueurs[participant].paires == "":
+                            if concurrent is False:
+                                self.joueurs[participant].paires = numero_de_paires
+                                if nbr_aleatoire == 1:
+                                    self.joueurs[participant].couleur = "blancs"
+                                else:
+                                    self.joueurs[participant].couleur = "noirs"
+                                concurrent = True
+                            else:
+                                if adversaire is False:
+                                    self.joueurs[participant].paires = numero_de_paires
+                                    if nbr_aleatoire == 1:
+                                        self.joueurs[participant].couleur = "noirs"
+                                    else:
+                                        self.joueurs[participant].couleur = "blancs"
+                                    adversaire = True
+                        else:
+                            ordre_croissant += 1
+
+            numero_de_paires += 1
+
     def recuperation_resultat(self):
         numero_de_paires = 1
         joueur1 = ""
@@ -232,7 +276,7 @@ class Tournoi:
             joueur2 = ""
 
 
-    def creation_paire(self):
+    def creation_premiere_paire(self):
         numero_de_paires = 1
         #Vérifie que nous sommes bien dans la première moitié
         while numero_de_paires <= (self.nbr_joueur)/2:

@@ -127,12 +127,30 @@ def vue_tournoi_resultat(tournoi):
                 if classement == 1:
                     print(f"Le vainqueur du tournoi est :\n"
                         f"{tournoi.joueurs[participant].prenom} {tournoi.joueurs[participant].nom}"
-                        f"avec {format(tournoi.joueurs[participant].points,'.1f')} points\n\n"
+                        f" avec {format(tournoi.joueurs[participant].points,'.1f')} points\n\n"
                         f"voici la suite du classement\n")
                 else:
                     print(f"{classement}eme\t{tournoi.joueurs[participant].prenom} {tournoi.joueurs[participant].nom}"
-                        f"avec {format(tournoi.joueurs[participant].points,'.1f')} points\n")
+                        f" avec {format(tournoi.joueurs[participant].points,'.1f')} points\n")
                     
                 classement += 1
 
+    input("Appuyer sur Entrée pour continuer")
+
+def vue_tournoi_resultat_intermediaire(tournoi):
+    nettoyage_ecran()
+    print(
+        "==================================================\n"
+        "           Logiciel de tournois d'Echec\n"
+        f"               {tournoi.nom}\n"
+        f"         Résultat : Round {(tournoi.tour_actif)-1}/{tournoi.nbr_tour}\n"
+        "==================================================\n\n")
+    classement = 1
+    print (f"Voici le resultat du Round {tournoi.tour_actif}/{tournoi.nbr_tour}\n")
+    while classement <= tournoi.nbr_joueur:
+        for participant in tournoi.joueurs:
+            if tournoi.joueurs[participant].ordre == classement:
+                print(f"{classement}eme\t{tournoi.joueurs[participant].prenom} {tournoi.joueurs[participant].nom}"
+                    f" avec {format(tournoi.joueurs[participant].points,'.1f')} points\n")    
+                classement += 1
     input("Appuyer sur Entrée pour continuer")
