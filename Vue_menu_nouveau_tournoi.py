@@ -139,6 +139,7 @@ def vue_tournoi_resultat(tournoi):
 
 def vue_tournoi_resultat_intermediaire(tournoi):
     nettoyage_ecran()
+    menu_max = 2
     print(
         "==================================================\n"
         "           Logiciel de tournois d'Echec\n"
@@ -153,4 +154,10 @@ def vue_tournoi_resultat_intermediaire(tournoi):
                 print(f"{classement}eme\t{tournoi.joueurs[participant].prenom} {tournoi.joueurs[participant].nom}"
                     f" avec {format(tournoi.joueurs[participant].points,'.1f')} points\n")    
                 classement += 1
-    input("Appuyer sur Entrée pour continuer")
+
+    print("Que voulez vous faire ?\n"
+            "1 :\tContinuer le tournoi\n"
+            "2 :\tMettre le tournoi en pause\n")
+    
+    reponse_menu = input("Merci de saisir votre choix : ")
+    return (reponse_menu, menu_max)

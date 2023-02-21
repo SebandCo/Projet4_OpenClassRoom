@@ -116,8 +116,3 @@ class Joueur:
             self.classement = input("Merci de rentrer un nombre entier positif : ")
             controle_reponse = False
             return controle_reponse
-    
-    # Méthode pour mettre à jour le classement en cas de modification de la base json
-    # Renvoi le nouveau classement
-    def mise_a_jour_classement(self,classement_en_memoire):
-        recherche_joueur_bdd("classement", mot_recherche)
