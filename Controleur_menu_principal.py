@@ -32,6 +32,10 @@ def ctrl_menu_principal():
         elif reponse_utilisateur_menu_principal == 3:
             ctrl_menu_recherche_tournoi()
         
+        # Choix 4 : affichage des rapports
+        elif reponse_utilisateur_menu_principal == 4:
+            pass
+        
         # Relance le menu principale
         reponse_utilisateur = vue_menu_principal()
         reponse_menu_principal = reponse_utilisateur[0]

@@ -12,6 +12,7 @@ def deroulement_tournoi(tournoi):
         vue_tournoi_liste_duel(tournoi)
         tournoi.recuperation_resultat()
         tournoi.tour_actif += 1
+        tournoi.sauvegarde_tournoi_bdd()
         tournoi.ordre_tour()
         
         #Initialisation de la réponse utilisateur
@@ -36,4 +37,6 @@ def deroulement_tournoi(tournoi):
             elif reponse_utilisateur_deroulement_tournoi == 2:
                 return
 
+    tournoi.status = "Terminée"
+    tournoi.sauvegarde_tournoi_bdd()
     vue_tournoi_resultat(tournoi)

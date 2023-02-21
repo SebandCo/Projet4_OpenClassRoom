@@ -20,6 +20,8 @@ class Tournoi:
                 ctrl_temps = "",
                 description = "",
                 status = "En cours",
+                round = {},
+                round_global = [],
                 position = 0):
         self.nom = nom
         self.lieu = lieu
@@ -32,6 +34,8 @@ class Tournoi:
         self.ctrl_temps = ctrl_temps
         self.description = description
         self.status = status
+        self.round = round
+        self.round_global = round_global
         self.position = position
     
     # Méthode pour compiler l'ensemble des étapes de création d'un tournoi
@@ -145,6 +149,12 @@ class Tournoi:
         self.description = input("\nSouhaitez vous rajouter une description : ")
         return self.description
     
+    # Méthode pour demander sauvegarder l'ensemble des duels effectués
+    # Renvoie le round actuel dans le round global
+    def generate_round_global(self):
+        round_actuel = (f"Round {self.tour_actif}")
+        self.round_global.append(self.round[round_actuel])
+
     # Méthode pour ajouter un tournoi dans la base de donnée json
     # Ne renvoi rien, mais rajoute le tournoi à la base de donnée json
     def ajout_tournoi_bdd(self):
@@ -156,14 +166,14 @@ class Tournoi:
             dico_joueur={}
             dico_joueur["nom"] = self.joueurs[joueur].nom
             dico_joueur["prenom"] = self.joueurs[joueur].prenom
-            dico_joueur["sexe"] = self.joueurs[joueur].sexe
             dico_joueur["naissance"] = self.joueurs[joueur].naissance
+            dico_joueur["sexe"] = self.joueurs[joueur].sexe
             dico_joueur["classement"] = self.joueurs[joueur].classement
             dico_joueur["position"] = self.joueurs[joueur].position
             dico_joueur["couleur"] = self.joueurs[joueur].couleur
-            dico_joueur["ordre"] = self.joueurs[joueur].ordre
             dico_joueur["paires"] = self.joueurs[joueur].paires
             dico_joueur["points"] = self.joueurs[joueur].points
+            dico_joueur["ordre"] = self.joueurs[joueur].ordre
             dico_global_joueurs[joueur]=dico_joueur
 
         bdd_tournoi.insert({"nom" : self.nom,
@@ -176,7 +186,19 @@ class Tournoi:
                           "joueurs" : dico_global_joueurs,
                           "ctrl_temps" : self.ctrl_temps,
                           "description" : self.description,
-                          "status" : self.status})
+                          "status" : self.status,
+                          "round" : self.round,
+                          "round_global" : self.round_global,
+                          "position" : self.position})
+
+    # Méthode pour sauvegarder un tournoi dans la base de donnée json
+    # Ne renvoi rien, mais met à jour le tournoi dans la base de donnée json
+    def sauvegarde_tournoi_bdd(self):
+        bdd_tournoi = initialisation_bdd_tournoi()
+        #Supprime le tournoi existant
+        suppression_item_bdd(bdd_tournoi,"position", self.position)
+        #Le remplace par le nouveau tournoi
+        self.ajout_tournoi_bdd()
 
     # Méthode pour créer l'ordre des duels du premier tour
     # Affilie à la classe joueur l'ordre des duels
@@ -209,12 +231,15 @@ class Tournoi:
     def creation_premier_tour(self):
         self.ordre_tour()
         self.creation_premiere_paire()
+        self.round_global = []
+        self.generate_round_global()
     
     # Méthode pour lancer les tours suivant
     def creation_tour(self):
         self.remise_a_zero()
         self.ordre_tour()
         self.creation_paire()
+        self.generate_round_global()
     
     def remise_a_zero(self):
         for participant in self.joueurs:
@@ -223,7 +248,9 @@ class Tournoi:
 
     def creation_paire(self):
         numero_de_paires = 1
-        
+        round_actuel = (f"Round {self.tour_actif}")
+        self.round[round_actuel]=[]
+        duel = ""
         #Vérifie que nous sommes bien dans la première moitié
         while numero_de_paires <= (self.nbr_joueur)/2:
             nbr_aleatoire = randint(1,2)
@@ -241,6 +268,11 @@ class Tournoi:
                                 else:
                                     self.joueurs[participant].couleur = "noirs"
                                 concurrent = True
+                                #Sauvegarde le duel ou le met à jour
+                                if len(duel) == 0:
+                                    duel = (f"{participant} /")
+                                else:
+                                    duel = (f"{duel} {participant}")
                             else:
                                 if adversaire is False:
                                     self.joueurs[participant].paires = numero_de_paires
@@ -249,10 +281,17 @@ class Tournoi:
                                     else:
                                         self.joueurs[participant].couleur = "blancs"
                                     adversaire = True
+                                    #Sauvegarde le duel ou le met à jour
+                                    if len(duel) == 0:
+                                        duel = (f"{participant} /")
+                                    else:
+                                        duel = (f"{duel} {participant}")
                         else:
                             ordre_croissant += 1
-
+            
+            self.round[round_actuel].append(duel)
             numero_de_paires += 1
+            duel = ""
 
     def recuperation_resultat(self):
         numero_de_paires = 1
@@ -288,12 +327,14 @@ class Tournoi:
 
     def creation_premiere_paire(self):
         numero_de_paires = 1
+        duel = ""
+        self.round["Round 1"]=[]
         #Vérifie que nous sommes bien dans la première moitié
         while numero_de_paires <= (self.nbr_joueur)/2:
             nbr_aleatoire = randint(1,2)
             concurrent = numero_de_paires
             adversaire = ((self.nbr_joueur)/2) + numero_de_paires
-            
+
             for participant in self.joueurs:
                 
                 if self.joueurs[participant].ordre == concurrent:
@@ -302,6 +343,11 @@ class Tournoi:
                         self.joueurs[participant].couleur = "blancs"
                     else:
                         self.joueurs[participant].couleur = "noirs"
+                    #Sauvegarde le duel ou le met à jour
+                    if len(duel) == 0:
+                        duel = (f"{participant} /")
+                    else:
+                        duel = (f"{duel} {participant}")
 
                 elif self.joueurs[participant].ordre == adversaire:
                     self.joueurs[participant].paires = numero_de_paires
@@ -309,8 +355,15 @@ class Tournoi:
                         self.joueurs[participant].couleur = "noirs"
                     else:
                         self.joueurs[participant].couleur = "blancs"
-
+                    #Sauvegarde le duel ou le met à jour
+                    if len(duel) == 0:
+                        duel = (f"{participant} /")
+                    else:
+                        duel = (f"{duel} {participant}")
+                    
+            self.round["Round 1"].append(duel)
             numero_de_paires += 1
+            duel = ""
     
     def affichage_adversaire(self,numero_paire):
         joueur1 = ""

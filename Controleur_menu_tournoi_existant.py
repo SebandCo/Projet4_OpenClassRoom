@@ -47,6 +47,8 @@ def ctrl_menu_passage_tournoi_json_objet(tournoi):
                         tournoi["ctrl_temps"],
                         tournoi["description"],
                         tournoi["status"],
+                        tournoi["round"],
+                        tournoi["round_global"],
                         tournoi["position"])
     for joueur in tournoi["joueurs"]:
         nouveau_joueur = Joueur (

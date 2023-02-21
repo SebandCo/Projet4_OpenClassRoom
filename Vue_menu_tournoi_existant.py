@@ -33,7 +33,7 @@ def vue_menu_revoir_reprendre_affichage_tournoi(compteur,tournoi):
             f"{tournoi['nom']} qui a commencé à {tournoi['lieu']} le {tournoi['date']}\n",
             f"\t Il oppose {tournoi['nbr_joueur']} joueurs en {tournoi['nbr_tour']} tours\n"
             f"\t C'est un tournoi {tournoi['ctrl_temps']}\n"
-            f"\t le tournoi est toujours en cours\n")
+            f"\t le tournoi est toujours en cours (Round {tournoi['tour_actif']}/{tournoi['nbr_tour']})\n")
 
     # Réponse si le tournoi est terminé
     else:
@@ -41,7 +41,7 @@ def vue_menu_revoir_reprendre_affichage_tournoi(compteur,tournoi):
             f"{tournoi['nom']} qui a eu lieu à {tournoi['lieu']} le {tournoi['date']}\n",
             f"\t Il a opposé {tournoi['nbr_joueur']} joueurs en {tournoi['nbr_tour']} tours\n"
             f"\t C'est un tournoi {tournoi['ctrl_temps']}\n"
-            f"\t le tournoi est à présent terminé\n")
+            f"\t le tournoi terminé\n")
             
     if len(tournoi['description']) != 0:
         print("\tVoici une description du tournoi :\n"

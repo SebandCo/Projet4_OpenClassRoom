@@ -40,3 +40,6 @@ def recherche_bdd_position(bdd_active):
         if len(position_actuel) == 0:
             existant = False
     return position_active
+
+def suppression_item_bdd(bdd_active,categorie_recherche, mot_recherche):
+    bdd_active.remove(where(categorie_recherche) == mot_recherche)
