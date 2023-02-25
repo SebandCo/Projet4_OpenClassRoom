@@ -1,9 +1,9 @@
 
 def ctrl_valeur_menu(menu_max, reponse_menu):
-    reponse_correct = 0
+    reponse_correct = False
 
     # Tant que le controle n'est pas valide
-    while reponse_correct == 0:
+    while reponse_correct is False:
         try:
             # Vérifie si reponse_menu est un entier
             int(reponse_menu)
@@ -12,7 +12,7 @@ def ctrl_valeur_menu(menu_max, reponse_menu):
             # Vérifie que reponse_menu est compris entre 1 et 3
             if 1 <= reponse_menu <= menu_max:
                 # Valide le controle pour sortir de la boucle
-                reponse_correct = 1
+                reponse_correct = True
             else:
                 # Si reponse_menu n'est pas compris entre 1 et 3
                 reponse_menu = input("Merci de choisir un menu existant : ")
@@ -43,3 +43,15 @@ def ctrl_valeur_utilisateur(reponse_utilisateur):
             reponse_utilisateur = input("Merci de choisir un nombre positif non nul : ")
 
     return int(reponse_utilisateur)
+
+def ctrl_valeur_sexe (reponse):
+    reponse_correct = False
+    # Tant que le controle n'est pas valide
+    while reponse_correct is False:
+        if reponse in {"H", "F", "I"}:
+            reponse_correct = True
+        # Si la réponse utilisateur est différente de H, F ou I
+        else:
+            reponse = input("Merci de saisir H, F ou I : ")
+    
+    return reponse

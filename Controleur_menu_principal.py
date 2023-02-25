@@ -3,6 +3,7 @@ from Controleur_valeur_menu import *
 from Controleur_menu_joueur import *
 from Controleur_menu_creation_tournoi import *
 from Controleur_menu_tournoi_existant import *
+from Controleur_menu_rapport import *
 
 
 def ctrl_menu_principal():
@@ -30,12 +31,12 @@ def ctrl_menu_principal():
         
         # Choix 3 : Visualisation ou reprise d'un tournoi existant
         elif reponse_utilisateur_menu_principal == 3:
-            ctrl_menu_recherche_tournoi()
+            ctrl_reprise_tournoi_existant()
         
         # Choix 4 : affichage des rapports
         elif reponse_utilisateur_menu_principal == 4:
-            pass
-        
+            ctrl_menu_rapport()
+
         # Relance le menu principale
         reponse_utilisateur = vue_menu_principal()
         reponse_menu_principal = reponse_utilisateur[0]

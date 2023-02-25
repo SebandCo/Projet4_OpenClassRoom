@@ -49,10 +49,9 @@ class Joueur:
     # Méthode pour demander à l'utilisateur le genre du joueur (controle avec une autre méthode)
     # Renvoie le genre saisie par l'utilisateur
     def generate_sexe(self):
-        self.sexe = input(self.prenom + " " + self.nom + " est-ce un Homme, une Femme ou Indeterminée ? (Saisir H, F ou I) : ")
-        controle_reponse = False
-        while controle_reponse == False:
-            controle_reponse = self.controle_reponse_sexe()
+        reponse_utilisateur = input(self.prenom + " " + self.nom + " est-ce un Homme, une Femme ou Indeterminée ? (Saisir H, F ou I) : ")
+        reponse = ctrl_valeur_sexe (reponse_utilisateur)
+        self.sexe = reponse
         return self.sexe
     
     # Méthode pour demander à l'utilisateur le classement du joueur (controle avec une autre méthode)
@@ -81,19 +80,6 @@ class Joueur:
                           "sexe": self.sexe,
                           "classement": self.classement,
                           "position": self.position})
-
-    # Méthode pour controler que la réponse de l'utilisateur est bien conforme (H, F ou I)
-    # Renvoi True ou False après le controle
-    def controle_reponse_sexe(self):
-        # Si la réponse utilisateur est H, F ou I
-        if self.sexe in {"H", "F", "I"}:
-            controle_reponse = True
-            return controle_reponse
-        # Si la réponse utilisateur est différente de H, F ou I
-        else:
-            self.sexe = input("Merci de saisir H, F ou I : ")
-            controle_reponse = False
-            return controle_reponse
 
     # Méthode pour controler que la réponse de l'utilisateur est bien conforme (entier positif)
     # Renvoi True ou False après le controle

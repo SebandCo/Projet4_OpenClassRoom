@@ -58,7 +58,7 @@ def vue_menu_choix_resultat_recherche_joueur_simple():
     menu_max = 3    
     print("Que souhaitez vous faire :")
     print(
-        "1 --> Modifier un joueur(NOK)\n"
+        "1 --> Modifier un joueur\n"
         "2 --> Faire une nouvelle recherche\n"
         "3 --> Revenir au menu précedent\n")
 
@@ -73,7 +73,7 @@ def vue_menu_choix_resultat_recherche_joueur_tournoi():
     print("Que souhaitez vous faire :")
     print(
         "1 --> Selectionner un joueur\n"
-        "2 --> Modifier un joueur(NOK)\n"
+        "2 --> Modifier un joueur\n"
         "3 --> Faire une nouvelle recherche\n")
 
     # Récupération du choix de l'utilisateur

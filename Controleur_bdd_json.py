@@ -20,6 +20,8 @@ def modif_joueur_bdd(position,categorie_recherche):
     if valeur_modif:
         if categorie_recherche == "classement" :
             valeur_modif = ctrl_valeur_utilisateur(valeur_modif)
+        elif categorie_recherche == "sexe":
+            valeur_modif = ctrl_valeur_sexe(valeur_modif)
         bdd_joueur.update({categorie_recherche:valeur_modif}, Joueur.position == position)
         return valeur_modif
     return

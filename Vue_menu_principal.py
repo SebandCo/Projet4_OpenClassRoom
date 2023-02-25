@@ -15,8 +15,8 @@ def vue_menu_principal():
     print("Que souhaitez vous faire?")
     print(
         "1 --> Gestion des joueurs\n"
-        "2 --> Création d'un nouveau tournoi (NOK)\n"
-        "3 --> Revoir/Reprendre un tournoi (NOK)\n"
+        "2 --> Création d'un nouveau tournoi\n"
+        "3 --> Revoir/Reprendre un tournoi\n"
         "4 --> Afficher les rapports (NOK)\n"
         "5 --> Sortir du programme\n")
 

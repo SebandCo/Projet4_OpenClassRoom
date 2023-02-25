@@ -5,6 +5,14 @@ from Modele_tournoi import *
 from Modele_joueur_tournoi import *
 from Controleur_menu_deroulement_tournoi import *
 
+def ctrl_reprise_tournoi_existant():
+    tournoi_actif = ctrl_menu_recherche_tournoi()
+    if tournoi_actif:
+        deroulement_tournoi(tournoi_actif)
+    else:
+        return
+
+
 def ctrl_menu_recherche_tournoi():
     tournoi_existant = initialisation_bdd_tournoi()
     
@@ -30,8 +38,7 @@ def ctrl_menu_recherche_tournoi():
             vue_menu_revoir_reprendre_affichage_tournoi(nombre_trouve,tournoi_selectionne)
             input("Appuyer sur Entrée pour continuer")
             tournoi_actif=ctrl_menu_passage_tournoi_json_objet(tournoi_selectionne)
-            deroulement_tournoi(tournoi_actif)
-            return
+            return tournoi_actif
     return
 
 def ctrl_menu_passage_tournoi_json_objet(tournoi):
