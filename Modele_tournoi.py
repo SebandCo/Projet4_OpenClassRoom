@@ -246,48 +246,84 @@ class Tournoi:
             self.joueurs[participant].paires = ""
             self.joueurs[participant].couleur = ""
 
+    def transformation_round_en_liste(self):
+        liste_round_global = []
+        for rang in self.round_global:
+            for element in rang:
+                liste_round_global.append(element)
+        return liste_round_global
+
+    def affectation_couleur_concurrent(self,nbr_aleatoire,participant):
+        if nbr_aleatoire == 1:
+            self.joueurs[participant].couleur = "blancs"
+        else:
+            self.joueurs[participant].couleur = "noirs"
+
+    def affectation_couleur_adversaire(self,nbr_aleatoire,participant):
+        if nbr_aleatoire == 1:
+            self.joueurs[participant].couleur = "noirs"
+        else:
+            self.joueurs[participant].couleur = "blancs"
+
     def creation_paire(self):
         numero_de_paires = 1
         round_actuel = (f"Round {self.tour_actif}")
         self.round[round_actuel]=[]
         duel = ""
-        #Vérifie que nous sommes bien dans la première moitié
+        #Création d'une liste comportant le rang des joueurs
+        liste_rang_joueur = []
+        nombre = 1
+        while nombre <= self.nbr_joueur:
+            liste_rang_joueur.append(nombre)
+            nombre += 1
+        #Boucle tant que toutes les paires n'ont pas été affecté
         while numero_de_paires <= (self.nbr_joueur)/2:
             nbr_aleatoire = randint(1,2)
             concurrent = False
             adversaire = False
-            ordre_croissant = 1
+            duel_valide = False
+            rang_joueur = 0
+            #Boucle tant que les deux joueurs n'ont pas été trouvé
             while concurrent is False or adversaire is False:
                 for participant in self.joueurs:
-                    if self.joueurs[participant].ordre == ordre_croissant:
+                    if self.joueurs[participant].ordre == liste_rang_joueur[rang_joueur]:
                         if self.joueurs[participant].paires == "":
                             if concurrent is False:
                                 self.joueurs[participant].paires = numero_de_paires
-                                if nbr_aleatoire == 1:
-                                    self.joueurs[participant].couleur = "blancs"
-                                else:
-                                    self.joueurs[participant].couleur = "noirs"
+                                self.affectation_couleur_concurrent(nbr_aleatoire,participant)
                                 concurrent = True
-                                #Sauvegarde le duel ou le met à jour
-                                if len(duel) == 0:
-                                    duel = (f"{participant} /")
-                                else:
-                                    duel = (f"{duel} {participant}")
+                                #Supprime le jour de la liste
+                                liste_rang_joueur.pop(rang_joueur)
+                                #Sauvegarde le début du duel
+                                duel = (f"{participant} /")
+
                             else:
                                 if adversaire is False:
-                                    self.joueurs[participant].paires = numero_de_paires
-                                    if nbr_aleatoire == 1:
-                                        self.joueurs[participant].couleur = "noirs"
+                                    if rang_joueur < len(liste_rang_joueur):
+                                        #Vérifie que le duel n'existe pas déjà
+                                        duel_provisoire = (f"{duel} {participant}")
+                                        liste_round_global = self.transformation_round_en_liste()
+                                        #Si le duel existe, il est dans la liste
+                                        try :
+                                            liste_round_global.index(duel_provisoire)
+                                            rang_joueur += 1
+                                        # Sinon il n'y est pas et le duel est validé
+                                        except ValueError:
+                                            duel_valide = True
+                                    #Sinon la liste des joueurs a été balayé et on ne peux pas faire mieux qu'un doublon
                                     else:
-                                        self.joueurs[participant].couleur = "blancs"
-                                    adversaire = True
-                                    #Sauvegarde le duel ou le met à jour
-                                    if len(duel) == 0:
-                                        duel = (f"{participant} /")
-                                    else:
+                                        duel_valide = True
+                                    
+                                    if duel_valide is True:
+                                        self.joueurs[participant].paires = numero_de_paires
+                                        self.affectation_couleur_adversaire(nbr_aleatoire,participant)
+                                        adversaire = True
+                                        #Supprime le jour de la liste
+                                        liste_rang_joueur.pop(rang_joueur)
+                                        #Valide le duel
                                         duel = (f"{duel} {participant}")
                         else:
-                            ordre_croissant += 1
+                            pass
             
             self.round[round_actuel].append(duel)
             numero_de_paires += 1
