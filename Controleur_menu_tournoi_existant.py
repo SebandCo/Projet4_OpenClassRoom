@@ -6,8 +6,9 @@ from Modele_joueur_tournoi import *
 from Controleur_menu_deroulement_tournoi import *
 
 def ctrl_reprise_tournoi_existant():
-    tournoi_actif = ctrl_menu_recherche_tournoi()
-    if tournoi_actif:
+    tournoi_selectionne = ctrl_menu_recherche_tournoi()
+    if tournoi_selectionne:
+        tournoi_actif=ctrl_menu_passage_tournoi_json_objet(tournoi_selectionne)
         deroulement_tournoi(tournoi_actif)
     else:
         return
@@ -37,8 +38,7 @@ def ctrl_menu_recherche_tournoi():
             print("Vous avez choisi le tournoi :\n")
             vue_menu_revoir_reprendre_affichage_tournoi(nombre_trouve,tournoi_selectionne)
             input("Appuyer sur Entrée pour continuer")
-            tournoi_actif=ctrl_menu_passage_tournoi_json_objet(tournoi_selectionne)
-            return tournoi_actif
+            return tournoi_selectionne
     return
 
 def ctrl_menu_passage_tournoi_json_objet(tournoi):

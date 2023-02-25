@@ -16,12 +16,12 @@ def vue_menu_rapport():
     print("Quel rapport souhaitez vous éditer?")
     print(
         "Coté joueurs\n"
-        "\t1 --> Liste des joueurs par ordre alphabtique\n"
+        "\t1 --> Liste des joueurs par ordre alphabétique\n"
         "\t2 --> Liste des joueurs par ordre de classement\n"
         "Coté tournoi\n"
         "\t3 --> Liste de l'ensemble des tournois\n"
         "Coté tournoi spécifique\n"
-        "\t4 --> Liste des joueurs par ordre alphabtique\n"
+        "\t4 --> Liste des joueurs par ordre alphabétique\n"
         "\t5 --> Liste des joueurs par ordre de classement\n"
         "\t6 --> Liste des tours d'un tournoi\n"
         "\t7 --> Liste des matchs d'un tournoi\n"

@@ -322,6 +322,7 @@ class Tournoi:
                                         liste_rang_joueur.pop(rang_joueur)
                                         #Valide le duel
                                         duel = (f"{duel} {participant}")
+                                        break
                         else:
                             pass
             
