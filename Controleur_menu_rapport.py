@@ -39,16 +39,26 @@ def ctrl_menu_rapport():
             ctrl_rapport_tournoi_specifique("classement")
         # Choix 6 : rapport tournoi liste des tours
         elif reponse_utilisateur_menu_joueur == 6:
-            pass
+            ctrl_rapport_tournoi_tours()
         # Choix 7 : rapport tournoi liste des matchs
         elif reponse_utilisateur_menu_joueur == 7:
-            pass
+            ctrl_rapport_tournoi_tours()
         
         reponse_utilisateur = vue_menu_rapport()
         reponse_menu = reponse_utilisateur[0]
     
     # Choix 8 : Retour au menu principal
     pass
+
+def ctrl_rapport_tournoi_tours():
+    tournoi_selectionne = ctrl_menu_recherche_tournoi()
+    #Si l'utilisateur choisi un tournoi, on continu
+    if tournoi_selectionne:
+        tournoi_actif=ctrl_menu_passage_tournoi_json_objet(tournoi_selectionne)
+        vue_rapport_tours(tournoi_actif)
+    #Sinon on arrete
+    else:
+        return
 
 def ctrl_rapport_tournoi_specifique(critere):
     tournoi_actif = ctrl_menu_recherche_tournoi()
@@ -88,8 +98,7 @@ def ctrl_rapport_tri_joueur(critere,base):
             liste_joueur[base_joueur['joueurs'][joueur]['position']] = base_joueur['joueurs'][joueur][critere]
             liste_nom.append(base_joueur['joueurs'][joueur][critere])
 
-        
-    # Les tris par ordre alphabétique ou croissant
+    # Le tri par ordre alphabétique ou croissant
     liste_nom.sort()
     
     for nom_joueur in liste_nom:
