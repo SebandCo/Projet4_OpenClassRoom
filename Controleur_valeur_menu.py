@@ -1,4 +1,5 @@
 
+
 def ctrl_valeur_menu(menu_max, reponse_menu):
     reponse_correct = False
 
@@ -16,10 +17,11 @@ def ctrl_valeur_menu(menu_max, reponse_menu):
             else:
                 # Si reponse_menu n'est pas compris entre 1 et 3
                 reponse_menu = input("Merci de choisir un menu existant : ")
-        except:
+        except (ValueError):
             # Si reponse_menu n'est pas un entier
             reponse_menu = input("Merci de choisir un menu existant : ")
     return int(reponse_menu)
+
 
 def ctrl_valeur_utilisateur(reponse_utilisateur):
     reponse_correct = False
@@ -38,13 +40,14 @@ def ctrl_valeur_utilisateur(reponse_utilisateur):
             else:
                 # Si reponse_menu n'est pas compris entre 1 et 3
                 reponse_utilisateur = input("Merci de choisir un nombre positif non nul : ")
-        except:
+        except (ValueError):
             # Si reponse_menu n'est pas un entier
             reponse_utilisateur = input("Merci de choisir un nombre positif non nul : ")
 
     return int(reponse_utilisateur)
 
-def ctrl_valeur_sexe (reponse):
+
+def ctrl_valeur_sexe(reponse):
     reponse_correct = False
     # Tant que le controle n'est pas valide
     while reponse_correct is False:
@@ -53,5 +56,5 @@ def ctrl_valeur_sexe (reponse):
         # Si la réponse utilisateur est différente de H, F ou I
         else:
             reponse = input("Merci de saisir H, F ou I : ")
-    
+
     return reponse

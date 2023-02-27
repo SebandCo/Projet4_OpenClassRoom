@@ -1,5 +1,6 @@
 
-from Vue_nettoyage_ecran import *
+from Vue_nettoyage_ecran import nettoyage_ecran
+
 
 def vue_menu_principal():
     # Permet de nettoyer l'écran
@@ -22,5 +23,5 @@ def vue_menu_principal():
 
     # Récupération du choix de l'utilisateur
     reponse_menu = input("Merci de saisir le numéro de menu : ")
-    
-    return (reponse_menu,menu_max)
+
+    return (reponse_menu, menu_max)

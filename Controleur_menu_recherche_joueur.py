@@ -1,25 +1,32 @@
-from Vue_menu_recherche_joueur import *
-from Controleur_valeur_menu import *
-from Controleur_bdd_json import *
-from Modele_joueur import *
+from Vue_menu_recherche_joueur import vue_menu_recherche_joueur
+from Vue_menu_recherche_joueur import vue_menu_mot_recherche_joueur
+from Vue_menu_recherche_joueur import vue_menu_resultat_recherche_joueur
+from Vue_menu_recherche_joueur import vue_menu_choix_resultat_recherche_joueur_tournoi
+from Vue_menu_recherche_joueur import vue_menu_choix_resultat_recherche_joueur_simple
+from Vue_menu_recherche_joueur import vue_menu_affichage_joueur_recherche_joueur
+from Vue_menu_recherche_joueur import vue_menu_modif_joueur
+from Controleur_valeur_menu import ctrl_valeur_menu
+from Controleur_bdd_json import recherche_joueur_bdd
+from Modele_joueur import Joueur
+
 
 def ctrl_menu_recherche_joueur(menu_tournoi):
-    
+
     reponse_utilisateur_menu_joueur = False
 
     reponse_utilisateur = vue_menu_recherche_joueur()
-    
+
     menu_max = reponse_utilisateur[1]
     reponse_menu = reponse_utilisateur[0]
 
-    while reponse_utilisateur_menu_joueur != menu_max:      
+    while reponse_utilisateur_menu_joueur != menu_max:
         # Permet de relancer une recherche si le programme n'est pas sur le premier tour
-        if reponse_utilisateur_menu_joueur != False:
+        if reponse_utilisateur_menu_joueur is not False:
             reponse_utilisateur = vue_menu_recherche_joueur()
             reponse_menu = reponse_utilisateur[0]
 
         reponse_utilisateur_menu_joueur = ctrl_valeur_menu(menu_max, reponse_menu)
-        
+
         if reponse_utilisateur_menu_joueur != menu_max:
             # Choix 1 : Recherche par nom
             if reponse_utilisateur_menu_joueur == 1:
@@ -42,7 +49,7 @@ def ctrl_menu_recherche_joueur(menu_tournoi):
             vue_menu_resultat_recherche_joueur(resultat_recherche)
 
             if len(resultat_recherche) != 0:
-                if menu_tournoi == False :
+                if menu_tournoi is False:
                     retour_tampon = ctrl_menu_recherche_choix_joueur_simple(resultat_recherche)
                     if retour_tampon == "retour_generale":
                         return
@@ -54,29 +61,30 @@ def ctrl_menu_recherche_joueur(menu_tournoi):
     # Choix 6 : Annulation de la recherche
     return
 
+
 def ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche):
     reponse_utilisateur_orientation_joueur = 0
 
     reponse_utilisateur = vue_menu_choix_resultat_recherche_joueur_tournoi()
-    
+
     menu_max = reponse_utilisateur[1]
-    reponse_menu = reponse_utilisateur[0]    
+    reponse_menu = reponse_utilisateur[0]
 
     while reponse_utilisateur_orientation_joueur != menu_max:
         reponse_utilisateur_orientation_joueur = ctrl_valeur_menu(menu_max, reponse_menu)
-    
+
         if reponse_utilisateur_orientation_joueur != menu_max:
             if reponse_utilisateur_orientation_joueur == 1 or reponse_utilisateur_orientation_joueur == 2:
                 reponse_choix_joueur = input("Quel numéro de joueur voulez vous selectionner ? : ")
                 nbr_max_joueur = len(resultat_recherche)
-                reponse_choix_joueur = ctrl_valeur_menu(nbr_max_joueur,reponse_choix_joueur)
+                reponse_choix_joueur = ctrl_valeur_menu(nbr_max_joueur, reponse_choix_joueur)
                 compteur = 0
                 for joueur in resultat_recherche:
                     compteur += 1
                     if compteur == reponse_choix_joueur:
                         joueur_selectionne = joueur
                         nombre_trouve = compteur
-                print ("Vous avez choisi le joueur : ")
+                print("Vous avez choisi le joueur : ")
                 vue_menu_affichage_joueur_recherche_joueur(joueur_selectionne, nombre_trouve)
                 if reponse_utilisateur_orientation_joueur == 1:
                     return joueur_selectionne
@@ -84,32 +92,33 @@ def ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche):
                     input("Joueur à modifier")
                     return joueur_selectionne
             elif reponse_utilisateur_orientation_joueur == 3:
-                return 
+                return
+
 
 def ctrl_menu_recherche_choix_joueur_simple(resultat_recherche):
 
     reponse_utilisateur_orientation_joueur = 0
 
     reponse_utilisateur = vue_menu_choix_resultat_recherche_joueur_simple()
-    
+
     menu_max = reponse_utilisateur[1]
-    reponse_menu = reponse_utilisateur[0]    
+    reponse_menu = reponse_utilisateur[0]
 
     while reponse_utilisateur_orientation_joueur != menu_max:
         reponse_utilisateur_orientation_joueur = ctrl_valeur_menu(menu_max, reponse_menu)
-    
+
         if reponse_utilisateur_orientation_joueur != menu_max:
             if reponse_utilisateur_orientation_joueur == 1:
                 reponse_choix_joueur = input("Quel numéro de joueur voulez vous modifier ? : ")
                 nbr_max_joueur = len(resultat_recherche)
-                reponse_choix_joueur = ctrl_valeur_menu(nbr_max_joueur,reponse_choix_joueur)
+                reponse_choix_joueur = ctrl_valeur_menu(nbr_max_joueur, reponse_choix_joueur)
                 compteur = 0
                 for joueur in resultat_recherche:
                     compteur += 1
                     if compteur == reponse_choix_joueur:
                         joueur_selectionne = joueur
                 # Transforme la réponse Json(dictionnaire) en objet
-                joueur_selectionne_objet = Joueur (
+                joueur_selectionne_objet = Joueur(
                                             joueur_selectionne["nom"],
                                             joueur_selectionne["prenom"],
                                             joueur_selectionne["naissance"],
@@ -123,6 +132,5 @@ def ctrl_menu_recherche_choix_joueur_simple(resultat_recherche):
                 return ("retour_menu")
             elif reponse_utilisateur_orientation_joueur == 3:
                 return ("retour_generale")
-    
-    return ("retour_generale")
 
+    return ("retour_generale")

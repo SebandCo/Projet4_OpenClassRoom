@@ -1,14 +1,18 @@
-from Vue_menu_tournoi_existant import *
-from Controleur_bdd_json import *
-from Controleur_valeur_menu import *
-from Modele_tournoi import *
-from Modele_joueur_tournoi import *
-from Controleur_menu_deroulement_tournoi import *
+from Vue_menu_tournoi_existant import vue_menu_revoir_reprendre_tournoi_accueil
+from Vue_menu_tournoi_existant import vue_menu_revoir_reprendre_affichage_tournoi
+from Controleur_bdd_json import initialisation_bdd_tournoi
+from Controleur_bdd_json import recherche_joueur_bdd
+from Controleur_valeur_menu import ctrl_valeur_menu
+from Modele_tournoi import Tournoi
+from Modele_joueur_tournoi import JoueurTournoi
+from Modele_joueur import Joueur
+from Controleur_menu_deroulement_tournoi import deroulement_tournoi
+
 
 def ctrl_reprise_tournoi_existant():
     tournoi_selectionne = ctrl_menu_recherche_tournoi()
     if tournoi_selectionne:
-        tournoi_actif=ctrl_menu_passage_tournoi_json_objet(tournoi_selectionne)
+        tournoi_actif = ctrl_menu_passage_tournoi_json_objet(tournoi_selectionne)
         deroulement_tournoi(tournoi_actif)
     else:
         return
@@ -16,7 +20,7 @@ def ctrl_reprise_tournoi_existant():
 
 def ctrl_menu_recherche_tournoi():
     tournoi_existant = initialisation_bdd_tournoi()
-    
+
     reponse_utilisateur_menu_tournoi = 0
     # Affichage de la vue menu joueur
     reponse_utilisateur = vue_menu_revoir_reprendre_tournoi_accueil(tournoi_existant)
@@ -25,10 +29,10 @@ def ctrl_menu_recherche_tournoi():
     reponse_menu = reponse_utilisateur[0]
 
     while reponse_utilisateur_menu_tournoi != menu_max_tournoi:
-        
+
         reponse_utilisateur_menu_tournoi = ctrl_valeur_menu(menu_max_tournoi, reponse_menu)
-        
-        if reponse_utilisateur_menu_tournoi != menu_max_tournoi :
+
+        if reponse_utilisateur_menu_tournoi != menu_max_tournoi:
             compteur = 0
             for tournoi in tournoi_existant:
                 compteur += 1
@@ -36,13 +40,14 @@ def ctrl_menu_recherche_tournoi():
                     tournoi_selectionne = tournoi
                     nombre_trouve = compteur
             print("Vous avez choisi le tournoi :\n")
-            vue_menu_revoir_reprendre_affichage_tournoi(nombre_trouve,tournoi_selectionne)
+            vue_menu_revoir_reprendre_affichage_tournoi(nombre_trouve, tournoi_selectionne)
             input("Appuyer sur Entrée pour continuer")
             return tournoi_selectionne
     return
 
+
 def ctrl_menu_passage_tournoi_json_objet(tournoi):
-    tournoi_objet=Tournoi(
+    tournoi_objet = Tournoi(
                         tournoi["nom"],
                         tournoi["lieu"],
                         tournoi["date"],
@@ -58,7 +63,7 @@ def ctrl_menu_passage_tournoi_json_objet(tournoi):
                         tournoi["round_global"],
                         tournoi["position"])
     for joueur in tournoi["joueurs"]:
-        nouveau_joueur = Joueur (
+        nouveau_joueur = Joueur(
                         tournoi["joueurs"][joueur]["nom"],
                         tournoi["joueurs"][joueur]["prenom"],
                         tournoi["joueurs"][joueur]["naissance"],
@@ -77,7 +82,6 @@ def ctrl_menu_passage_tournoi_json_objet(tournoi):
                         tournoi["joueurs"][joueur]["paires"],
                         tournoi["joueurs"][joueur]["points"],
                         tournoi["joueurs"][joueur]["ordre"])
-        
-        tournoi_objet.joueurs[int(joueur)]=nouveau_joueur
-    return tournoi_objet
 
+        tournoi_objet.joueurs[int(joueur)] = nouveau_joueur
+    return tournoi_objet

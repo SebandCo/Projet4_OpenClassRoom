@@ -1,18 +1,17 @@
-from Vue_menu_principal import *
-from Controleur_valeur_menu import *
-from Controleur_menu_joueur import *
-from Controleur_menu_creation_tournoi import *
-from Controleur_menu_tournoi_existant import *
-from Controleur_menu_rapport import *
+from Vue_menu_principal import vue_menu_principal
+from Controleur_valeur_menu import ctrl_valeur_menu
+from Controleur_menu_creation_tournoi import ctrl_menu_tournoi
+from Controleur_menu_tournoi_existant import ctrl_reprise_tournoi_existant
+from Controleur_menu_rapport import ctrl_menu_rapport
 
 
 def ctrl_menu_principal():
-    #Initialisation de la réponse utilisateur
+    # Initialisation de la réponse utilisateur
     reponse_utilisateur_menu_principal = 0
-    
+
     # Affiche la vue du menu principal
     reponse_utilisateur = vue_menu_principal()
-    
+
     # Nombre de menu possible
     menu_max_principal = reponse_utilisateur[1]
     reponse_menu_principal = reponse_utilisateur[0]
@@ -23,16 +22,16 @@ def ctrl_menu_principal():
 
         # Choix 1 : Menu Joueur
         if reponse_utilisateur_menu_principal == 1:
-            ctrl_menu_joueur()
-        
+            ctrl_valeur_menu()
+
         # Choix 2 : Création d'un nouveau tournoi
         elif reponse_utilisateur_menu_principal == 2:
             ctrl_menu_tournoi()
-        
+
         # Choix 3 : Visualisation ou reprise d'un tournoi existant
         elif reponse_utilisateur_menu_principal == 3:
             ctrl_reprise_tournoi_existant()
-        
+
         # Choix 4 : affichage des rapports
         elif reponse_utilisateur_menu_principal == 4:
             ctrl_menu_rapport()

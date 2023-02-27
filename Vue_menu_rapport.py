@@ -1,5 +1,5 @@
+from Vue_nettoyage_ecran import nettoyage_ecran
 
-from Vue_nettoyage_ecran import *
 
 def vue_menu_rapport():
     # Permet de nettoyer l'écran
@@ -29,8 +29,9 @@ def vue_menu_rapport():
 
     # Récupération du choix de l'utilisateur
     reponse_menu = input("Merci de saisir le numéro de menu : ")
-    
-    return (reponse_menu,menu_max)
+
+    return (reponse_menu, menu_max)
+
 
 def vue_rapport_tours(tournoi):
     # Permet de nettoyer l'écran
@@ -41,9 +42,9 @@ def vue_rapport_tours(tournoi):
         "           Logiciel de tournois d'Echec\n"
         f"        Rapport du tournoi {tournoi.nom}\n"
         "==================================================\n\n")
-    
+
     print(f"Le tournoi a {tournoi.tour_actif-1} tours déjà réalisés\n"
-        "Voici le détail des tours\n\n")
+          f"Voici le détail des tours\n\n")
 
     compteur_round = 1
     compteur_match = 1
@@ -51,11 +52,10 @@ def vue_rapport_tours(tournoi):
         print(f"Round {compteur_round}:")
         for matchs in round:
             print(f"\tMatchs {compteur_match} :\n"
-                f"\t\t{tournoi.joueurs[int(matchs[0])].nom} {tournoi.joueurs[int(matchs[0])].prenom}"
-                " contre "
-                f"{tournoi.joueurs[int(matchs[-1])].nom} {tournoi.joueurs[int(matchs[-1])].prenom}\n")
+                  f"\t\t{tournoi.joueurs[int(matchs[0])].nom} {tournoi.joueurs[int(matchs[0])].prenom}"
+                  f" contre "
+                  f"{tournoi.joueurs[int(matchs[-1])].nom} {tournoi.joueurs[int(matchs[-1])].prenom}\n")
             compteur_match += 1
         compteur_round += 1
     input("Appuyer sur Entrée pour continuer")
     return
-    

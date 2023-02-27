@@ -1,7 +1,6 @@
-from Vue_nettoyage_ecran import *
-from Controleur_bdd_json import *
-from pprint import pprint
-from numpy import *
+from Vue_nettoyage_ecran import nettoyage_ecran
+from Controleur_bdd_json import modif_joueur_bdd
+
 
 def vue_menu_recherche_joueur():
 
@@ -28,12 +27,14 @@ def vue_menu_recherche_joueur():
     # Récupération du choix de l'utilisateur
     reponse_menu = input("Merci de saisir le numéro choisi : ")
 
-    return (reponse_menu,menu_max)
+    return (reponse_menu, menu_max)
+
 
 def vue_menu_mot_recherche_joueur(mot_recherche):
     print("\nVous avez choisi la recherche par :", mot_recherche.capitalize())
     mot_recherche = input("Merci de saisir le critère de recherche : ")
-    return  mot_recherche
+    return mot_recherche
+
 
 def vue_menu_resultat_recherche_joueur(resultat_recherche):
     if len(resultat_recherche) == 0:
@@ -45,17 +46,19 @@ def vue_menu_resultat_recherche_joueur(resultat_recherche):
         compteur = 0
         for joueur in resultat_recherche:
             compteur += 1
-            vue_menu_affichage_joueur_recherche_joueur(joueur,compteur)
+            vue_menu_affichage_joueur_recherche_joueur(joueur, compteur)
 
-def vue_menu_affichage_joueur_recherche_joueur(joueur,compteur):
-    print (compteur, ":\t",
-            joueur["nom"], joueur["prenom"],"(",joueur["sexe"],")\n",
-            "\t Né(e) le : ", joueur["naissance"],"\n"
-            "\t",joueur["classement"],"eme au classement\n")
-        
+
+def vue_menu_affichage_joueur_recherche_joueur(joueur, compteur):
+    print(f"{compteur} :"
+          f"\t{joueur['nom']} {joueur['prenom']} ({joueur['sexe']})\n",
+          f"\tNé(e) le : {joueur['naissance']}\n"
+          f"\t{joueur['classement']}eme au classement\n")
+
+
 def vue_menu_choix_resultat_recherche_joueur_simple():
     # Menu de selection pour l'utilisateur
-    menu_max = 3    
+    menu_max = 3
     print("Que souhaitez vous faire :")
     print(
         "1 --> Modifier un joueur\n"
@@ -64,12 +67,13 @@ def vue_menu_choix_resultat_recherche_joueur_simple():
 
     # Récupération du choix de l'utilisateur
     reponse_menu = input("Merci de saisir le numéro choisi : ")
-    
+
     return (reponse_menu, menu_max)
+
 
 def vue_menu_choix_resultat_recherche_joueur_tournoi():
     # Menu de selection pour l'utilisateur
-    menu_max = 4    
+    menu_max = 4
     print("Que souhaitez vous faire :")
     print(
         "1 --> Selectionner un joueur\n"
@@ -81,42 +85,42 @@ def vue_menu_choix_resultat_recherche_joueur_tournoi():
 
     return (reponse_menu, menu_max)
 
+
 def vue_menu_modif_joueur(joueur):
     print(f"\nVous avez choisi le joueur :\n"
-            f"\t{joueur.nom} {joueur.prenom}({joueur.sexe})\n"
-            f"\tNé(e) le : {joueur.naissance}\n"
-            f"\t{joueur.classement}eme au classement\n")
-    
+          f"\t{joueur.nom} {joueur.prenom}({joueur.sexe})\n"
+          f"\tNé(e) le : {joueur.naissance}\n"
+          f"\t{joueur.classement}eme au classement\n")
+
     print(f"Le nom du joueur est {joueur.nom}")
-    reponse = modif_joueur_bdd(joueur.position,"nom")
+    reponse = modif_joueur_bdd(joueur.position, "nom")
     if reponse:
-        joueur.nom=reponse
+        joueur.nom = reponse
 
     print(f"Le prénom du joueur est {joueur.prenom}")
-    reponse = modif_joueur_bdd(joueur.position,"prenom")
+    reponse = modif_joueur_bdd(joueur.position, "prenom")
     if reponse:
-        joueur.prenom=reponse
+        joueur.prenom = reponse
 
     print(f"La date de naissance du joueur est {joueur.naissance}")
-    reponse = modif_joueur_bdd(joueur.position,"naissance")
+    reponse = modif_joueur_bdd(joueur.position, "naissance")
     if reponse:
-        joueur.naissance=reponse
+        joueur.naissance = reponse
 
     print(f"Le sexe du joueur est {joueur.sexe}")
-    reponse = modif_joueur_bdd(joueur.position,"sexe")
+    reponse = modif_joueur_bdd(joueur.position, "sexe")
     if reponse:
-        joueur.sexe=reponse
+        joueur.sexe = reponse
 
     print(f"Le classement du joueur est {joueur.classement}")
-    reponse = modif_joueur_bdd(joueur.position,"classement")
+    reponse = modif_joueur_bdd(joueur.position, "classement")
     if reponse:
-        joueur.classement=reponse
+        joueur.classement = reponse
 
-    print(f"\nVoici les nouvelles informations du joueur :\n",
-            f"\t{joueur.nom} {joueur.prenom}({joueur.sexe})\n"
-            f"\tNé(e) le : {joueur.naissance}\n"
-            f"\t{joueur.classement}eme au classement\n")
+    print(f"\nVoici les nouvelles informations du joueur :\n"
+          f"\t{joueur.nom} {joueur.prenom}({joueur.sexe})\n"
+          f"\tNé(e) le : {joueur.naissance}\n"
+          f"\t{joueur.classement}eme au classement\n")
     input("Appuyer sur ""Entrée"" pour continuer")
-    
+
     return joueur
-   

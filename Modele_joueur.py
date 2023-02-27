@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 # Module pour l'importation de la base de donnée
-from tinydb import where
-from Controleur_bdd_json import *
+from Controleur_bdd_json import recherche_bdd_position
+from Controleur_bdd_json import initialisation_bdd_joueur
+from Controleur_valeur_menu import ctrl_valeur_sexe
+
 
 class Joueur:
     def __init__(self,
-                nom = "",
-                prenom = "",
-                naissance = "",
-                sexe = "",
-                classement = 0,
-                position = 0):
+                 nom="",
+                 prenom="",
+                 naissance="",
+                 sexe="",
+                 classement=0,
+                 position=0):
         self.nom = nom
         self.prenom = prenom
         self.naissance = naissance
@@ -33,7 +35,7 @@ class Joueur:
     def generate_nom(self):
         self.nom = input("Merci de saisir le nom du joueur : ")
         return self.nom
-    
+
     # Méthode pour demander à l'utilisateur le prénom du joueur
     # Renvoie le prenom saisie par l'utilisateur
     def generate_prenom(self):
@@ -49,20 +51,21 @@ class Joueur:
     # Méthode pour demander à l'utilisateur le genre du joueur (controle avec une autre méthode)
     # Renvoie le genre saisie par l'utilisateur
     def generate_sexe(self):
-        reponse_utilisateur = input(self.prenom + " " + self.nom + " est-ce un Homme, une Femme ou Indeterminée ? (Saisir H, F ou I) : ")
-        reponse = ctrl_valeur_sexe (reponse_utilisateur)
+        reponse_utilisateur = input(f"{self.prenom} {self.nom} est-ce un Homme, une Femme ou Indeterminée ?"
+                                    f"(Saisir H, F ou I) : ")
+        reponse = ctrl_valeur_sexe(reponse_utilisateur)
         self.sexe = reponse
         return self.sexe
-    
+
     # Méthode pour demander à l'utilisateur le classement du joueur (controle avec une autre méthode)
     # Renvoie le classement saisie par l'utilisateur
     def generate_classement(self):
         self.classement = input("Merci de saisir le classement de " + self.prenom + " " + self.nom + " : ")
         controle_reponse = False
-        while controle_reponse == False:
+        while controle_reponse is False:
             controle_reponse = self.controle_reponse_classement()
         return self.classement
-    
+
     # Méthode pour trouver un numéro de position non utilisé dans la base de donnée json
     # Renvoie le premier numéro de position non utilisé
     def generate_position(self):
@@ -75,11 +78,11 @@ class Joueur:
     def ajout_joueur_bdd(self):
         bdd_joueur = initialisation_bdd_joueur()
         bdd_joueur.insert({"nom": self.nom,
-                          "prenom": self.prenom,
-                          "naissance": self.naissance,
-                          "sexe": self.sexe,
-                          "classement": self.classement,
-                          "position": self.position})
+                           "prenom": self.prenom,
+                           "naissance": self.naissance,
+                           "sexe": self.sexe,
+                           "classement": self.classement,
+                           "position": self.position})
 
     # Méthode pour controler que la réponse de l'utilisateur est bien conforme (entier positif)
     # Renvoi True ou False après le controle
@@ -98,7 +101,7 @@ class Joueur:
                 controle_reponse = True
                 return controle_reponse
         # Si la réponse utilisateur n'est pas un nombre
-        except:
+        except (ValueError):
             self.classement = input("Merci de rentrer un nombre entier positif : ")
             controle_reponse = False
             return controle_reponse
