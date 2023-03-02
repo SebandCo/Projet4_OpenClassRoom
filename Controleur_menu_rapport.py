@@ -9,7 +9,7 @@ from Vue_menu_rapport import vue_rapport_tours
 from Vue_menu_recherche_joueur import vue_menu_affichage_joueur_recherche_joueur
 from Vue_menu_tournoi_existant import vue_menu_revoir_reprendre_affichage_tournoi
 
-
+# Permet de lancer le menu rapport et la redirection en fonction des réponses
 def ctrl_menu_rapport():
 
     # Initialisation de la réponse utilisateur
@@ -46,13 +46,14 @@ def ctrl_menu_rapport():
         elif reponse_utilisateur_menu_joueur == 7:
             ctrl_rapport_tournoi_tours()
 
+        # Choix 8 : Sortir du programme
+        elif reponse_utilisateur_menu_joueur == 8:
+            break
+
         reponse_utilisateur = vue_menu_rapport()
         reponse_menu = reponse_utilisateur[0]
 
-    # Choix 8 : Retour au menu principal
-    pass
-
-
+# Permet de d'afficher le rapport des tours d'un tournoi
 def ctrl_rapport_tournoi_tours():
     tournoi_selectionne = ctrl_menu_recherche_tournoi()
     # Si l'utilisateur choisi un tournoi, on continu
@@ -63,7 +64,7 @@ def ctrl_rapport_tournoi_tours():
     else:
         return
 
-
+# Permet d'afficher la liste des joueurs d'un tournoi choisi
 def ctrl_rapport_tournoi_specifique(critere):
     tournoi_actif = ctrl_menu_recherche_tournoi()
     # Si l'utilisateur choisi un tournoi, on continu
@@ -73,7 +74,7 @@ def ctrl_rapport_tournoi_specifique(critere):
     else:
         return
 
-
+# Permet d'afficher la liste des tournoi
 def ctrl_rapport_tournoi():
     print("\nVoici le rapport demandé: \n")
     base_tournoi = initialisation_bdd_tournoi()
@@ -84,7 +85,7 @@ def ctrl_rapport_tournoi():
     input("Appuyer sur ""Entrée"" pour continuer")
     return
 
-
+# Permet d'afficher la liste générale des joueurs
 def ctrl_rapport_tri_joueur(critere, base):
     print("\nVoici le rapport demandé: \n")
     if base == "":

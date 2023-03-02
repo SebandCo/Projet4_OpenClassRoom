@@ -1,6 +1,6 @@
 import os
 
-
+# Permet de nettoyer l'écran pour afficher un écran noir
 def nettoyage_ecran():
 
     if os.name == "nt":

@@ -3,8 +3,9 @@ from Controleur_valeur_menu import ctrl_valeur_menu
 from Controleur_menu_creation_tournoi import ctrl_menu_tournoi
 from Controleur_menu_tournoi_existant import ctrl_reprise_tournoi_existant
 from Controleur_menu_rapport import ctrl_menu_rapport
+from Controleur_menu_joueur import ctrl_menu_joueur
 
-
+# Permet de lancer le menu principal et la redirection en fonction des réponses
 def ctrl_menu_principal():
     # Initialisation de la réponse utilisateur
     reponse_utilisateur_menu_principal = 0
@@ -22,7 +23,7 @@ def ctrl_menu_principal():
 
         # Choix 1 : Menu Joueur
         if reponse_utilisateur_menu_principal == 1:
-            ctrl_valeur_menu()
+            ctrl_menu_joueur()
 
         # Choix 2 : Création d'un nouveau tournoi
         elif reponse_utilisateur_menu_principal == 2:
@@ -32,9 +33,13 @@ def ctrl_menu_principal():
         elif reponse_utilisateur_menu_principal == 3:
             ctrl_reprise_tournoi_existant()
 
-        # Choix 4 : affichage des rapports
+        # Choix 4 : Affichage des rapports
         elif reponse_utilisateur_menu_principal == 4:
             ctrl_menu_rapport()
+
+        # Choix 5 : Sortir du programme
+        elif reponse_utilisateur_menu_principal == 5:
+            break
 
         # Relance le menu principale
         reponse_utilisateur = vue_menu_principal()

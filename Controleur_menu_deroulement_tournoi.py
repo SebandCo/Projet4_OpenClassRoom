@@ -3,7 +3,7 @@ from Vue_menu_nouveau_tournoi import vue_tournoi_liste_duel
 from Vue_menu_nouveau_tournoi import vue_tournoi_resultat
 from Controleur_valeur_menu import ctrl_valeur_menu
 
-
+# Permet de lancer les différentes étapes du tournoi
 def deroulement_tournoi(tournoi):
 
     while tournoi.tour_actif <= tournoi.nbr_tour:

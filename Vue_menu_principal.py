@@ -1,7 +1,7 @@
 
 from Vue_nettoyage_ecran import nettoyage_ecran
 
-
+# Permet d'afficher le menu général
 def vue_menu_principal():
     # Permet de nettoyer l'écran
     nettoyage_ecran()
@@ -18,7 +18,7 @@ def vue_menu_principal():
         "1 --> Gestion des joueurs\n"
         "2 --> Création d'un nouveau tournoi\n"
         "3 --> Revoir/Reprendre un tournoi\n"
-        "4 --> Afficher les rapports (NOK)\n"
+        "4 --> Afficher les rapports\n"
         "5 --> Sortir du programme\n")
 
     # Récupération du choix de l'utilisateur

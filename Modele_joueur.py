@@ -6,6 +6,7 @@ from Controleur_valeur_menu import ctrl_valeur_sexe
 
 
 class Joueur:
+    # Permet d'initialiser un Joueur
     def __init__(self,
                  nom="",
                  prenom="",

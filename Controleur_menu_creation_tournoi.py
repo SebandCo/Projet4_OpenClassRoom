@@ -7,7 +7,8 @@ from Controleur_menu_recherche_joueur import ctrl_valeur_menu
 from Controleur_menu_recherche_joueur import ctrl_menu_recherche_joueur
 from Controleur_menu_deroulement_tournoi import deroulement_tournoi
 
-
+# Permet de lancer le processus de création de tournoi
+# Puis lance le déroulement du tournoi
 def ctrl_menu_tournoi():
     # Création du tournoi
     nouveau_tournoi = ctrl_creation_du_tournoi()
@@ -19,7 +20,8 @@ def ctrl_menu_tournoi():
 
     deroulement_tournoi(nouveau_tournoi)
 
-
+# Permet de créer le tournoi
+# Renvoi le tournoi créé
 def ctrl_creation_du_tournoi():
     # Création du tournoi
     vue_menu_nouveau_tournoi()
@@ -28,7 +30,7 @@ def ctrl_creation_du_tournoi():
     vue_recap_menu_nouveau_tournoi(nouveau_tournoi)
     return nouveau_tournoi
 
-
+# Permet de rajouter des joueurs au tournoi
 def ctrl_rajout_des_joueurs(nouveau_tournoi):
     # Boucle pour le rajout des joueurs au tournoi
     compteur = 1

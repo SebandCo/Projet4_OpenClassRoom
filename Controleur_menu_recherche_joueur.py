@@ -9,7 +9,7 @@ from Controleur_valeur_menu import ctrl_valeur_menu
 from Controleur_bdd_json import recherche_joueur_bdd
 from Modele_joueur import Joueur
 
-
+# Permet de lancer le menu recherche de joueur dans la base de données Json
 def ctrl_menu_recherche_joueur(menu_tournoi):
 
     reponse_utilisateur_menu_joueur = False
@@ -61,7 +61,7 @@ def ctrl_menu_recherche_joueur(menu_tournoi):
     # Choix 6 : Annulation de la recherche
     return
 
-
+# Permet de selectionner un joueur dans le cadre d'un tournoi
 def ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche):
     reponse_utilisateur_orientation_joueur = 0
 
@@ -94,7 +94,7 @@ def ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche):
             elif reponse_utilisateur_orientation_joueur == 3:
                 return
 
-
+# Permet de selectionner un joueur dans le cadre d'une recherche simple
 def ctrl_menu_recherche_choix_joueur_simple(resultat_recherche):
 
     reponse_utilisateur_orientation_joueur = 0

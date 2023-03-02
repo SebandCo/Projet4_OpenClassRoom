@@ -3,7 +3,7 @@ from Controleur_valeur_menu import ctrl_valeur_menu
 from Controleur_menu_recherche_joueur import ctrl_menu_recherche_joueur
 from Modele_joueur import Joueur
 
-
+# Permet de lancer le menu joueur et la redirection en fonction des réponses
 def ctrl_menu_joueur():
     # Indique que nous accedons au menu joueur via le menu général et non le menu Tournoi
     menu_tournoi = False

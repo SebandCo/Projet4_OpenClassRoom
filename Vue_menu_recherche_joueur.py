@@ -1,7 +1,7 @@
 from Vue_nettoyage_ecran import nettoyage_ecran
 from Controleur_bdd_json import modif_joueur_bdd
 
-
+# Permet d'afficher le menu général de la recherche de joueur
 def vue_menu_recherche_joueur():
 
     nettoyage_ecran()
@@ -29,13 +29,13 @@ def vue_menu_recherche_joueur():
 
     return (reponse_menu, menu_max)
 
-
+# Permet de demander le mot rechercher à l'utilisateur
 def vue_menu_mot_recherche_joueur(mot_recherche):
     print("\nVous avez choisi la recherche par :", mot_recherche.capitalize())
     mot_recherche = input("Merci de saisir le critère de recherche : ")
     return mot_recherche
 
-
+# Permet d'afficher la liste des joueurs trouvé
 def vue_menu_resultat_recherche_joueur(resultat_recherche):
     if len(resultat_recherche) == 0:
         print("Aucun joueur n'a été trouvé")
@@ -48,14 +48,15 @@ def vue_menu_resultat_recherche_joueur(resultat_recherche):
             compteur += 1
             vue_menu_affichage_joueur_recherche_joueur(joueur, compteur)
 
-
+# Permet d'afficher le descriptif d'un joueur
 def vue_menu_affichage_joueur_recherche_joueur(joueur, compteur):
     print(f"{compteur} :"
           f"\t{joueur['nom']} {joueur['prenom']} ({joueur['sexe']})\n",
           f"\tNé(e) le : {joueur['naissance']}\n"
           f"\t{joueur['classement']}eme au classement\n")
 
-
+# Permet de demander que faire avec le joueur selectionner
+# dans le cadre d'une recherche simple
 def vue_menu_choix_resultat_recherche_joueur_simple():
     # Menu de selection pour l'utilisateur
     menu_max = 3
@@ -70,7 +71,8 @@ def vue_menu_choix_resultat_recherche_joueur_simple():
 
     return (reponse_menu, menu_max)
 
-
+# Permet de demander que faire avec le joueur selectionner
+# dans le cadre d'une recherche lors d'un tournoi
 def vue_menu_choix_resultat_recherche_joueur_tournoi():
     # Menu de selection pour l'utilisateur
     menu_max = 4
@@ -85,7 +87,7 @@ def vue_menu_choix_resultat_recherche_joueur_tournoi():
 
     return (reponse_menu, menu_max)
 
-
+# Permet d'afficher la sequence de modification d'un joueur
 def vue_menu_modif_joueur(joueur):
     print(f"\nVous avez choisi le joueur :\n"
           f"\t{joueur.nom} {joueur.prenom}({joueur.sexe})\n"

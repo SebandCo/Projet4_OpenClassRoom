@@ -8,7 +8,7 @@ from Modele_joueur_tournoi import JoueurTournoi
 from Modele_joueur import Joueur
 from Controleur_menu_deroulement_tournoi import deroulement_tournoi
 
-
+# Permet de lancer le menu reprise de tournoi
 def ctrl_reprise_tournoi_existant():
     tournoi_selectionne = ctrl_menu_recherche_tournoi()
     if tournoi_selectionne:
@@ -17,7 +17,7 @@ def ctrl_reprise_tournoi_existant():
     else:
         return
 
-
+# Permet de selectionner un tournoi à reprendre
 def ctrl_menu_recherche_tournoi():
     tournoi_existant = initialisation_bdd_tournoi()
 
@@ -45,7 +45,7 @@ def ctrl_menu_recherche_tournoi():
             return tournoi_selectionne
     return
 
-
+# Permet de transformer un tournoi JSON en tournoi Objet
 def ctrl_menu_passage_tournoi_json_objet(tournoi):
     tournoi_objet = Tournoi(
                         tournoi["nom"],

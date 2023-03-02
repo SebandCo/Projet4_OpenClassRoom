@@ -1,6 +1,6 @@
 from Vue_nettoyage_ecran import nettoyage_ecran
 
-
+# Permet d'afficher le menu général des rapport
 def vue_menu_rapport():
     # Permet de nettoyer l'écran
     nettoyage_ecran()
@@ -32,7 +32,7 @@ def vue_menu_rapport():
 
     return (reponse_menu, menu_max)
 
-
+# Permet d'afficher le détail des tours d'un tournoi
 def vue_rapport_tours(tournoi):
     # Permet de nettoyer l'écran
     nettoyage_ecran()

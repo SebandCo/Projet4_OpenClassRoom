@@ -12,6 +12,7 @@ from Controleur_bdd_json import suppression_item_bdd
 
 
 class Tournoi:
+    # Permet de créer un tournoi
     def __init__(self,
                  nom="",
                  lieu="",
@@ -124,6 +125,7 @@ class Tournoi:
         return self.nbr_joueur
 
     # Méthode pour demander la tournée ????
+    # Ne renvoi rien car pas d'utiliter apparente
     def generate_tournee(self):
         pass
 
@@ -245,11 +247,13 @@ class Tournoi:
         self.creation_paire()
         self.generate_round_global()
 
+    # Permet de remettre à zero les couleurs et paires des joueurs
     def remise_a_zero(self):
         for participant in self.joueurs:
             self.joueurs[participant].paires = ""
             self.joueurs[participant].couleur = ""
 
+    # Permet de mettre la liste des rounds sous forme d'une liste
     def transformation_round_en_liste(self):
         liste_round_global = []
         for rang in self.round_global:
@@ -257,18 +261,21 @@ class Tournoi:
                 liste_round_global.append(element)
         return liste_round_global
 
+    # Permet d'affecter les couleurs à l'un des joueurs
     def affectation_couleur_concurrent(self, nbr_aleatoire, participant):
         if nbr_aleatoire == 1:
             self.joueurs[participant].couleur = "blancs"
         else:
             self.joueurs[participant].couleur = "noirs"
 
+    # Permet d'affecter les couleurs à l'autre joueurs
     def affectation_couleur_adversaire(self, nbr_aleatoire, participant):
         if nbr_aleatoire == 1:
             self.joueurs[participant].couleur = "noirs"
         else:
             self.joueurs[participant].couleur = "blancs"
 
+    # Permet de créer les paires de duel
     def creation_paire(self):
         numero_de_paires = 1
         round_actuel = (f"Round {self.tour_actif}")
@@ -334,6 +341,7 @@ class Tournoi:
             numero_de_paires += 1
             duel = ""
 
+    # Permet de demander à l'utilisateur les résultats des duels
     def recuperation_resultat(self):
         numero_de_paires = 1
         joueur1 = ""
@@ -365,6 +373,7 @@ class Tournoi:
             joueur1 = ""
             joueur2 = ""
 
+    # Permet de créer les paires des premiers duel (méthode suisse)
     def creation_premiere_paire(self):
         numero_de_paires = 1
         duel = ""
@@ -405,6 +414,7 @@ class Tournoi:
             numero_de_paires += 1
             duel = ""
 
+    # Permet d'afficher les duels à réaliser
     def affichage_adversaire(self, numero_paire):
         joueur1 = ""
         joueur2 = ""

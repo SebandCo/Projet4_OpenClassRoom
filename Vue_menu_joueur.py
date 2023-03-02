@@ -1,6 +1,6 @@
 from Vue_nettoyage_ecran import nettoyage_ecran
 
-
+# Permet d'afficher le menu général des joueurs
 def vue_menu_joueur():
     # Permet de nettoyer l'écran
     nettoyage_ecran()
