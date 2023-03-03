@@ -1,5 +1,6 @@
 from tinydb import TinyDB, where, Query
-from Controleur_valeur_menu import ctrl_valeur_utilisateur, ctrl_valeur_sexe
+from Controleur.valeur_menu import ctrl_valeur_utilisateur, ctrl_valeur_sexe
+
 
 # Permet d'initialiser la base de donnée JSON Joueur
 # Renvoi la base de donnée JSON
@@ -7,6 +8,7 @@ def initialisation_bdd_joueur():
     joueurs_bdd = TinyDB("joueurs_bdd.json")
     joueur_aj = joueurs_bdd.table("joueur_bdd")
     return joueur_aj
+
 
 # Permet de lancer la recherche d'un joueur suivant les critères données
 # Renvoi les joueurs trouvés
@@ -16,6 +18,7 @@ def recherche_joueur_bdd(categorie_recherche, mot_recherche):
     joueur_trouve = bdd_joueur.search(where(categorie_recherche) == mot_recherche)
     # Si la réponse est vide, ne retourne rien
     return (joueur_trouve)
+
 
 # Permet de modifier une des caractéristique d'un joueur
 # En cas de modification renvoi la nouvelle valeur saisie par l'utilisateur
@@ -31,6 +34,7 @@ def modif_joueur_bdd(position, categorie_recherche):
         bdd_joueur.update({categorie_recherche: valeur_modif}, Joueur.position == position)
         return valeur_modif
     return
+
 
 # Permet de controler dans la base de donnée JSON joueur si une position est utilisée
 # Renvoi la première position vide
@@ -53,6 +57,7 @@ def initialisation_bdd_tournoi():
     tournoi_bdd = TinyDB("tournoi_bdd.json")
     tournoi = tournoi_bdd.table("tournoi_bdd")
     return tournoi
+
 
 # Permet de supprimer une valeur d'une base de donnée JSON
 # Ne renvoi rien

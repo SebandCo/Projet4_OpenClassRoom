@@ -1,4 +1,5 @@
-from Vue_nettoyage_ecran import nettoyage_ecran
+from Vue.nettoyage_ecran import nettoyage_ecran
+
 
 # Permet d'afficher la liste des tournoi dans la base Json
 def vue_menu_revoir_reprendre_tournoi_accueil(tournoi_existant):
@@ -25,6 +26,7 @@ def vue_menu_revoir_reprendre_tournoi_accueil(tournoi_existant):
 
     menu_max = compteur
     return (reponse_menu, menu_max)
+
 
 # Permet d'afficher le descriptif d'un tournoi
 def vue_menu_revoir_reprendre_affichage_tournoi(compteur, tournoi):

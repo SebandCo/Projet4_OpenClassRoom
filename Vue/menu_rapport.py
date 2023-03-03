@@ -1,10 +1,11 @@
-from Vue_nettoyage_ecran import nettoyage_ecran
+from Vue.nettoyage_ecran import nettoyage_ecran
+
 
 # Permet d'afficher le menu général des rapport
 def vue_menu_rapport():
     # Permet de nettoyer l'écran
     nettoyage_ecran()
-    menu_max = 8
+    menu_max = 9
     # Logo de démarrage
     print(
         "==================================================\n"
@@ -25,12 +26,14 @@ def vue_menu_rapport():
         "\t5 --> Liste des joueurs par ordre de classement\n"
         "\t6 --> Liste des tours d'un tournoi\n"
         "\t7 --> Liste des matchs d'un tournoi\n"
-        "8 --> Revenir au menu précédent\n")
+        "\n8 --> Rapport flake8\n\n"
+        "9 --> Revenir au menu précédent\n")
 
     # Récupération du choix de l'utilisateur
     reponse_menu = input("Merci de saisir le numéro de menu : ")
 
     return (reponse_menu, menu_max)
+
 
 # Permet d'afficher le détail des tours d'un tournoi
 def vue_rapport_tours(tournoi):

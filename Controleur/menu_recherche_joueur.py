@@ -1,13 +1,14 @@
-from Vue_menu_recherche_joueur import vue_menu_recherche_joueur
-from Vue_menu_recherche_joueur import vue_menu_mot_recherche_joueur
-from Vue_menu_recherche_joueur import vue_menu_resultat_recherche_joueur
-from Vue_menu_recherche_joueur import vue_menu_choix_resultat_recherche_joueur_tournoi
-from Vue_menu_recherche_joueur import vue_menu_choix_resultat_recherche_joueur_simple
-from Vue_menu_recherche_joueur import vue_menu_affichage_joueur_recherche_joueur
-from Vue_menu_recherche_joueur import vue_menu_modif_joueur
-from Controleur_valeur_menu import ctrl_valeur_menu
-from Controleur_bdd_json import recherche_joueur_bdd
-from Modele_joueur import Joueur
+from Vue.menu_recherche_joueur import vue_menu_recherche_joueur
+from Vue.menu_recherche_joueur import vue_menu_mot_recherche_joueur
+from Vue.menu_recherche_joueur import vue_menu_resultat_recherche_joueur
+from Vue.menu_recherche_joueur import vue_menu_choix_resultat_recherche_joueur_tournoi
+from Vue.menu_recherche_joueur import vue_menu_choix_resultat_recherche_joueur_simple
+from Vue.menu_recherche_joueur import vue_menu_affichage_joueur_recherche_joueur
+from Vue.menu_recherche_joueur import vue_menu_modif_joueur
+from Controleur.valeur_menu import ctrl_valeur_menu
+from Controleur.bdd_json import recherche_joueur_bdd
+from Modele.joueur import Joueur
+
 
 # Permet de lancer le menu recherche de joueur dans la base de données Json
 def ctrl_menu_recherche_joueur(menu_tournoi):
@@ -61,6 +62,7 @@ def ctrl_menu_recherche_joueur(menu_tournoi):
     # Choix 6 : Annulation de la recherche
     return
 
+
 # Permet de selectionner un joueur dans le cadre d'un tournoi
 def ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche):
     reponse_utilisateur_orientation_joueur = 0
@@ -93,6 +95,7 @@ def ctrl_menu_recherche_choix_joueur_tournoi(resultat_recherche):
                     return joueur_selectionne
             elif reponse_utilisateur_orientation_joueur == 3:
                 return
+
 
 # Permet de selectionner un joueur dans le cadre d'une recherche simple
 def ctrl_menu_recherche_choix_joueur_simple(resultat_recherche):

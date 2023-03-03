@@ -1,4 +1,3 @@
-
 # Permet de controler si la réponse utilisateur correspond à un menu existant
 def ctrl_valeur_menu(menu_max, reponse_menu):
     reponse_correct = False
@@ -21,6 +20,7 @@ def ctrl_valeur_menu(menu_max, reponse_menu):
             # Si reponse_menu n'est pas un entier
             reponse_menu = input("Merci de choisir un menu existant : ")
     return int(reponse_menu)
+
 
 # Permet de controler si la réponse utilisateur est un nombre positif non nul
 def ctrl_valeur_utilisateur(reponse_utilisateur):
@@ -46,7 +46,8 @@ def ctrl_valeur_utilisateur(reponse_utilisateur):
 
     return int(reponse_utilisateur)
 
-# ¨Permet de controler si la réponse utilisateur est H, F ou I
+
+# Permet de controler si la réponse utilisateur est H, F ou I
 def ctrl_valeur_sexe(reponse):
     reponse_correct = False
     # Tant que le controle n'est pas valide

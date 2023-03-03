@@ -1,4 +1,4 @@
-from Modele_joueur import Joueur
+from Modele.joueur import Joueur
 
 
 class JoueurTournoi(Joueur):

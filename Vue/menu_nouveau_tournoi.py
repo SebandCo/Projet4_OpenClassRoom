@@ -1,4 +1,5 @@
-from Vue_nettoyage_ecran import nettoyage_ecran
+from Vue.nettoyage_ecran import nettoyage_ecran
+
 
 # Permet d'afficher le menu général de la création d'un tournoi
 def vue_menu_nouveau_tournoi():
@@ -13,6 +14,7 @@ def vue_menu_nouveau_tournoi():
 
     # Menu d'initialisation pour l'utilisateur
     print("Commençons par initialiser le tournoi\n")
+
 
 # Permet d'afficher un récapitulatif du tournoi créé
 def vue_recap_menu_nouveau_tournoi(tournoi):
@@ -34,6 +36,7 @@ def vue_recap_menu_nouveau_tournoi(tournoi):
               f"{tournoi.description}\n")
     input("Passons maintenant à la création des joueurs")
 
+
 # Permet d'afficher le choix de type de partie
 def vue_choix_type_partie():
     print("\nQuel type de tournoi allez vous faire?"
@@ -44,6 +47,7 @@ def vue_choix_type_partie():
     # Récupération du choix de l'utilisateur
     reponse_temps = input("Quel est votre choix? 1, 2 ou 3 : ")
     return reponse_temps
+
 
 # Permet d'afficher le menu joueur lors de la création d'un tournoi
 def vue_menu_nouveau_tournoi_creation_joueur(tournoi, compteur):
@@ -65,6 +69,7 @@ def vue_menu_nouveau_tournoi_creation_joueur(tournoi, compteur):
     reponse_menu = input("Merci de saisir le numéro de menu : ")
 
     return (reponse_menu, menu_max)
+
 
 # Permet d'afficher la liste des duels de la manche en cours
 def vue_tournoi_liste_duel(tournoi):
@@ -98,6 +103,7 @@ def vue_tournoi_liste_duel(tournoi):
 
     input("Appuyer sur Entrée pour continuer")
 
+
 # Permet de récupérer le résultat de chaque duel de la manche en cours
 def vue_tournoi_recuperation_score(numero_de_paires, joueur1, joueur2, tournoi):
     nettoyage_ecran()
@@ -117,6 +123,7 @@ def vue_tournoi_recuperation_score(numero_de_paires, joueur1, joueur2, tournoi):
     reponse_menu = input("Merci de saisir votre choix : ")
 
     return (reponse_menu, menu_max)
+
 
 # Permet d'afficher le resultat final du tournoi
 def vue_tournoi_resultat(tournoi):
@@ -145,6 +152,7 @@ def vue_tournoi_resultat(tournoi):
                 classement += 1
 
     input("Appuyer sur Entrée pour continuer")
+
 
 # Permet d'afficher les resultats à la fin de chaque duel
 def vue_tournoi_resultat_intermediaire(tournoi):

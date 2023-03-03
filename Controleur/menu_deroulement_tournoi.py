@@ -1,7 +1,8 @@
-from Vue_menu_nouveau_tournoi import vue_tournoi_resultat_intermediaire
-from Vue_menu_nouveau_tournoi import vue_tournoi_liste_duel
-from Vue_menu_nouveau_tournoi import vue_tournoi_resultat
-from Controleur_valeur_menu import ctrl_valeur_menu
+from Vue.menu_nouveau_tournoi import vue_tournoi_resultat_intermediaire
+from Vue.menu_nouveau_tournoi import vue_tournoi_liste_duel
+from Vue.menu_nouveau_tournoi import vue_tournoi_resultat
+from Controleur.valeur_menu import ctrl_valeur_menu
+
 
 # Permet de lancer les différentes étapes du tournoi
 def deroulement_tournoi(tournoi):

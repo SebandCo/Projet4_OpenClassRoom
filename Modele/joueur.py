@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Module pour l'importation de la base de donnée
-from Controleur_bdd_json import recherche_bdd_position
-from Controleur_bdd_json import initialisation_bdd_joueur
-from Controleur_valeur_menu import ctrl_valeur_sexe
+from Controleur.bdd_json import recherche_bdd_position
+from Controleur.bdd_json import initialisation_bdd_joueur
+from Controleur.valeur_menu import ctrl_valeur_sexe
 
 
 class Joueur:

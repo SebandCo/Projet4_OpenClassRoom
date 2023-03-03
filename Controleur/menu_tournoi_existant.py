@@ -1,12 +1,13 @@
-from Vue_menu_tournoi_existant import vue_menu_revoir_reprendre_tournoi_accueil
-from Vue_menu_tournoi_existant import vue_menu_revoir_reprendre_affichage_tournoi
-from Controleur_bdd_json import initialisation_bdd_tournoi
-from Controleur_bdd_json import recherche_joueur_bdd
-from Controleur_valeur_menu import ctrl_valeur_menu
-from Modele_tournoi import Tournoi
-from Modele_joueur_tournoi import JoueurTournoi
-from Modele_joueur import Joueur
-from Controleur_menu_deroulement_tournoi import deroulement_tournoi
+from Vue.menu_tournoi_existant import vue_menu_revoir_reprendre_tournoi_accueil
+from Vue.menu_tournoi_existant import vue_menu_revoir_reprendre_affichage_tournoi
+from Controleur.bdd_json import initialisation_bdd_tournoi
+from Controleur.bdd_json import recherche_joueur_bdd
+from Controleur.valeur_menu import ctrl_valeur_menu
+from Modele.tournoi import Tournoi
+from Modele.joueur_tournoi import JoueurTournoi
+from Modele.joueur import Joueur
+from Controleur.menu_deroulement_tournoi import deroulement_tournoi
+
 
 # Permet de lancer le menu reprise de tournoi
 def ctrl_reprise_tournoi_existant():
@@ -16,6 +17,7 @@ def ctrl_reprise_tournoi_existant():
         deroulement_tournoi(tournoi_actif)
     else:
         return
+
 
 # Permet de selectionner un tournoi à reprendre
 def ctrl_menu_recherche_tournoi():
@@ -44,6 +46,7 @@ def ctrl_menu_recherche_tournoi():
             input("Appuyer sur Entrée pour continuer")
             return tournoi_selectionne
     return
+
 
 # Permet de transformer un tournoi JSON en tournoi Objet
 def ctrl_menu_passage_tournoi_json_objet(tournoi):

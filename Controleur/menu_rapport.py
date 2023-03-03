@@ -1,13 +1,15 @@
-from Controleur_valeur_menu import ctrl_valeur_menu
-from Controleur_bdd_json import recherche_joueur_bdd
-from Controleur_bdd_json import initialisation_bdd_tournoi
-from Controleur_bdd_json import initialisation_bdd_joueur
-from Controleur_menu_tournoi_existant import ctrl_menu_recherche_tournoi
-from Controleur_menu_tournoi_existant import ctrl_menu_passage_tournoi_json_objet
-from Vue_menu_rapport import vue_menu_rapport
-from Vue_menu_rapport import vue_rapport_tours
-from Vue_menu_recherche_joueur import vue_menu_affichage_joueur_recherche_joueur
-from Vue_menu_tournoi_existant import vue_menu_revoir_reprendre_affichage_tournoi
+from Controleur.valeur_menu import ctrl_valeur_menu
+from Controleur.bdd_json import recherche_joueur_bdd
+from Controleur.bdd_json import initialisation_bdd_tournoi
+from Controleur.bdd_json import initialisation_bdd_joueur
+from Controleur.menu_tournoi_existant import ctrl_menu_recherche_tournoi
+from Controleur.menu_tournoi_existant import ctrl_menu_passage_tournoi_json_objet
+from Controleur.rapport_flake import rapport_flake8
+from Vue.menu_rapport import vue_menu_rapport
+from Vue.menu_rapport import vue_rapport_tours
+from Vue.menu_recherche_joueur import vue_menu_affichage_joueur_recherche_joueur
+from Vue.menu_tournoi_existant import vue_menu_revoir_reprendre_affichage_tournoi
+
 
 # Permet de lancer le menu rapport et la redirection en fonction des réponses
 def ctrl_menu_rapport():
@@ -45,13 +47,21 @@ def ctrl_menu_rapport():
         # Choix 7 : rapport tournoi liste des matchs
         elif reponse_utilisateur_menu_joueur == 7:
             ctrl_rapport_tournoi_tours()
-
-        # Choix 8 : Sortir du programme
+        # Choix 8 : rapport flake8
         elif reponse_utilisateur_menu_joueur == 8:
+            ctrl_rapport_flake8()
+        # Choix 9 : Sortir du programme
+        elif reponse_utilisateur_menu_joueur == 9:
             break
 
         reponse_utilisateur = vue_menu_rapport()
         reponse_menu = reponse_utilisateur[0]
+
+
+# Permet de générer un rapport flake8 au format HTML
+def ctrl_rapport_flake8():
+    rapport_flake8()
+
 
 # Permet de d'afficher le rapport des tours d'un tournoi
 def ctrl_rapport_tournoi_tours():
@@ -64,6 +74,7 @@ def ctrl_rapport_tournoi_tours():
     else:
         return
 
+
 # Permet d'afficher la liste des joueurs d'un tournoi choisi
 def ctrl_rapport_tournoi_specifique(critere):
     tournoi_actif = ctrl_menu_recherche_tournoi()
@@ -73,6 +84,7 @@ def ctrl_rapport_tournoi_specifique(critere):
     # Sinon on arrete
     else:
         return
+
 
 # Permet d'afficher la liste des tournoi
 def ctrl_rapport_tournoi():
@@ -84,6 +96,7 @@ def ctrl_rapport_tournoi():
         compteur += 1
     input("Appuyer sur ""Entrée"" pour continuer")
     return
+
 
 # Permet d'afficher la liste générale des joueurs
 def ctrl_rapport_tri_joueur(critere, base):

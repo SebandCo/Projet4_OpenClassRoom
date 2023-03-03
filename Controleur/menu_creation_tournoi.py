@@ -1,11 +1,12 @@
-from Vue_menu_nouveau_tournoi import vue_menu_nouveau_tournoi
-from Vue_menu_nouveau_tournoi import vue_recap_menu_nouveau_tournoi
-from Vue_menu_nouveau_tournoi import vue_menu_nouveau_tournoi_creation_joueur
-from Modele_tournoi import Tournoi
-from Modele_joueur_tournoi import JoueurTournoi, Joueur
-from Controleur_menu_recherche_joueur import ctrl_valeur_menu
-from Controleur_menu_recherche_joueur import ctrl_menu_recherche_joueur
-from Controleur_menu_deroulement_tournoi import deroulement_tournoi
+from Vue.menu_nouveau_tournoi import vue_menu_nouveau_tournoi
+from Vue.menu_nouveau_tournoi import vue_recap_menu_nouveau_tournoi
+from Vue.menu_nouveau_tournoi import vue_menu_nouveau_tournoi_creation_joueur
+from Modele.tournoi import Tournoi
+from Modele.joueur_tournoi import JoueurTournoi, Joueur
+from Controleur.menu_recherche_joueur import ctrl_valeur_menu
+from Controleur.menu_recherche_joueur import ctrl_menu_recherche_joueur
+from Controleur.menu_deroulement_tournoi import deroulement_tournoi
+
 
 # Permet de lancer le processus de création de tournoi
 # Puis lance le déroulement du tournoi
@@ -20,6 +21,7 @@ def ctrl_menu_tournoi():
 
     deroulement_tournoi(nouveau_tournoi)
 
+
 # Permet de créer le tournoi
 # Renvoi le tournoi créé
 def ctrl_creation_du_tournoi():
@@ -29,6 +31,7 @@ def ctrl_creation_du_tournoi():
     nouveau_tournoi.creation_tournoi()
     vue_recap_menu_nouveau_tournoi(nouveau_tournoi)
     return nouveau_tournoi
+
 
 # Permet de rajouter des joueurs au tournoi
 def ctrl_rajout_des_joueurs(nouveau_tournoi):
