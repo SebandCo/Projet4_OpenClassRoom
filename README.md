@@ -24,6 +24,6 @@ python main.py
 
 # Contribution
 Commençant en programmation Python, je suis preneur :
-1. des détéction de bug
+1. des détéctions de bug
 2. des suggestions d'amélioration du code
 3. des suggestions d'amélioration de la documentation
