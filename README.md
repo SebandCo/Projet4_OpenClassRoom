@@ -23,7 +23,18 @@ Le programme se lance grâce à la commande
 ```
 python main.py
 ```
+# Rapport Flake8
+Deux possibilités pour l'édition du fichier
 
+1° En saisissant la commande directement dans l'invité de commande
+```
+flake8 --format=html --htmldir=flake8-rapport --max-line-length 119
+```
+2° Directement au sein du logiciel
+```
+4 --> Afficher les rapports
+8 --> Rapport flake8
+```
 # Contribution
 Commençant en programmation Python, je suis preneur :
 1. des détections de bug
