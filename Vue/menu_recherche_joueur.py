@@ -1,5 +1,5 @@
-from Vue.nettoyage_ecran import nettoyage_ecran
 from Controleur.bdd_json import modif_joueur_bdd
+from Vue.nettoyage_ecran import nettoyage_ecran
 
 
 # Permet d'afficher le menu général de la recherche de joueur

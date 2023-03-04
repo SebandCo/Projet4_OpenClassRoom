@@ -1,9 +1,9 @@
-from Vue.menu_principal import vue_menu_principal
-from Controleur.valeur_menu import ctrl_valeur_menu
 from Controleur.menu_creation_tournoi import ctrl_menu_tournoi
-from Controleur.menu_tournoi_existant import ctrl_reprise_tournoi_existant
-from Controleur.menu_rapport import ctrl_menu_rapport
 from Controleur.menu_joueur import ctrl_menu_joueur
+from Controleur.menu_rapport import ctrl_menu_rapport
+from Controleur.menu_tournoi_existant import ctrl_reprise_tournoi_existant
+from Controleur.valeur_menu import ctrl_valeur_menu
+from Vue.menu_principal import vue_menu_principal
 
 
 # Permet de lancer le menu principal et la redirection en fonction des réponses

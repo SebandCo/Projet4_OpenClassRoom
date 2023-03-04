@@ -1,12 +1,12 @@
-from Vue.menu_tournoi_existant import vue_menu_revoir_reprendre_tournoi_accueil
-from Vue.menu_tournoi_existant import vue_menu_revoir_reprendre_affichage_tournoi
 from Controleur.bdd_json import initialisation_bdd_tournoi
 from Controleur.bdd_json import recherche_joueur_bdd
-from Controleur.valeur_menu import ctrl_valeur_menu
-from Modele.tournoi import Tournoi
-from Modele.joueur_tournoi import JoueurTournoi
-from Modele.joueur import Joueur
 from Controleur.menu_deroulement_tournoi import deroulement_tournoi
+from Controleur.valeur_menu import ctrl_valeur_menu
+from Modele.joueur import Joueur
+from Modele.joueur_tournoi import JoueurTournoi
+from Modele.tournoi import Tournoi
+from Vue.menu_tournoi_existant import vue_menu_revoir_reprendre_affichage_tournoi
+from Vue.menu_tournoi_existant import vue_menu_revoir_reprendre_tournoi_accueil
 
 
 # Permet de lancer le menu reprise de tournoi

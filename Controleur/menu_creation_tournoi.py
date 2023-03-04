@@ -1,11 +1,12 @@
-from Vue.menu_nouveau_tournoi import vue_menu_nouveau_tournoi
-from Vue.menu_nouveau_tournoi import vue_recap_menu_nouveau_tournoi
-from Vue.menu_nouveau_tournoi import vue_menu_nouveau_tournoi_creation_joueur
-from Modele.tournoi import Tournoi
-from Modele.joueur_tournoi import JoueurTournoi, Joueur
-from Controleur.menu_recherche_joueur import ctrl_valeur_menu
 from Controleur.menu_recherche_joueur import ctrl_menu_recherche_joueur
+from Controleur.menu_recherche_joueur import ctrl_valeur_menu
 from Controleur.menu_deroulement_tournoi import deroulement_tournoi
+from Modele.joueur_tournoi import Joueur
+from Modele.joueur_tournoi import JoueurTournoi
+from Modele.tournoi import Tournoi
+from Vue.menu_nouveau_tournoi import vue_menu_nouveau_tournoi
+from Vue.menu_nouveau_tournoi import vue_menu_nouveau_tournoi_creation_joueur
+from Vue.menu_nouveau_tournoi import vue_recap_menu_nouveau_tournoi
 
 
 # Permet de lancer le processus de création de tournoi

@@ -1,7 +1,7 @@
-from Vue.menu_nouveau_tournoi import vue_tournoi_resultat_intermediaire
+from Controleur.valeur_menu import ctrl_valeur_menu
 from Vue.menu_nouveau_tournoi import vue_tournoi_liste_duel
 from Vue.menu_nouveau_tournoi import vue_tournoi_resultat
-from Controleur.valeur_menu import ctrl_valeur_menu
+from Vue.menu_nouveau_tournoi import vue_tournoi_resultat_intermediaire
 
 
 # Permet de lancer les différentes étapes du tournoi

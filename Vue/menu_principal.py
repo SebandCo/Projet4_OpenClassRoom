@@ -1,4 +1,3 @@
-
 from Vue.nettoyage_ecran import nettoyage_ecran
 
 

@@ -1,13 +1,13 @@
-from Vue.menu_recherche_joueur import vue_menu_recherche_joueur
-from Vue.menu_recherche_joueur import vue_menu_mot_recherche_joueur
-from Vue.menu_recherche_joueur import vue_menu_resultat_recherche_joueur
-from Vue.menu_recherche_joueur import vue_menu_choix_resultat_recherche_joueur_tournoi
-from Vue.menu_recherche_joueur import vue_menu_choix_resultat_recherche_joueur_simple
-from Vue.menu_recherche_joueur import vue_menu_affichage_joueur_recherche_joueur
-from Vue.menu_recherche_joueur import vue_menu_modif_joueur
-from Controleur.valeur_menu import ctrl_valeur_menu
 from Controleur.bdd_json import recherche_joueur_bdd
+from Controleur.valeur_menu import ctrl_valeur_menu
 from Modele.joueur import Joueur
+from Vue.menu_recherche_joueur import vue_menu_affichage_joueur_recherche_joueur
+from Vue.menu_recherche_joueur import vue_menu_choix_resultat_recherche_joueur_simple
+from Vue.menu_recherche_joueur import vue_menu_choix_resultat_recherche_joueur_tournoi
+from Vue.menu_recherche_joueur import vue_menu_modif_joueur
+from Vue.menu_recherche_joueur import vue_menu_mot_recherche_joueur
+from Vue.menu_recherche_joueur import vue_menu_recherche_joueur
+from Vue.menu_recherche_joueur import vue_menu_resultat_recherche_joueur
 
 
 # Permet de lancer le menu recherche de joueur dans la base de données Json

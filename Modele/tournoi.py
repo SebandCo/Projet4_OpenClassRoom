@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-# Module pour la récuperation de la date du jour
-from datetime import datetime
-from random import randint
-from Controleur.valeur_menu import ctrl_valeur_menu
-from Controleur.valeur_menu import ctrl_valeur_utilisateur
-from Vue.menu_nouveau_tournoi import vue_tournoi_recuperation_score
-from Vue.menu_nouveau_tournoi import vue_choix_type_partie
 from Controleur.bdd_json import initialisation_bdd_tournoi
 from Controleur.bdd_json import recherche_bdd_position
 from Controleur.bdd_json import suppression_item_bdd
+from Controleur.valeur_menu import ctrl_valeur_menu
+from Controleur.valeur_menu import ctrl_valeur_utilisateur
+from datetime import datetime
+from random import randint
+from Vue.menu_nouveau_tournoi import vue_choix_type_partie
+from Vue.menu_nouveau_tournoi import vue_tournoi_recuperation_score
 
 
 class Tournoi:

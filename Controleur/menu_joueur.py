@@ -1,7 +1,7 @@
-from Vue.menu_joueur import vue_menu_joueur
-from Controleur.valeur_menu import ctrl_valeur_menu
 from Controleur.menu_recherche_joueur import ctrl_menu_recherche_joueur
+from Controleur.valeur_menu import ctrl_valeur_menu
 from Modele.joueur import Joueur
+from Vue.menu_joueur import vue_menu_joueur
 
 
 # Permet de lancer le menu joueur et la redirection en fonction des réponses
