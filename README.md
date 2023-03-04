@@ -26,7 +26,7 @@ Deux possibilités pour l'édition du fichier
 
 1° En saisissant la commande directement dans l'invité de commande
 ```
-flake8 --format=html --htmldir=flake-report --max-line-length 119
+flake8 --format=html --htmldir=flake8-rapport --max-line-length 119
 ```
 2° Directement au sein du logiciel
 ```
