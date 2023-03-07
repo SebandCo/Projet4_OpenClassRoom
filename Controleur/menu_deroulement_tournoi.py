@@ -2,6 +2,10 @@ from Controleur.valeur_menu import ctrl_valeur_menu
 from Vue.menu_nouveau_tournoi import vue_tournoi_liste_duel
 from Vue.menu_nouveau_tournoi import vue_tournoi_resultat
 from Vue.menu_nouveau_tournoi import vue_tournoi_resultat_intermediaire
+"""
+    Procédure pour le déroulement d'un tournoi
+    Comprend les différentes étapes du tournoi
+"""
 
 
 # Permet de lancer les différentes étapes du tournoi
@@ -40,6 +44,6 @@ def deroulement_tournoi(tournoi):
             elif reponse_utilisateur_deroulement_tournoi == 2:
                 return
 
-    tournoi.status = "Terminée"
+    tournoi.status = "Terminé"
     tournoi.sauvegarde_tournoi_bdd()
     vue_tournoi_resultat(tournoi)

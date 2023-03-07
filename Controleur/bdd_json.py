@@ -1,6 +1,11 @@
 from Controleur.valeur_menu import ctrl_valeur_utilisateur
 from Controleur.valeur_menu import ctrl_valeur_sexe
 from tinydb import TinyDB, where, Query
+"""
+    Controleur portant sur les différents base de données JSON
+    - joueurs_bdd.json : Pour la base de donnée sur les joueurs
+    - tournoi_bdd.json : Pour la base de donnée sur les tournois
+"""
 
 
 # Permet d'initialiser la base de donnée JSON Joueur

@@ -8,6 +8,14 @@ from Vue.menu_recherche_joueur import vue_menu_modif_joueur
 from Vue.menu_recherche_joueur import vue_menu_mot_recherche_joueur
 from Vue.menu_recherche_joueur import vue_menu_recherche_joueur
 from Vue.menu_recherche_joueur import vue_menu_resultat_recherche_joueur
+"""
+    Procédure pour afficher le menu de recherche de joueur
+    Comprend :
+    - La gestion de la recherche
+    - L'affichage du joueur recherchée et l'orientation suivant si la recherche vient
+        - Du menu général
+        - Du menu de création des tournois
+"""
 
 
 # Permet de lancer le menu recherche de joueur dans la base de données Json

@@ -8,6 +8,35 @@ from datetime import datetime
 from random import randint
 from Vue.menu_nouveau_tournoi import vue_choix_type_partie
 from Vue.menu_nouveau_tournoi import vue_tournoi_recuperation_score
+"""
+    Classe objet qui permet de stocker les informations d'un tournoi
+    Permet aussi de suivre le déroulement d'un tournoi
+    - nom : Nom du tournoi (aucune restriction)
+            Par défault : "Tournoi du {date du jour}"
+    - lieu : Lieu du tournoi (aucune restriction)
+    - date : Date du tournoi (aucune restriction)
+             Par défault : "{Date du jour}"
+    - nbr_tour : Nombre de manche du tournoi (nombre entier positif non nul)
+                 Par défault : 4
+    - tour_actif : Manche actuellement en cours ou prochaine manche à jouer
+                   Non modifiable par l'utilisateur
+    - tournee : Paramêtre demandé par l'énoncé mais ne sert à rien
+    - nbr_joueur : Nombre de joueur participant au tournoi (nombre entier positif pair)
+                   Par défault : 8
+    - joueurs : Parametre contenant les objets joueurs participant au tournoi
+    - ctrl_temps : Type de tournoi. Aucune incidence sur le tournoi
+                   (Valeur possible "Bullet", "Blitz", "Coup rapide")
+    - description : Description facultative du tournoi (aucune restriction)
+    - status : Donne l'état du tournoi ("En cours" ou "Terminé")
+               Non modifiable par l'utilisateur
+    - round : Met en mémoire la liste des duels prévus dans le round en cours
+              Non modifiable par l'utilisateur
+    - round_global : Met en mémoire la liste de tous les duels déjà joués afin d'éviter les doublons
+              Non modifiable par l'utilisateur
+    - position : Position du joueur dans la base Json. Défini par la fonction
+                 Non modifiable par l'utilisateur
+
+"""
 
 
 class Tournoi:

@@ -1,3 +1,12 @@
+"""
+    Procédure de controle des valeurs utilisateurs par rapport à l'attendu
+    Comprend
+    - Un controle pour vérifier que la valeur est compris entre 1 et une variable
+    - Un controle pour vérifier que la valeur est positive
+    - Un controle pour vérifier que la valeur est H, F ou I
+"""
+
+
 # Permet de controler si la réponse utilisateur correspond à un menu existant
 def ctrl_valeur_menu(menu_max, reponse_menu):
     reponse_correct = False
@@ -9,12 +18,12 @@ def ctrl_valeur_menu(menu_max, reponse_menu):
             int(reponse_menu)
             # Met le string en integer
             reponse_menu = int(reponse_menu)
-            # Vérifie que reponse_menu est compris entre 1 et 3
+            # Vérifie que reponse_menu est compris entre 1 et le menu max
             if 1 <= reponse_menu <= menu_max:
                 # Valide le controle pour sortir de la boucle
                 reponse_correct = True
             else:
-                # Si reponse_menu n'est pas compris entre 1 et 3
+                # Si reponse_menu n'est pas compris entre 1 et le menu max
                 reponse_menu = input("Merci de choisir un menu existant : ")
         except (ValueError):
             # Si reponse_menu n'est pas un entier
@@ -33,15 +42,15 @@ def ctrl_valeur_utilisateur(reponse_utilisateur):
             int(reponse_utilisateur)
             # Met le string en integer
             reponse_utilisateur = int(reponse_utilisateur)
-            # Vérifie que reponse_menu est positif
+            # Vérifie que reponse_utilisateur est positif
             if 1 <= reponse_utilisateur:
                 # Valide le controle pour sortir de la boucle
                 reponse_correct = True
             else:
-                # Si reponse_menu n'est pas compris entre 1 et 3
+                # Si reponse_utilisateur n'est pas valide
                 reponse_utilisateur = input("Merci de choisir un nombre positif non nul : ")
         except (ValueError):
-            # Si reponse_menu n'est pas un entier
+            # Si reponse_utilisateur n'est pas un entier
             reponse_utilisateur = input("Merci de choisir un nombre positif non nul : ")
 
     return int(reponse_utilisateur)

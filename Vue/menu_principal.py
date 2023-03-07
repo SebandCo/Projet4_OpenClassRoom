@@ -1,4 +1,7 @@
 from Vue.nettoyage_ecran import nettoyage_ecran
+"""
+    Vue du menu de choix général donnée à l'utilisateur lors du lancement du programme
+"""
 
 
 # Permet d'afficher le menu général

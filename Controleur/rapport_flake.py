@@ -1,4 +1,7 @@
 import os
+"""
+    Procédure permettant de créer un rapport flake 8 directement à partir du programme
+"""
 
 
 # Permet de générer un rapport flake8

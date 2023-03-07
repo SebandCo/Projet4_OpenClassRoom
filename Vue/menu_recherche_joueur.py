@@ -1,5 +1,9 @@
 from Controleur.bdd_json import modif_joueur_bdd
 from Vue.nettoyage_ecran import nettoyage_ecran
+"""
+    Liste de Vue affichée à l'utilisateur lors de la recherche d'un joueur
+    Comprend aussi la vue de modification d'un joueur
+"""
 
 
 # Permet d'afficher le menu général de la recherche de joueur

@@ -7,6 +7,13 @@ from Modele.joueur_tournoi import JoueurTournoi
 from Modele.tournoi import Tournoi
 from Vue.menu_tournoi_existant import vue_menu_revoir_reprendre_affichage_tournoi
 from Vue.menu_tournoi_existant import vue_menu_revoir_reprendre_tournoi_accueil
+"""
+    Procédure pour le menu de reprise d'un tournoi
+    Comprend:
+    - La recherche d'un tournoi
+    - Le passage d'un tournoi Json en objet
+    - Le passage d'un joueur Json en objet
+"""
 
 
 # Permet de lancer le menu reprise de tournoi

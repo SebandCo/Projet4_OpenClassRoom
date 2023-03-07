@@ -1,4 +1,7 @@
 import os
+"""
+    Permet de faire un nettoyage de l'écran suivant le systeme d'exploitation
+"""
 
 
 # Permet de nettoyer l'écran pour afficher un écran noir

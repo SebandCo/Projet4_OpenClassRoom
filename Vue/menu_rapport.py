@@ -1,4 +1,7 @@
 from Vue.nettoyage_ecran import nettoyage_ecran
+"""
+    Liste de Vue affichée à l'utilisateur lors d'affichage des rapports
+"""
 
 
 # Permet d'afficher le menu général des rapport

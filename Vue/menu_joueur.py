@@ -1,4 +1,7 @@
 from Vue.nettoyage_ecran import nettoyage_ecran
+"""
+    Vue du menu de choix du joueur donnée à l'utilisateur
+"""
 
 
 # Permet d'afficher le menu général des joueurs

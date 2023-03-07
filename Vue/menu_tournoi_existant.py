@@ -1,4 +1,7 @@
 from Vue.nettoyage_ecran import nettoyage_ecran
+"""
+    Liste de Vue affichée à l'utilisateur lors de la reprise d'un tournoi
+"""
 
 
 # Permet d'afficher la liste des tournoi dans la base Json

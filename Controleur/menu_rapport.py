@@ -9,6 +9,12 @@ from Vue.menu_rapport import vue_menu_rapport
 from Vue.menu_rapport import vue_rapport_tours
 from Vue.menu_recherche_joueur import vue_menu_affichage_joueur_recherche_joueur
 from Vue.menu_tournoi_existant import vue_menu_revoir_reprendre_affichage_tournoi
+"""
+    Procédure pour le menu sur la gestion des rapports
+    Comprend
+    - Le menu d'orientation des rapports
+    - L'affichage des différents rapports existant
+"""
 
 
 # Permet de lancer le menu rapport et la redirection en fonction des réponses

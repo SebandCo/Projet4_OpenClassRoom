@@ -1,4 +1,14 @@
 from Modele.joueur import Joueur
+"""
+    Classe objet qui découle de la classe objet Joueur
+    Permet de rajouter à l'objet Joueur les paramètres propres à un tournoi
+    L'ensemble des paramêtres est non modifiable par l'utilisateur
+    - couleur : La couleur que le joueur aura durant le tour ("Blanc" ou "Noir")
+    - paires : Le numéro de paires qui correspondra à son doublon de duel
+    - points : Le nombre de point que le joueur a. Prend en compte l'historique de classement
+    - ordre : L'ordre du tour qui peut être assimilé au classement ponctuel pour un round
+
+"""
 
 
 class JoueurTournoi(Joueur):

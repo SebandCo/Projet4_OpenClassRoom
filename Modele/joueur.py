@@ -1,6 +1,18 @@
 from Controleur.bdd_json import initialisation_bdd_joueur
 from Controleur.bdd_json import recherche_bdd_position
 from Controleur.valeur_menu import ctrl_valeur_sexe
+"""
+    Classe objet qui permet de stocker les informations d'un futur joueur dans un tournoi
+    Ne garde que les informations générique de la personne
+    - nom : Nom du joueur (aucune restriction)
+    - prenom : Prénom du joueur (aucune restriction)
+    - naissance : Date de naissance du joueur (aucune restriction)
+    - sexe : Sexe du joueur (ne peut être que H, F ou I, le tout en majuscule)
+    - classement : Classement du joueur (ne peut être qu'un nombre entier positif)
+    - position : Position du joueur dans la base Json. Défini par la fonction
+                 Non modifiable par l'utilisateur
+
+"""
 
 
 class Joueur:

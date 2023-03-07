@@ -1,4 +1,8 @@
 from Vue.nettoyage_ecran import nettoyage_ecran
+"""
+    Liste de Vue affichée à l'utilisateur lors de la création d'un tournoi
+    Comprend aussi les vues de déroulement du tournoi
+"""
 
 
 # Permet d'afficher le menu général de la création d'un tournoi

@@ -7,6 +7,10 @@ from Modele.tournoi import Tournoi
 from Vue.menu_nouveau_tournoi import vue_menu_nouveau_tournoi
 from Vue.menu_nouveau_tournoi import vue_menu_nouveau_tournoi_creation_joueur
 from Vue.menu_nouveau_tournoi import vue_recap_menu_nouveau_tournoi
+"""
+    Procédure pour la création d'un tournoi
+    Comprend la partie rajout des joueurs
+"""
 
 
 # Permet de lancer le processus de création de tournoi
